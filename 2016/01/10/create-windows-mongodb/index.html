@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="Wind">
 <meta property="og:description" content="MongoDB安装成为Windows服务在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志
 搭建过程使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb切换到D:\Program File">
-<meta property="og:updated_time" content="2016-08-31T01:28:09.870Z">
+<meta property="og:updated_time" content="2016-08-31T13:27:03.781Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB安装成为windows服务">
 <meta name="twitter:description" content="MongoDB安装成为Windows服务在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志
@@ -163,7 +163,7 @@
       
         <span class="article-author">
           <i class="icon-user"></i>
-          <span>ZZR</span>
+          <span>Wind</span>
         </span>
       
 
@@ -184,19 +184,14 @@
     
       <h2 id="MongoDB安装成为Windows服务"><a href="#MongoDB安装成为Windows服务" class="headerlink" title="MongoDB安装成为Windows服务"></a>MongoDB安装成为Windows服务</h2><p>在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,<br>并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志</p>
 <h3 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h3><p>使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb<br>切换到D:\Program Files\mongodb\bin&gt;输入如下命令</p>
-<pre>
-<code>
-mongod --logpath "D:\Program Files\mongodb\data\logs\mongo.log" --logappend --dbpath "D:\Program Files\mongodb\data\db" --directoryperdb --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install
-</code>
-</pre>
-
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --logpath <span class="string">"D:\Program Files\mongodb\data\logs\mongo.log"</span> --logappend --dbpath <span class="string">"D:\Program Files\mongodb\data\db"</span> --directoryperdb --serviceName <span class="string">"MongoDB"</span> --serviceDisplayName <span class="string">"MongoDB"</span> --install</div></pre></td></tr></table></figure>
 <p>其中<br>–logpath “D:\Program Files\mongodb\data\logs\mongo.log” 指定日志文件路径</p>
 <p>–logappend –dbpath “D:\Program Files\mongodb\data\db”指定数据库工作路径</p>
 <p>–serviceName “MongoDB” –serviceDisplayName “MongoDB”添加服务</p>
 <p>–install安装</p>
 <p>输入以上命令，命令行中会显示如下数据，及成功</p>
 <p>Creating service MongoDB.<br>Service creation successful.<br>Service can be started from the command line via ‘net start “MongoDB”‘.</p>
-<h3 id="启动服务。"><a href="#启动服务。" class="headerlink" title="启动服务。"></a>启动服务。</h3><p>net start mongoDB</p>
+<h3 id="启动服务。"><a href="#启动服务。" class="headerlink" title="启动服务。"></a>启动服务。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start mongoDB</div></pre></td></tr></table></figure>
 <p>该命令行指定了日志文件：D:\Program Files\mongodb\data\logs.tx，日志是以追加的方式输出的；</p>
 <p>数据文件目录：D:\Program Files\mongodb\data，并且参数–directoryperdb说明每个DB都会新建一个目录；</p>
 <p>Windows服务的名称：MongoDB；</p>
@@ -254,9 +249,9 @@ mongod --logpath "D:\Program Files\mongodb\data\logs\mongo.log" --logappend --db
 
 			<div class="pot__next tl">
 				
-					<a href="/2015/12/16/Git study/"  title="我的常用Git命令">
+					<a href="/2015/12/16/Aaron Swartz/"  title="亚伦·斯沃茨（ Aaron Swartz）">
 					 <strong>下一篇:</strong>
-					 <span>我的常用Git命令
+					 <span>亚伦·斯沃茨（ Aaron Swartz）
 					</span>
 					</a>
 				

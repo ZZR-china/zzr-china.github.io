@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-around.jpg">
 <meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-items.jpg">
 <meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-content.jpg">
-<meta property="og:updated_time" content="2016-08-31T03:17:40.374Z">
+<meta property="og:updated_time" content="2016-08-31T13:28:43.109Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FlexBox布局学习总结">
 <meta name="twitter:description" content="FlexBox布局最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。
@@ -179,7 +179,7 @@
       
         <span class="article-author">
           <i class="icon-user"></i>
-          <span>ZZR</span>
+          <span>Wind</span>
         </span>
       
 
@@ -201,9 +201,7 @@
       <h2 id="FlexBox布局"><a href="#FlexBox布局" class="headerlink" title="FlexBox布局"></a>FlexBox布局</h2><p>最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。</p>
 <p> flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模型，依赖display+position+float属性，这种布局使得一些特殊布局十分不便，如垂直居中。</p>
 <h3 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h3><p>  它是W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。<br>  任何容器都可以设置为flex布局。在属性中设置</p>
-<blockquote>
-<p>.box{<br>  display: flex<br>  }</p>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line"> display: flex</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <p>即可。</p>
 <p>这样我们就将box设置为一个Flex容器(flex container)，它其中所有子元素都自动成为了容器成员，称为(flex item)。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex.png" alt=""></p>
 <p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
@@ -217,9 +215,7 @@
 <li>flex-flow</li>
 </ul>
 <p><strong>2.1 flex-direction</strong><br>这一属性定义主轴的方向，我们有四个值可以定义</p>
-<blockquote>
-<p>.box{<br>  flex-direction:row | row-reverse | column | column-reverse |<br>}</p>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">   flex-direction:row | row-reverse | column | column-reverse |</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>它可能有4个值。</p>
 <ul>
 <li>row（默认值）：主轴为水平方向，起点在左端。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row.jpg" alt=""></li>
@@ -229,10 +225,7 @@
 </ul>
 <p><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column-reverse.jpg" alt=""></p>
 <p><strong>2.2 flex-wrap </strong></p>
-<p>这个主要用来定义伸缩容器里是单行还是多行显示，侧轴的方向决定了新行堆放的方向。</p>
-<blockquote>
-<p>.box{<br>  flex-wrap: nowrap | wrap | wrap-reverse;<br>}</p>
-</blockquote>
+<p>这个主要用来定义伸缩容器里是单行还是多行显示，侧轴的方向决定了新行堆放的方向。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>有三个值</p>
 <ul>
 <li>nowrap：默认，不换行<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-nowrap.jpg" alt="nowrap"></li>
@@ -269,10 +262,7 @@
 <li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-content.jpg" alt="enter image description here"></li>
 </ul>
 <p><strong>2.6 flex-flow </strong></p>
-<p>是flex-deriection和flex-wrap的合并用法，默认值为</p>
-<blockquote>
-<p>flex-flow: row nowrap;</p>
-</blockquote>
+<p>是flex-deriection和flex-wrap的合并用法，默认值为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex-flow: row nowrap;</div></pre></td></tr></table></figure></p>
 <h3 id="三、-项目属性"><a href="#三、-项目属性" class="headerlink" title="三、 项目属性"></a>三、 项目属性</h3><p>一下属性用在项目上</p>
 <ul>
 <li>order:</li>
@@ -286,9 +276,7 @@
 <li>flex-shrink:</li>
 </ul>
 <p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
-<blockquote>
-<p>.item {<br>  flex-shrink: <number>; /<em> default 1 </em>/<br>}</number></p>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  flex-shrink: &lt;number&gt;; /* default <span class="number">1</span> */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>flex-basis:</li>
 </ul>
@@ -301,9 +289,7 @@
 <li>align-self:</li>
 </ul>
 <p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
-<blockquote>
-<p>.item {<br>  align-self: auto | flex-start | flex-end | center | baseline | stretch;<br>}</p>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><a href="http://npm-team.github.io/step1/task0010/task0010.html" target="_blank" rel="external">Demo地址</a>  <a href="https://github.com/npm-team/step1/tree/gh-pages/task0010" target="_blank" rel="external">源代码地址</a></p>
 
     

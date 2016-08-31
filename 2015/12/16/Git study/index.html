@@ -15,25 +15,16 @@
     <meta name="keywords" content="git,教程," />
   
 
-  <meta name="description" content="我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。（另附git大全一份Pro Git中文版）
-
-git init                                                  # 初始化本地git仓库（创建新仓库）
-git config">
+  <meta name="description" content="我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。（另附git大全一份Pro Git中文版）123456789101112131415161718192021222324252627282930313233343536373839404142434445464748git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我的常用Git命令">
 <meta property="og:url" content="http://zhangzirui.com/2015/12/16/Git study/index.html">
 <meta property="og:site_name" content="Wind">
-<meta property="og:description" content="我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。（另附git大全一份Pro Git中文版）
-
-git init                                                  # 初始化本地git仓库（创建新仓库）
-git config">
-<meta property="og:updated_time" content="2016-08-31T01:29:31.190Z">
+<meta property="og:description" content="我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。（另附git大全一份Pro Git中文版）123456789101112131415161718192021222324252627282930313233343536373839404142434445464748git">
+<meta property="og:updated_time" content="2016-08-31T13:22:05.001Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="我的常用Git命令">
-<meta name="twitter:description" content="我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。（另附git大全一份Pro Git中文版）
-
-git init                                                  # 初始化本地git仓库（创建新仓库）
-git config">
+<meta name="twitter:description" content="我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。（另附git大全一份Pro Git中文版）123456789101112131415161718192021222324252627282930313233343536373839404142434445464748git">
 
   
 
@@ -164,7 +155,7 @@ git config">
       
         <span class="article-author">
           <i class="icon-user"></i>
-          <span>ZZR</span>
+          <span>Wind</span>
         </span>
       
 
@@ -184,59 +175,7 @@ git config">
   <div class="article-content">
     
       <a id="more"></a>
-<p>我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。<br><br>（另附git大全一份<a href="http://jingxuan.io/progit/" target="_blank" rel="external">Pro Git中文版</a>）</p>
-<pre>
-git init                                                  # 初始化本地git仓库（创建新仓库）
-git config --global user.name "xxx"                       # 配置用户名
-git config --global user.email "xxx@xxx.com"              # 配置邮件
-git clone git+ssh://git@192.168.53.168/VT.git             # clone远程仓库
-git status                                                # 查看当前版本状态（是否修改）
-git add xyz                                               # 添加xyz文件至index
-git add .                                                 # 增加当前子目录下所有更改过的文件至index
-git commit -m 'xxx'                                       # 提交
-git commit --amend -m 'xxx'                               # 合并上一次提交（用于反复修改）
-git commit -am 'xxx'                                      # 将add和commit合为一步
-git rm xxx                                                # 删除index中的文件
-git rm -r *                                               # 递归删除
-git log                                                   # 显示提交日志
-git log -1                                                # 显示1行日志 -n为n行
-git log -5
-git log --stat                                            # 显示提交日志及相关变动文件
-git log -p -m
-git tag                                                   # 显示已存在的tag
-git tag -a v2.0 -m 'xxx'                                  # 增加v2.0的tag
-git show v2.0                                             # 显示v2.0的日志及详细内容
-git log v2.0                                              # 显示v2.0的日志
-git diff                                                  # 显示所有未添加至index的变更
-git diff --cached                                         # 显示所有已添加index但还未commit的变更
-git diff HEAD^                                            # 比较与上一个版本的差异
-git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
-git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
-git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
-git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
-git branch                                                # 显示本地分支
-git branch --contains 50089                               # 显示包含提交50089的分支
-git branch -a                                             # 显示所有分支
-git branch -r                                             # 显示所有原创分支
-git branch -m master master_copy                          # 本地分支改名
-git checkout -b master_copy                               # 从当前分支创建新分支master_copy并检出
-git checkout -b master master_copy                        # 上面的完整版
-git checkout features/performance                         # 检出已存在的features/performance分支
-git checkout --track hotfixes/BJVEP933                    # 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支
-git checkout -b devel origin/develop                      # 从远程分支develop创建新本地分支devel并检出
-git checkout -- README                                    # 检出head版本的README文件（可用于修改错误回退）
-git merge origin/master                                   # 合并远程master分支至当前分支
-git push origin master                                    # 将当前分支push到远程master分支
-git push --tags                                           # 把所有tag推送到远程仓库
-git fetch                                                 # 获取所有远程分支（不更新本地分支，另需merge）
-git fetch --prune                                         # 获取所有原创分支并清除服务器上已删掉的分支
-git pull origin master                                    # 获取远程分支master并merge到当前分支                    
-git show-branch                                           # 图示当前分支历史
-git show-branch --all                                     # 图示所有分支历史
-git whatchanged                                           # 显示提交历史对应的文件修改
-
-</pre>
-
+<p>我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。<br><br>（另附git大全一份<a href="http://jingxuan.io/progit/" target="_blank" rel="external">Pro Git中文版</a>）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">git init                                                  <span class="comment"># 初始化本地git仓库（创建新仓库）</span></div><div class="line">git config --<span class="keyword">global</span> user.name <span class="string">"xxx"</span>                       <span class="comment"># 配置用户名</span></div><div class="line">git config --<span class="keyword">global</span> user.email <span class="string">"xxx@xxx.com"</span>              <span class="comment"># 配置邮件</span></div><div class="line">git clone git+ssh://git@<span class="number">192.168</span><span class="number">.53</span><span class="number">.168</span>/VT.git             <span class="comment"># clone远程仓库</span></div><div class="line">git status                                                <span class="comment"># 查看当前版本状态（是否修改）</span></div><div class="line">git add xyz                                               <span class="comment"># 添加xyz文件至index</span></div><div class="line">git add .                                                 <span class="comment"># 增加当前子目录下所有更改过的文件至index</span></div><div class="line">git commit -m <span class="string">'xxx'</span>                                       <span class="comment"># 提交</span></div><div class="line">git commit --amend -m <span class="string">'xxx'</span>                               <span class="comment"># 合并上一次提交（用于反复修改）</span></div><div class="line">git commit -am <span class="string">'xxx'</span>                                      <span class="comment"># 将add和commit合为一步</span></div><div class="line">git rm xxx                                                <span class="comment"># 删除index中的文件</span></div><div class="line">git rm -r *                                               <span class="comment"># 递归删除</span></div><div class="line">git log                                                   <span class="comment"># 显示提交日志</span></div><div class="line">git log <span class="number">-1</span>                                                <span class="comment"># 显示1行日志 -n为n行</span></div><div class="line">git log <span class="number">-5</span></div><div class="line">git log --stat                                            <span class="comment"># 显示提交日志及相关变动文件</span></div><div class="line">git log -p -m</div><div class="line">git tag                                                   <span class="comment"># 显示已存在的tag</span></div><div class="line">git tag -a v2<span class="number">.0</span> -m <span class="string">'xxx'</span>                                  <span class="comment"># 增加v2.0的tag</span></div><div class="line">git show v2<span class="number">.0</span>                                             <span class="comment"># 显示v2.0的日志及详细内容</span></div><div class="line">git log v2<span class="number">.0</span>                                              <span class="comment"># 显示v2.0的日志</span></div><div class="line">git diff                                                  <span class="comment"># 显示所有未添加至index的变更</span></div><div class="line">git diff --cached                                         <span class="comment"># 显示所有已添加index但还未commit的变更</span></div><div class="line">git diff HEAD^                                            <span class="comment"># 比较与上一个版本的差异</span></div><div class="line">git diff HEAD -- ./lib                                    <span class="comment"># 比较与HEAD版本lib目录的差异</span></div><div class="line">git diff origin/master..master                            <span class="comment"># 比较远程分支master上有本地分支master上没有的</span></div><div class="line">git diff origin/master..master --stat                     <span class="comment"># 只显示差异的文件，不显示具体内容</span></div><div class="line">git remote add origin git+ssh://git@<span class="number">192.168</span><span class="number">.53</span><span class="number">.168</span>/VT.git <span class="comment"># 增加远程定义（用于push/pull/fetch）</span></div><div class="line">git branch                                                <span class="comment"># 显示本地分支</span></div><div class="line">git branch --contains <span class="number">50089</span>                               <span class="comment"># 显示包含提交50089的分支</span></div><div class="line">git branch -a                                             <span class="comment"># 显示所有分支</span></div><div class="line">git branch -r                                             <span class="comment"># 显示所有原创分支</span></div><div class="line">git branch -m master master_copy                          <span class="comment"># 本地分支改名</span></div><div class="line">git checkout -b master_copy                               <span class="comment"># 从当前分支创建新分支master_copy并检出</span></div><div class="line">git checkout -b master master_copy                        <span class="comment"># 上面的完整版</span></div><div class="line">git checkout features/performance                         <span class="comment"># 检出已存在的features/performance分支</span></div><div class="line">git checkout --track hotfixes/BJVEP933                    <span class="comment"># 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span></div><div class="line">git checkout -b devel origin/develop                      <span class="comment"># 从远程分支develop创建新本地分支devel并检出</span></div><div class="line">git checkout -- README                                    <span class="comment"># 检出head版本的README文件（可用于修改错误回退）</span></div><div class="line">git merge origin/master                                   <span class="comment"># 合并远程master分支至当前分支</span></div><div class="line">git push origin master                                    <span class="comment"># 将当前分支push到远程master分支</span></div><div class="line">git push --tags                                           <span class="comment"># 把所有tag推送到远程仓库</span></div><div class="line">git fetch                                                 <span class="comment"># 获取所有远程分支（不更新本地分支，另需merge）</span></div><div class="line">git fetch --prune                                         <span class="comment"># 获取所有原创分支并清除服务器上已删掉的分支</span></div><div class="line">git pull origin master                                    <span class="comment"># 获取远程分支master并merge到当前分支                    </span></div><div class="line">git show-branch                                           <span class="comment"># 图示当前分支历史</span></div><div class="line">git show-branch --all                                     <span class="comment"># 图示所有分支历史</span></div><div class="line">git whatchanged                                           <span class="comment"># 显示提交历史对应的文件修改</span></div></pre></td></tr></table></figure></p>
 
     
   </div>
@@ -273,10 +212,10 @@ git whatchanged                                           # 显示提交历史�
 		<nav class="post__nav">
 			 <div class="post__prev tl">
 				 
-				 <a href="/2016/01/10/create-windows-mongodb/" title="MongoDB安装成为windows服务">
+				 <a href="/2015/12/16/Aaron Swartz/" title="亚伦·斯沃茨（ Aaron Swartz）">
 				  <strong>上一篇:</strong>
 				  <span>
-				  MongoDB安装成为windows服务</span>
+				  亚伦·斯沃茨（ Aaron Swartz）</span>
 				</a>
 				
 			</div>
@@ -289,9 +228,9 @@ git whatchanged                                           # 显示提交历史�
 
 			<div class="pot__next tl">
 				
-					<a href="/2015/12/16/Aaron Swartz/"  title="亚伦·斯沃茨（ Aaron Swartz）">
+					<a href="/2015/09/12/create-my-blog-with-jekyll1/"  title="Jekyll 搭建静态博客">
 					 <strong>下一篇:</strong>
-					 <span>亚伦·斯沃茨（ Aaron Swartz）
+					 <span>Jekyll 搭建静态博客
 					</span>
 					</a>
 				
