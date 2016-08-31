@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用fexo主题并添加分页 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Hexo,blog,theme," />
+  
+
+  <meta name="description" content="使用for主题并添加分页功能基于Hexo的博客已经发布到github上，并使用了自己的域名zhangzirui.com,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选主题。
+当时的jekyll用的是Gaohaoyang创作的主题当时找了好久才确定。现在用了Hexo却很快找到了想要的主题fexo。
+直接下载到theme目录下，然后在配置文件中写下1234# Extensions## Plu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用fexo主题并添加分页">
+<meta property="og:url" content="http://zhangzirui.com/2016/08/31/fexo-theme/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="使用for主题并添加分页功能基于Hexo的博客已经发布到github上，并使用了自己的域名zhangzirui.com,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选主题。
+当时的jekyll用的是Gaohaoyang创作的主题当时找了好久才确定。现在用了Hexo却很快找到了想要的主题fexo。
+直接下载到theme目录下，然后在配置文件中写下1234# Extensions## Plu">
+<meta property="og:updated_time" content="2016-08-31T13:59:47.778Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用fexo主题并添加分页">
+<meta name="twitter:description" content="使用for主题并添加分页功能基于Hexo的博客已经发布到github上，并使用了自己的域名zhangzirui.com,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选主题。
+当时的jekyll用的是Gaohaoyang创作的主题当时找了好久才确定。现在用了Hexo却很快找到了想要的主题fexo。
+直接下载到theme目录下，然后在配置文件中写下1234# Extensions## Plu">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用for主题并添加分页功能"><span class="toc-text">使用for主题并添加分页功能</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-fexo-theme" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">使用fexo主题并添加分页</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.08.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="使用for主题并添加分页功能"><a href="#使用for主题并添加分页功能" class="headerlink" title="使用for主题并添加分页功能"></a>使用for主题并添加分页功能</h1><p>基于Hexo的博客已经发布到github上，并使用了自己的域名<a href="http://www.zhangzirui.com/" target="_blank" rel="external">zhangzirui.com</a>,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选<code>主题</code>。</p>
+<p>当时的jekyll用的是<a href="https://github.com/Gaohaoyang" target="_blank" rel="external">Gaohaoyang</a>创作的<a href="https://github.com/Gaohaoyang/gaohaoyang.github.io" target="_blank" rel="external">主题</a>当时找了好久才确定。现在用了Hexo却很快找到了想要的主题<a href="https://github.com/forsigner/fexo" target="_blank" rel="external">fexo</a>。</p>
+<p>直接下载到theme目录下，然后在配置文件中写下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: fexo</div></pre></td></tr></table></figure></p>
+<p>再次运行Hexo博客<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>发现博客已经改天换地一般。<br>然而看了一会却发现，文章内部没有加上分页，于是决定自己写一个。<br>在theme的layout文件夹的_partial/component内创建pagination.ejs,</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (page.prev || page.next)&#123; %&gt;</div><div class="line"></div><div class="line">	&lt;div class="post__pagination"&gt;</div><div class="line">		&lt;nav class="post__nav"&gt;</div><div class="line">			 &lt;div class="post__prev tl"&gt;</div><div class="line">				 &lt;% if (page.prev)&#123; %&gt;</div><div class="line">				 &lt;a href="&lt;%- config.root %&gt;&lt;%- page.prev.path %&gt;" title="&lt;%= page.prev.title %&gt;"&gt;</div><div class="line">				  &lt;strong&gt;上一篇:&lt;/strong&gt;</div><div class="line">				  &lt;span&gt;</div><div class="line">				  &lt;% if (page.prev.title)&#123; %&gt;&lt;%= page.prev.title %&gt;&lt;% &#125; else &#123; %&gt;(no title)&lt;% &#125; %&gt;&lt;/span&gt;</div><div class="line">				&lt;/a&gt;</div><div class="line">				&lt;% &#125; else &#123;%&gt;</div><div class="line">						&lt;a href="&lt;%- config.root %&gt;&lt;%- page.next.path %&gt;"  title="&lt;%= page.next.title %&gt;"&gt;</div><div class="line">							 &lt;strong&gt;第一篇:&lt;/strong&gt;点击到下一篇</div><div class="line">						&lt;/a&gt;</div><div class="line">				&lt;%&#125;%&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line"></div><div class="line">			&lt;div class="post__home tc"&gt;</div><div class="line">				&lt;a href="/archives"&gt;</div><div class="line">				&lt;strong&gt;目录&lt;/strong&gt;</div><div class="line">				&lt;/a&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line"></div><div class="line">			&lt;div class="pot__next tl"&gt;</div><div class="line">				&lt;% if (page.next)&#123; %&gt;</div><div class="line">					&lt;a href="&lt;%- config.root %&gt;&lt;%- page.next.path %&gt;"  title="&lt;%= page.next.title %&gt;"&gt;</div><div class="line">					 &lt;strong&gt;下一篇:&lt;/strong&gt;</div><div class="line">					 &lt;span&gt;&lt;% if (page.next.title)&#123; %&gt;&lt;%= page.next.title %&gt;&lt;% &#125; else &#123; %&gt;(no title)&lt;% &#125; %&gt;</div><div class="line">					&lt;/span&gt;</div><div class="line">					&lt;/a&gt;</div><div class="line">				&lt;%&#125; else &#123;%&gt;</div><div class="line">					&lt;a href="/archives"&gt;</div><div class="line">						 &lt;strong&gt;最后一篇:&lt;/strong&gt;点击返回目录</div><div class="line">						</div><div class="line">					&lt;/a&gt;</div><div class="line">				&lt;% &#125;%&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line">		&lt;/nav&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+<p>之后在post.ejs中加上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- partial(<span class="string">'_partial/component/paginationPost'</span>) %&gt;</div></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>Hexo中创建分页还是很方便的，直接调用他封装好的函数就行。</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+						<a href="/2016/08/31/hexo-blog/"  title="使用Hexo搭建自己的博客">
+							 <strong>第一篇:</strong>点击到下一篇
+						</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/08/31/hexo-blog/"  title="使用Hexo搭建自己的博客">
+					 <strong>下一篇:</strong>
+					 <span>使用Hexo搭建自己的博客
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="使用fexo主题并添加分页" data-url="http://zhangzirui.com/2016/08/31/fexo-theme/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
