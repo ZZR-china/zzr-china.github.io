@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>MEAN堆栈入门基础(翻译) | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mean,全栈," />
+  
+
+  <meta name="description" content="MEAN堆栈介绍原文链接
+原作者： vkarpov15
+翻译BY:ZZR-china
+Posted on July 29, 2013 
+翻译与2016年3月1号
+(友情提醒本文过于久远，仅适合初学者入门用)
+第一章：配置你的工具
+我收到几封邮件要我介绍怎样去建立一个基于MEAN堆栈的app。我将分成两部分去把它介绍给你们，这将带领你们创建自己的第一个mean-app通过安装工具并书写代码。在第一章">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MEAN堆栈入门基础(翻译)">
+<meta property="og:url" content="http://zhangzirui.com/2016/03/01/MEAN/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="MEAN堆栈介绍原文链接
+原作者： vkarpov15
+翻译BY:ZZR-china
+Posted on July 29, 2013 
+翻译与2016年3月1号
+(友情提醒本文过于久远，仅适合初学者入门用)
+第一章：配置你的工具
+我收到几封邮件要我介绍怎样去建立一个基于MEAN堆栈的app。我将分成两部分去把它介绍给你们，这将带领你们创建自己的第一个mean-app通过安装工具并书写代码。在第一章">
+<meta property="og:updated_time" content="2016-08-31T01:30:12.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MEAN堆栈入门基础(翻译)">
+<meta name="twitter:description" content="MEAN堆栈介绍原文链接
+原作者： vkarpov15
+翻译BY:ZZR-china
+Posted on July 29, 2013 
+翻译与2016年3月1号
+(友情提醒本文过于久远，仅适合初学者入门用)
+第一章：配置你的工具
+我收到几封邮件要我介绍怎样去建立一个基于MEAN堆栈的app。我将分成两部分去把它介绍给你们，这将带领你们创建自己的第一个mean-app通过安装工具并书写代码。在第一章">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MEAN堆栈介绍"><span class="toc-text">MEAN堆栈介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1）安装-MongoDB"><span class="toc-text">1）安装 MongoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装NodeJS和npm"><span class="toc-text">2)安装NodeJS和npm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装ExpressJS"><span class="toc-text">3) 安装ExpressJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4）创造一个ExpressJS-应用"><span class="toc-text">4）创造一个ExpressJS 应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-安装驱动程序和MongooseJS"><span class="toc-text">5)安装驱动程序和MongooseJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-使用Bower添加AngularJS"><span class="toc-text">6)使用Bower添加AngularJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-安装AngularJS"><span class="toc-text">7)安装AngularJS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-Two链接"><span class="toc-text">Part Two链接</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-MEAN" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">MEAN堆栈入门基础(翻译)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>ZZR</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="MEAN堆栈介绍"><a href="#MEAN堆栈介绍" class="headerlink" title="MEAN堆栈介绍"></a>MEAN堆栈介绍</h2><p><a href="https://thecodebarbarian.wordpress.com/2013/07/22/introduction-to-the-mean-stack-part-one-setting-up-your-tools/" target="_blank" rel="external">原文链接</a></p>
+<p>原作者： vkarpov15</p>
+<p>翻译BY:<a href="https://github.com/ZZR-china" target="_blank" rel="external">ZZR-china</a></p>
+<p>Posted on July 29, 2013 </p>
+<p>翻译与2016年3月1号</p>
+<p>(友情提醒本文过于久远，仅适合初学者入门用)</p>
+<p>第一章：配置你的工具</p>
+<p>我收到几封邮件要我介绍怎样去建立一个基于MEAN堆栈的app。我将分成两部分去把它介绍给你们，这将带领你们创建自己的第一个mean-app通过安装工具并书写代码。在第一章我们会完成设置和安装过程，下一章我们会建造一个非常简单的to-do list应用。第一章包括7个小节，尽管只有前两节是必要的。</p>
+<p>一开始我们要安装所有我们需要的工具。NodeJS和MongoDB被设计成尽量独立于操作系统，我们接下来会介绍到三个流行的操作系统 – OSX,Win7/8和Ubuntu。你需要启动的第一个工具是一个命令行窗口（标准linux命令行）。这一工具在不同操作系统上有不同的名字，但是在这篇教程中他们都能发挥相同的作用。如果我使用term terminal，shell或者command line,那么我指的是一个命令行窗口。如果你使用Mac或Ubuntu电脑，你需要使用Terminal。Windows没有默认的工具，但是你有一些可供选择的。我当前喜欢的工具是windows上的git的安装程序-“git bash”。</p>
+<p>如果你使用OSX系统，我强烈推荐你安装Brew去帮助你完成这一过程。Brew是一个很好用的工具能够使你直接通过command line安装程序。举个栗子，如果你想安装git，你会打开你的浏览器，google “git” ,点击几个链接，下载安装工具，并且运行它。但是有了brew，你只需要打开终端，敲下‘brew install git’，按下enter键，就一切完成。Brew还能安装MongoDB和NodeJS。</p>
+<h3 id="1）安装-MongoDB"><a href="#1）安装-MongoDB" class="headerlink" title="1）安装 MongoDB"></a>1）安装 MongoDB</h3><p>首先，我们要安装MongoDB.<br>OSX:打开的你的命令行窗口并且运行：</p>
+<blockquote>
+<p>sudo brew install mongodb</p>
+</blockquote>
+<p>Ubuntu: 打开shell并运行</p>
+<blockquote>
+<p>sudo apt-key adv –keyserver keyserver.ubuntu.com –recv 7F0CEB10<br>echo ‘deb <a href="http://downloads-distro.mongodb.org/repo/ubuntu-upstart" target="_blank" rel="external">http://downloads-distro.mongodb.org/repo/ubuntu-upstart</a> dist 10gen’ | sudo tee /etc/apt/sources.list.d/10gen.list<br>sudo apt-get update<br>sudo apt-get install mongodb-10gen</p>
+</blockquote>
+<p>Windows:去 <a href="http://www.mongodb.org/downloads" target="_blank" rel="external">http://www.mongodb.org/downloads</a> 网站并下载最新的windows版本下的MongoDB。<br><a href="http://www.zhangzirui.com/2016/01/10/create-windows-mongodb/" target="_blank" rel="external">可以参见我的文章</a></p>
+<h3 id="2-安装NodeJS和npm"><a href="#2-安装NodeJS和npm" class="headerlink" title="2)安装NodeJS和npm"></a>2)安装NodeJS和npm</h3><p>下一步我们要安装NodeJS和npm(node的包管理器)<br>Mac: Open your terminal and run<br>Mac:打开你的终端并运行</p>
+<blockquote>
+<p>sudo brew install node<br>curl <a href="http://npmjs.org/install.sh" target="_blank" rel="external">http://npmjs.org/install.sh</a> | sh<br>(Instructions from <a href="http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/" target="_blank" rel="external">http://madebyhoundstooth.com/blog/install-node-with-homebrew-on-os-x/</a>)</p>
+</blockquote>
+<p>Ubuntu:</p>
+<blockquote>
+<p>sudo apt-get update<br>sudo apt-get install python-software-properties python g++ make<br>sudo add-apt-repository ppa:chris-lea/node.js<br>sudo apt-get update<br>sudo apt-get install nodejs npm</p>
+</blockquote>
+<p>Windows: 从 <a href="http://nodejs.org/download/" target="_blank" rel="external">http://nodejs.org/download/</a> 下载安装工具。我建议使用安装工具好过自己把node放在文件夹中并添加到系统路径中。</p>
+<p>当你成功安装NodeJS后，你会可以在命令行下运行”node”和”npm”命令。当你敲下”node”是，你会在命令行中看到“&gt;”，按下“crtle+c”去关闭它。</p>
+<p>当你运行“npm”，你会看到一串用法提示。记住“npm”命令往往需要根权限才能运行<br>。如果一个npm命令无故失败了，尝试在前面加上“sudo”。</p>
+<p>到这里，你已经安装好你需要的工具去运行一个MEAN堆栈应用。你可以clone/fork </p>
+<blockquote>
+<p>git clone <a href="https://github.com/vkarpov15/mean-stack-skeleton" target="_blank" rel="external">https://github.com/vkarpov15/mean-stack-skeleton</a></p>
+</blockquote>
+<p>开始一个简单的“mongod”进程，在命令行下指向git仓库，并运行。</p>
+<blockquote>
+<p>npm install -d</p>
+</blockquote>
+<p>你应该能运行这一命令</p>
+<blockquote>
+<p>node app.js</p>
+</blockquote>
+<p>去开启你的服务。但是，我建议至少阅读下面的小节后再开始，因为接下来我会解释一些工具的细节。你可以一步步跟着mean-stack-skeleton项目的提交日志来，因为那些提交是按照4-7小节来完成的。</p>
+<h3 id="3-安装ExpressJS"><a href="#3-安装ExpressJS" class="headerlink" title="3) 安装ExpressJS"></a>3) 安装ExpressJS</h3><p>现在你已经安装好MongoDB和NodeJS，是时候去安装ExpressJS了-这对现在的我们来说很简单，只要打开终端并运行</p>
+<blockquote>
+<p>npm install express -g</p>
+</blockquote>
+<p>“-g”标签代表着全局安装，之后你可以直接在你的终端上运行express命令（现在你可能需要再安装express-generator，因为express4.0后，命令行工具被分离了出去</p>
+<blockquote>
+<p>npm install express-generator </p>
+</blockquote>
+<p>）</p>
+<p>现在，我们开始使用ExpressJS了，它在nodejs的基础上扩展了Web应用所需的功能。与你所认知的相反，nodejs并不包含所有的web应用所需功能。nodejs只是一个为了解决I/O问题基于js建造的并发形、事件驱动框架的简单工具。他可能足够去在每一个HTTP请求头返回“Hello,World”，但是很难应用它去建造一个复杂的web应用。ExpressJS为你提供了流行的MVC框架。</p>
+<h3 id="4）创造一个ExpressJS-应用"><a href="#4）创造一个ExpressJS-应用" class="headerlink" title="4）创造一个ExpressJS 应用"></a>4）创造一个ExpressJS 应用</h3><p>现在我们有了所有我们需要的应用工具，让我们开始创建ExpressJS 应用吧。打开命令行工具，输入：</p>
+<blockquote>
+<p>express mytestapp<br>cd mytestapp<br>npm install</p>
+</blockquote>
+<p>这会建立一个“mytestapp”文件夹在你的目标路径下。然后你就可以运行：</p>
+<blockquote>
+<p>node app.js</p>
+</blockquote>
+<p>在“mytestapp”文件夹下，在你的浏览器中访问  <a href="http://localhost:3000" target="_blank" rel="external">http://localhost:3000</a> ，你能看到一个简单的“Welcome to Express” 页面。</p>
+<p>在“mytestapp”文件夹会包含一些子文件：routes, views, public, node_modules还有app.js 和package.json文件。下面是一些简洁的介绍关于这些文件和文件夹的作用：</p>
+<p>app.js:最主要的入口开启你的web服务。这个文件定义了你的应用监听的端口，包括了通过“require” 功能定义的依赖，和设置不同的环境路径。(更多app.js介绍可以参看图灵社区的文章<a href="http://www.ituring.com.cn/article/54775" target="_blank" rel="external">结构app.js</a>)</p>
+<p>package.json:定义了应用的内部依赖。运行 “npm install -d” (当我们修改这个文件时我们可以使用这一简单的命令) 安装所有在依赖文件列出的依赖模块。</p>
+<p>routes:routes文件夹将包括一些在app.js中定义好的JavaScript处理器。举个栗子，当你打开index.js时，你会发现回应”/“路径的处理器，将渲染存在于”views/index.jade”的”index”模板。</p>
+<p>views:views文件夹将包含在jade语法中定义的模板。jade是一种干净和更适于人类阅读拥有丰富功能（继承等）的HTML语法（必死强迫症语法）。你的路由将通过“res.render”功能得到视图。</p>
+<p>public:public文件夹通常用来存储图片、客户端JavaScript和其他资源。ExpressJS 将按路线发送请求到public相应的文件下。例如，如果你运行</p>
+<blockquote>
+<p>node app.js</p>
+</blockquote>
+<p>并访问 <a href="http://localhost:3000/stylesheets/style.css，你将看到Express" target="_blank" rel="external">http://localhost:3000/stylesheets/style.css，你将看到Express</a> 返回有  “public/stylesheets/style.css” 内容的文件。</p>
+<p>node_modules: node_modules文件夹包含了通过npm安装的工具的代码。</p>
+<h3 id="5-安装驱动程序和MongooseJS"><a href="#5-安装驱动程序和MongooseJS" class="headerlink" title="5)安装驱动程序和MongooseJS"></a>5)安装驱动程序和MongooseJS</h3><p>现在我们要安装MongooseJS–一款为了让我们在NodeJS方便使用MongoDB 的工具。MongoDB是一个基于分布式文件存储的数据库,要在NodeJS中使用MongoDB ，我们需要NodeJS 驱动。MongooseJS 可以帮助我们实现这一点。</p>
+<p>打开package.json，你会发现其中有下面的文字：</p>
+<p>“dependencies”: {<br>“express”: “3.0.3”,<br>“jade”: “*”<br>}</p>
+<p>我们要添加两行</p>
+<p>“dependencies”: {<br>“express”: “3.0.3”,<br>“jade”: “*”,<br>“mongodb”: “&gt;= 0.9.6-7”,<br>“mongoose” : “&gt;= 3.6”<br>}</p>
+<p>然后运行</p>
+<blockquote>
+<p>npm install -d</p>
+</blockquote>
+<p>如果你在OSX或Ubuntu平台下，你也许要运行 “sudo npm install -d”<br>现在我们可以在app.js中链接MongoDB 通过Mongoose :</p>
+<blockquote>
+<p>var Mongoose = require(‘mongoose’);<br>var db = Mongoose.createConnection(‘localhost’, ‘mytestapp’);</p>
+</blockquote>
+<h3 id="6-使用Bower添加AngularJS"><a href="#6-使用Bower添加AngularJS" class="headerlink" title="6)使用Bower添加AngularJS"></a>6)使用Bower添加AngularJS</h3><p>Bower是一款好用的npm下的工具用来添加js库并管理，例如你想添加jQuery到你的项目下，只需运行“bower install jquery ”。运行</p>
+<blockquote>
+<p>npm install bower -g</p>
+</blockquote>
+<p>bower会默认将文件下载到“/bower_components”中，但是我们可以通过设定改变这一点<br>在mytestapp文件中的“public/javascripts.” 目录下创建vendor文件夹，你可以使用 “mkdir public/javascripts/vendor.” 命令<br>在“mytestapp” 文件夹中创建 “.bowerrc”并输入以下文字：</p>
+<blockquote>
+<p>{ “directory” : “public/javascripts/vendor” }</p>
+</blockquote>
+<p>这些配置会让bower将需要的工具安装到“public/javascripts/vendor” 下面。</p>
+<h3 id="7-安装AngularJS"><a href="#7-安装AngularJS" class="headerlink" title="7)安装AngularJS"></a>7)安装AngularJS</h3><p>运行 “bower install angular#1.0.6.” 你会看到一个 “ public/javascripts/vendor/angular ” 文件包含 “angular.js,” “angular.min.js,”和“bower.json”。</p>
+<h2 id="Part-Two链接"><a href="#Part-Two链接" class="headerlink" title="Part Two链接"></a>Part Two链接</h2><p><a href="https://thecodebarbarian.wordpress.com/2013/07/29/introduction-to-the-mean-stack-part-two-building-and-testing-a-to-do-list/" target="_blank" rel="external">地址</a></p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/03/03/create-web-express+mongodb+jade/" title="使用express + jade + mongodb创建网站">
+				  <strong>上一篇:</strong>
+				  <span>
+				  使用express + jade + mongodb创建网站</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/02/28/The Dangers of Stopping Event Propagation/"  title="The Dangers of Stopping Event Propagation">
+					 <strong>下一篇:</strong>
+					 <span>The Dangers of Stopping Event Propagation
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="MEAN堆栈入门基础(翻译)" data-url="http://zhangzirui.com/2016/03/01/MEAN/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

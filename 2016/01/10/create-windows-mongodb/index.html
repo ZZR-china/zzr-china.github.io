@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>MongoDB安装成为windows服务 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mongodb,windows," />
+  
+
+  <meta name="description" content="MongoDB安装成为Windows服务在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志
+搭建过程使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb切换到D:\Program File">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB安装成为windows服务">
+<meta property="og:url" content="http://zhangzirui.com/2016/01/10/create-windows-mongodb/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="MongoDB安装成为Windows服务在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志
+搭建过程使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb切换到D:\Program File">
+<meta property="og:updated_time" content="2016-08-31T01:28:09.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB安装成为windows服务">
+<meta name="twitter:description" content="MongoDB安装成为Windows服务在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志
+搭建过程使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb切换到D:\Program File">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MongoDB安装成为Windows服务"><span class="toc-text">MongoDB安装成为Windows服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建过程"><span class="toc-text">搭建过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务。"><span class="toc-text">启动服务。</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-create-windows-mongodb" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">MongoDB安装成为windows服务</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.01.10</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>ZZR</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="MongoDB安装成为Windows服务"><a href="#MongoDB安装成为Windows服务" class="headerlink" title="MongoDB安装成为Windows服务"></a>MongoDB安装成为Windows服务</h2><p>在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,<br>并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志</p>
+<h3 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h3><p>使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb<br>切换到D:\Program Files\mongodb\bin&gt;输入如下命令</p>
+<pre>
+<code>
+mongod --logpath "D:\Program Files\mongodb\data\logs\mongo.log" --logappend --dbpath "D:\Program Files\mongodb\data\db" --directoryperdb --serviceName "MongoDB" --serviceDisplayName "MongoDB" --install
+</code>
+</pre>
+
+<p>其中<br>–logpath “D:\Program Files\mongodb\data\logs\mongo.log” 指定日志文件路径</p>
+<p>–logappend –dbpath “D:\Program Files\mongodb\data\db”指定数据库工作路径</p>
+<p>–serviceName “MongoDB” –serviceDisplayName “MongoDB”添加服务</p>
+<p>–install安装</p>
+<p>输入以上命令，命令行中会显示如下数据，及成功</p>
+<p>Creating service MongoDB.<br>Service creation successful.<br>Service can be started from the command line via ‘net start “MongoDB”‘.</p>
+<h3 id="启动服务。"><a href="#启动服务。" class="headerlink" title="启动服务。"></a>启动服务。</h3><p>net start mongoDB</p>
+<p>该命令行指定了日志文件：D:\Program Files\mongodb\data\logs.tx，日志是以追加的方式输出的；</p>
+<p>数据文件目录：D:\Program Files\mongodb\data，并且参数–directoryperdb说明每个DB都会新建一个目录；</p>
+<p>Windows服务的名称：MongoDB；</p>
+<p>最后是安装参数：–install，与之相对的是–remove</p>
+<p>启动MongoDB：net start MongoDB</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/01/29/sudoku-color-change/" title="颜色变化的九宫格">
+				  <strong>上一篇:</strong>
+				  <span>
+				  颜色变化的九宫格</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2015/12/16/Git study/"  title="我的常用Git命令">
+					 <strong>下一篇:</strong>
+					 <span>我的常用Git命令
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="MongoDB安装成为windows服务" data-url="http://zhangzirui.com/2016/01/10/create-windows-mongodb/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
