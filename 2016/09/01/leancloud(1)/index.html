@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用leancloud搭建自己的webapp(一) | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="leancloud,restful," />
+  
+
+  <meta name="description" content="今天按照leancloud的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。
+todo应用在这个二级域名下，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，love 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。
+我这里只要使用leancloud建造基于web的app,设想是用leancloud提供的Nosql数据库和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用leancloud搭建自己的webapp(一)">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/01/leancloud(1)/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="今天按照leancloud的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。
+todo应用在这个二级域名下，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，love 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。
+我这里只要使用leancloud建造基于web的app,设想是用leancloud提供的Nosql数据库和">
+<meta property="og:updated_time" content="2016-09-01T15:37:23.053Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用leancloud搭建自己的webapp(一)">
+<meta name="twitter:description" content="今天按照leancloud的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。
+todo应用在这个二级域名下，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，love 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。
+我这里只要使用leancloud建造基于web的app,设想是用leancloud提供的Nosql数据库和">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-leancloud(1)" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">使用leancloud搭建自己的webapp(一)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>今天按照<a href="https://leancloud.cn/docs/sdk_setup-js.html" target="_blank" rel="external">leancloud</a>的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。</p>
+<p>todo应用在<a href="http://wind.leanapp.cn/" target="_blank" rel="external">这个二级域名下</a>，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，<a href="http://love.leanapp.cn/" target="_blank" rel="external">love</a> 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。</p>
+<p>我这里只要使用leancloud建造基于web的app,设想是用leancloud提供的Nosql数据库和方便的rest API搭建一个仿掘金的网站。</p>
+<p><a href="https://leancloud.cn/docs/sdk_setup-js.html" target="_blank" rel="external">leancloud</a>的文档写的非常齐全，我这里也就跳过最基本的步骤，leancloud支持直接部署里github上的代码，这一点非常棒。在<code>云引擎/部署</code>中可以进行操作，先从<code>云引擎/设置中找到Deploy Key</code>将其放到github项目setting中的Deploy Key中即可。</p>
+<p>部署后在设置一下我们项目的二级域名，就可以访问了。</p>
+<p>现在我还刚开始接触，之后会慢慢把项目搞起来，加油！</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+						<a href="/2016/08/31/fexo-theme/"  title="使用fexo主题并添加分页">
+							 <strong>第一篇:</strong>点击到下一篇
+						</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/08/31/fexo-theme/"  title="使用fexo主题并添加分页">
+					 <strong>下一篇:</strong>
+					 <span>使用fexo主题并添加分页
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="使用leancloud搭建自己的webapp(一)" data-url="http://zhangzirui.com/2016/09/01/leancloud(1)/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-08-31T13:59:47.778Z</updated>
+  <updated>2016-09-01T15:37:23.053Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -16,13 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>使用leancloud搭建自己的webapp(一)</title>
+    <link href="http://zhangzirui.com/2016/09/01/leancloud(1)/"/>
+    <id>http://zhangzirui.com/2016/09/01/leancloud(1)/</id>
+    <published>2016-09-01T15:10:50.000Z</published>
+    <updated>2016-09-01T15:37:23.053Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天按照<a href="https://leancloud.cn/docs/sdk_setup-js.html" target="_blank" rel="external">leancloud</a>的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。</p>
+<p>todo应用在<a href="http://wind.leanapp.cn/" target="_blank" rel="external">这个二级域名下</a>，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，<a href="http://love.leanapp.cn/" target="_blank" rel="external">love</a> 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。</p>
+<p>我这里只要使用leancloud建造基于web的app,设想是用leancloud提供的Nosql数据库和方便的rest API搭建一个仿掘金的网站。</p>
+<p><a href="https://leancloud.cn/docs/sdk_setup-js.html" target="_blank" rel="external">leancloud</a>的文档写的非常齐全，我这里也就跳过最基本的步骤，leancloud支持直接部署里github上的代码，这一点非常棒。在<code>云引擎/部署</code>中可以进行操作，先从<code>云引擎/设置中找到Deploy Key</code>将其放到github项目setting中的Deploy Key中即可。</p>
+<p>部署后在设置一下我们项目的二级域名，就可以访问了。</p>
+<p>现在我还刚开始接触，之后会慢慢把项目搞起来，加油！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天按照&lt;a href=&quot;https://leancloud.cn/docs/sdk_setup-js.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;leancloud&lt;/a&gt;的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使
+    
+    </summary>
+    
+      <category term="前端" scheme="http://zhangzirui.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="leancloud" scheme="http://zhangzirui.com/tags/leancloud/"/>
+    
+      <category term="restful" scheme="http://zhangzirui.com/tags/restful/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用fexo主题并添加分页</title>
     <link href="http://zhangzirui.com/2016/08/31/fexo-theme/"/>
     <id>http://zhangzirui.com/2016/08/31/fexo-theme/</id>
     <published>2016-08-31T15:14:54.000Z</published>
-    <updated>2016-08-31T13:59:47.778Z</updated>
+    <updated>2016-09-01T15:11:06.276Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="使用for主题并添加分页功能"><a href="#使用for主题并添加分页功能" class="headerlink" title="使用for主题并添加分页功能"></a>使用for主题并添加分页功能</h1><p>基于Hexo的博客已经发布到github上，并使用了自己的域名<a href="http://www.zhangzirui.com/" target="_blank" rel="external">zhangzirui.com</a>,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选<code>主题</code>。</p>
+    <content type="html"><![CDATA[<p>基于Hexo的博客已经发布到github上，并使用了自己的域名<a href="http://www.zhangzirui.com/" target="_blank" rel="external">zhangzirui.com</a>,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选<code>主题</code>。</p>
 <p>当时的jekyll用的是<a href="https://github.com/Gaohaoyang" target="_blank" rel="external">Gaohaoyang</a>创作的<a href="https://github.com/Gaohaoyang/gaohaoyang.github.io" target="_blank" rel="external">主题</a>当时找了好久才确定。现在用了Hexo却很快找到了想要的主题<a href="https://github.com/forsigner/fexo" target="_blank" rel="external">fexo</a>。</p>
 <p>直接下载到theme目录下，然后在配置文件中写下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: fexo</div></pre></td></tr></table></figure></p>
 <p>再次运行Hexo博客<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure></p>
@@ -36,7 +66,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;使用for主题并添加分页功能&quot;&gt;&lt;a href=&quot;#使用for主题并添加分页功能&quot; class=&quot;headerlink&quot; title=&quot;使用for主题并添加分页功能&quot;&gt;&lt;/a&gt;使用for主题并添加分页功能&lt;/h1&gt;&lt;p&gt;基于Hexo的博客已经发布到github上，
+      &lt;p&gt;基于Hexo的博客已经发布到github上，并使用了自己的域名&lt;a href=&quot;http://www.zhangzirui.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;zhangzirui.com&lt;/a&gt;,于是我又陷入了当时用jekyll搭博客
     
     </summary>
     
