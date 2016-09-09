@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用express + jade + mongodb创建网站 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mongodb,node," />
+  
+
+  <meta name="description" content="Nodejs建站总结（一）这个网站使用nodejs完成，前端用jade模板构建，用到了bootstrap框架，其中删除功能使用jQuery完成后端用express+mongo完成。是很简洁小巧的模式。源代码在我的github上。
+使用的工具npm、bower、sublime、git和mongoVUE
+涉及到的npm模块express:基于Node.js 平台，快速、开放、极简的 web 开发框架j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用express + jade + mongodb创建网站">
+<meta property="og:url" content="http://zhangzirui.com/2016/03/03/2016/03/create-web-express+mongodb+jade/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="Nodejs建站总结（一）这个网站使用nodejs完成，前端用jade模板构建，用到了bootstrap框架，其中删除功能使用jQuery完成后端用express+mongo完成。是很简洁小巧的模式。源代码在我的github上。
+使用的工具npm、bower、sublime、git和mongoVUE
+涉及到的npm模块express:基于Node.js 平台，快速、开放、极简的 web 开发框架j">
+<meta property="og:updated_time" content="2016-08-31T13:26:36.154Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用express + jade + mongodb创建网站">
+<meta name="twitter:description" content="Nodejs建站总结（一）这个网站使用nodejs完成，前端用jade模板构建，用到了bootstrap框架，其中删除功能使用jQuery完成后端用express+mongo完成。是很简洁小巧的模式。源代码在我的github上。
+使用的工具npm、bower、sublime、git和mongoVUE
+涉及到的npm模块express:基于Node.js 平台，快速、开放、极简的 web 开发框架j">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nodejs建站总结（一）"><span class="toc-text">Nodejs建站总结（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用的工具"><span class="toc-text">使用的工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#涉及到的npm模块"><span class="toc-text">涉及到的npm模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#学习到的知识点"><span class="toc-text">学习到的知识点</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/03/create-web-express+mongodb+jade" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">使用express + jade + mongodb创建网站</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.03</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="Nodejs建站总结（一）"><a href="#Nodejs建站总结（一）" class="headerlink" title="Nodejs建站总结（一）"></a>Nodejs建站总结（一）</h2><p>这个网站使用nodejs完成，前端用jade模板构建，用到了bootstrap框架，其中删除功能使用jQuery完成<br>后端用express+mongo完成。是很简洁小巧的模式。<a href="https://github.com/ZZR-china/Xiew" target="_blank" rel="external">源代码</a>在我的github上。</p>
+<h3 id="使用的工具"><a href="#使用的工具" class="headerlink" title="使用的工具"></a>使用的工具</h3><p>npm、bower、sublime、git和mongoVUE</p>
+<h3 id="涉及到的npm模块"><a href="#涉及到的npm模块" class="headerlink" title="涉及到的npm模块"></a>涉及到的npm模块</h3><p>express:基于Node.js 平台，快速、开放、极简的 web 开发框架<br>jade:<a href="https://segmentfault.com/a/1190000000357534" target="_blank" rel="external">jade</a>是一个高性能的模板引擎，它深受 Haml 影响，它是用 JavaScript 实现的，并且可以供 Node 使用</p>
+<p>path:标准化路径</p>
+<p>body-parser: express的中间件,现在已从express中分离出来，调用时可以使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(bodyParser.urlencoded(&#123; extended: true &#125;))</div></pre></td></tr></table></figure>
+<p>mongoose:封装了一些mongoDB底层，便于使用数据库功能</p>
+<p>underscore:underscore下的extend方法可以用另一个对象的新的字段替换老的对象对应的字段</p>
+<p>moment:一款用于js中的时间插件</p>
+<h3 id="学习到的知识点"><a href="#学习到的知识点" class="headerlink" title="学习到的知识点"></a>学习到的知识点</h3><p>知道了怎么配置路由，了解了jade这个逼死强迫症的模板（最讨厌强制缩进语法，所以一直不学Python╮(╯▽╰)╭）。学会了如何在nodejs中使用mongoose调用mongo数据库。一些基本的配置问题也都了解了。学习后才发现以前自己懂得只是前端的皮毛，还要多加努力O(∩_∩)O</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/03/14/2016/03/css-flex-step1-task10/" title="FlexBox布局学习总结">
+				  <strong>上一篇:</strong>
+				  <span>
+				  FlexBox布局学习总结</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/03/01/2016/03/MEAN/"  title="MEAN堆栈入门基础(翻译)">
+					 <strong>下一篇:</strong>
+					 <span>MEAN堆栈入门基础(翻译)
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="使用express + jade + mongodb创建网站" data-url="http://zhangzirui.com/2016/03/03/2016/03/create-web-express+mongodb+jade/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用Hexo搭建自己的博客 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Hexo,blog," />
+  
+
+  <meta name="description" content="为何放弃jekyll选择Hexo
+A fast, simple &amp;amp; powerful blog framework    —— Hexo官网
+
+之前的博客用jekyll做的博客,也写过一篇搭建jekyll博客的文章Jekyll 搭建静态博客。好久没更新了，现在因为一些原因闲了下来，决定把博客好好写写，所谓破而后立，工作接触最多的是Node，也早就听说了Hexo的大名，所以重新用Hexo把整">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo搭建自己的博客">
+<meta property="og:url" content="http://zhangzirui.com/2016/08/31/2016/08/hexo-blog/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="为何放弃jekyll选择Hexo
+A fast, simple &amp;amp; powerful blog framework    —— Hexo官网
+
+之前的博客用jekyll做的博客,也写过一篇搭建jekyll博客的文章Jekyll 搭建静态博客。好久没更新了，现在因为一些原因闲了下来，决定把博客好好写写，所谓破而后立，工作接触最多的是Node，也早就听说了Hexo的大名，所以重新用Hexo把整">
+<meta property="og:updated_time" content="2016-08-31T13:19:17.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Hexo搭建自己的博客">
+<meta name="twitter:description" content="为何放弃jekyll选择Hexo
+A fast, simple &amp;amp; powerful blog framework    —— Hexo官网
+
+之前的博客用jekyll做的博客,也写过一篇搭建jekyll博客的文章Jekyll 搭建静态博客。好久没更新了，现在因为一些原因闲了下来，决定把博客好好写写，所谓破而后立，工作接触最多的是Node，也早就听说了Hexo的大名，所以重新用Hexo把整">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为何放弃jekyll选择Hexo"><span class="toc-text">为何放弃jekyll选择Hexo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的命令"><span class="toc-text">简单的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地运行"><span class="toc-text">本地运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布"><span class="toc-text">发布</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/08/hexo-blog" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">使用Hexo搭建自己的博客</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.08.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="为何放弃jekyll选择Hexo"><a href="#为何放弃jekyll选择Hexo" class="headerlink" title="为何放弃jekyll选择Hexo"></a>为何放弃jekyll选择Hexo</h2><blockquote>
+<p>A fast, simple &amp; powerful blog framework    —— <a href="https://hexo.io/" target="_blank" rel="external">Hexo官网</a></p>
+</blockquote>
+<p>之前的博客用jekyll做的博客,也写过一篇搭建<code>jekyll</code>博客的文章<a href="http://www.zhangzirui.com/2015/09/12/create-my-blog-with-jekyll1/" target="_blank" rel="external">Jekyll 搭建静态博客</a>。好久没更新了，现在因为一些原因闲了下来，决定把博客好好写写，所谓破而后立，工作接触最多的是<code>Node</code>，也早就听说了<code>Hexo</code>的大名，所以重新用<code>Hexo</code>把整个博客重新搭了一遍。 </p>
+<h2 id="简单的命令"><a href="#简单的命令" class="headerlink" title="简单的命令"></a>简单的命令</h2><p><code>Hexo</code>的命令很简单，就像其他基于node的项目一样，小而美。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>首先安装<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a>, <a href="https://git-scm.com/" target="_blank" rel="external">Git</a> 这两项必须的依赖，我的电脑里早就有的，pass。<br>然后使用npm安装hexo-cli <code>Hexo</code> 的脚手架。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g hexo-cli</div></pre></td></tr></table></figure>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>具体介绍看<a href="https://hexo.io/docs/" target="_blank" rel="external">这里</a><br>安装好后就可以先简单搭个Demo实验一下了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;</div><div class="line">$ cd &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p>安好后的目录是这样的结构</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">├── _config.yml</div><div class="line">├── package.json</div><div class="line">├── scaffolds</div><div class="line">├── source</div><div class="line">|   ├── _drafts</div><div class="line">|   └── _posts</div><div class="line">└── themes</div></pre></td></tr></table></figure>
+<p>package.js中内容如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package.json</div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"hexo-site"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"0.0.0"</span>,</div><div class="line">  <span class="string">"private"</span>: true,</div><div class="line">  <span class="string">"hexo"</span>: &#123;</div><div class="line">    <span class="string">"version"</span>: <span class="string">""</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;</div><div class="line">    <span class="string">"hexo"</span>: <span class="string">"^3.0.0"</span>,</div><div class="line">    <span class="string">"hexo-generator-archive"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="string">"hexo-generator-category"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="string">"hexo-generator-index"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="string">"hexo-generator-tag"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="string">"hexo-renderer-ejs"</span>: <span class="string">"^0.1.0"</span>,</div><div class="line">    <span class="string">"hexo-renderer-stylus"</span>: <span class="string">"^0.2.0"</span>,</div><div class="line">    <span class="string">"hexo-renderer-marked"</span>: <span class="string">"^0.2.4"</span>,</div><div class="line">    <span class="string">"hexo-server"</span>: <span class="string">"^0.1.2"</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><p>这个时候我们可以运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>然后使用浏览器访问<code>localhost:4000</code>就能看到我们的博客主页了，默认的是<code>landspace</code>主题。</p>
+<p>创建新文章可以运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new [layout] &lt;title&gt;</div></pre></td></tr></table></figure></p>
+<p>生成静态页面，运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
+<p>清除缓存文件(db.json)和生成的文件(public)可以使用<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div></pre></td></tr></table></figure></p>
+<h3 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h3><p>最后我们可以发布了，发布前要做些准备工作，在根目录下的_config.yml中配置做如下配置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:ZZR-china/zzr-china.github.com.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>并运行<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git -save</div></pre></td></tr></table></figure></p>
+<p>然后就可以开心的发布了！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy -g <span class="comment">##发布前生成静态目录</span></div></pre></td></tr></table></figure>
+<p>现在访问zzr-china.github.com就能看到我们的demo。</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/08/31/2016/08/fexo-theme/" title="使用fexo主题并添加分页">
+				  <strong>上一篇:</strong>
+				  <span>
+				  使用fexo主题并添加分页</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/03/15/2016/03/css-three-layout-task3/"  title="三栏式布局学习总结">
+					 <strong>下一篇:</strong>
+					 <span>三栏式布局学习总结
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="使用Hexo搭建自己的博客" data-url="http://zhangzirui.com/2016/08/31/2016/08/hexo-blog/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
