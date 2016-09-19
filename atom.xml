@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-09-09T15:49:48.891Z</updated>
+  <updated>2016-09-19T13:44:42.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -16,11 +16,45 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>苹果首页轮播案例实现</title>
+    <link href="http://zhangzirui.com/2016/09/19/2016/09/applebannerdemo/"/>
+    <id>http://zhangzirui.com/2016/09/19/2016/09/applebannerdemo/</id>
+    <published>2016-09-18T16:00:00.000Z</published>
+    <updated>2016-09-19T13:44:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性奶实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上，地址</p>
+<p><a href="http://www.zhangzirui.com/appleBannerdemo/" target="_blank" rel="external">http://www.zhangzirui.com/appleBannerdemo/</a></p>
+<p>轮播的实现谷歌一下能搜出好多个来，有使用库的有原生的，看需求，之前在公司PC端轮播使用jq手写，移动web上就使用swiper，强大、好用。</p>
+<p>样式上，也就是css主要给几个元素设置了transition,使过度平滑，css3里强大的动画属性使得以前用js写的特效现在可以放心简洁的使用css来实现，当然，要考虑兼容。js更多的是做控制的作用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-moz-transition: transform 1.5s;</div><div class="line">  /* Firefox 4 */</div><div class="line">  -webkit-transition: transform 1.5s;</div><div class="line">  /* Safari and Chrome */</div><div class="line">  -o-transition: transform 1.5s;</div><div class="line">  /* Opera */</div></pre></td></tr></table></figure></p>
+<p>js代码里写了3个计时器，用来实现图片的轮播，圆点的过度动画（dash），还有就是一个200ms运行一次的监测body.clientWidth的计时器。</p>
+<p>代码都很简单，这里就不贴了。有兴趣的同学可以去我的github上看：</p>
+<p><a href="https://github.com/ZZR-china/appleBannerdemo/blob/master/js/banner.js" target="_blank" rel="external">https://github.com/ZZR-china/appleBannerdemo/blob/master/js/banner.js</a></p>
+<p>有个收获就是谷歌到了一个很方便的替换class name的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dash[i].className = dash[i].className.replace( <span class="regexp">/(?:^|\s)current(?!\S)/g</span>,<span class="string">''</span>);</div><div class="line">dashprogress[i].style.transform = <span class="string">'scaleX(0)'</span>;</div></pre></td></tr></table></figure>
+<p>以上。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性奶
+    
+    </summary>
+    
+      <category term="前端" scheme="http://zhangzirui.com/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="http://zhangzirui.com/tags/css/"/>
+    
+      <category term="js" scheme="http://zhangzirui.com/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
     <title>express开发（二）引入handlebars</title>
     <link href="http://zhangzirui.com/2016/09/09/2016/09/express(2)/"/>
     <id>http://zhangzirui.com/2016/09/09/2016/09/express(2)/</id>
     <published>2016-09-08T16:00:00.000Z</published>
-    <updated>2016-09-09T15:49:48.891Z</updated>
+    <updated>2016-09-09T15:49:50.000Z</updated>
     
     <content type="html"><![CDATA[<p>下面我们将在项目中引入handlebars，一种抽象程度较低的模板框架。Handlebars不会视图对HTML进行抽象：你编写的是带特殊标签的HTML，Handlebars可以借此插入内容。相比于jade（现在已经改名为pug），虽然jade足够简洁，语法精简，但是对HTML进行了相当程度的抽象，必须对HTML有很深的理解才能良好的驾驭，而且我也不喜欢HTML被抽象化处理。所以，让我们愉快的用handlebars吧。</p>
 <p>在express使用handlebars推荐使用express-handlebars，直接运行命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -S express-handlebars</div></pre></td></tr></table></figure></p>
@@ -70,7 +104,7 @@
     <link href="http://zhangzirui.com/2016/09/08/2016/09/express(1)/"/>
     <id>http://zhangzirui.com/2016/09/08/2016/09/express(1)/</id>
     <published>2016-09-07T16:00:00.000Z</published>
-    <updated>2016-09-08T13:17:29.312Z</updated>
+    <updated>2016-09-08T13:17:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>上周末去了趟上海书城，不愧是上海数得上号的书城，流行的科技书应有尽有，话不多说直接上图。</p>
 <p>最经典的C语言O(∩_∩)O<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%281%29.jpg" alt="enter image description here"><br>最流行的java(づ￣ 3￣)づ<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%282%29.jpg" alt="enter image description here"><br>超酷的R语言/(ㄒoㄒ)/~~<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%283%29.jpg" alt="enter image description here"><br>然而，身为一个坚定的前端JSer，我还是选择了Node与javascript<br>上图！<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%284%29.jpg" alt="enter image description here"><br>Node赛高！Express赛高！<br>下面让题主来以一个长者的身份讲讲对express的简单理解，看完后你们还会知道怎样搭建一个属于自己的简单的express服务端。（此中有膜意，欲辩已忘言。）</p>
@@ -107,7 +141,7 @@
     <link href="http://zhangzirui.com/2016/09/02/2016/09/studyvue1/"/>
     <id>http://zhangzirui.com/2016/09/02/2016/09/studyvue1/</id>
     <published>2016-09-02T14:10:50.000Z</published>
-    <updated>2016-09-05T06:41:54.480Z</updated>
+    <updated>2016-09-05T06:41:56.000Z</updated>
     
     <content type="html"><![CDATA[<p>因为想用leancloud开发自己的app嘛，所以进行了一些构想，我初期的设想是，express+leancloud搭建后台，vue搭建前台，并处理一些逻辑。</p>
 <p>Vue是早就知道的，但一直也就知识了解没深入研究过。所以在<a href="http://web.jobbole.com/" target="_blank" rel="external">伯乐在线</a>找了<a href="http://web.jobbole.com/87375/" target="_blank" rel="external">这篇文章</a>。想把vue从头学习一下，当然官方的文档我也是看了的。</p>
@@ -129,9 +163,9 @@
       <category term="前端" scheme="http://zhangzirui.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="vue" scheme="http://zhangzirui.com/tags/vue/"/>
-    
       <category term="js" scheme="http://zhangzirui.com/tags/js/"/>
+    
+      <category term="vue" scheme="http://zhangzirui.com/tags/vue/"/>
     
   </entry>
   
@@ -140,7 +174,7 @@
     <link href="http://zhangzirui.com/2016/09/01/2016/09/leancloud(1)/"/>
     <id>http://zhangzirui.com/2016/09/01/2016/09/leancloud(1)/</id>
     <published>2016-09-01T15:10:50.000Z</published>
-    <updated>2016-09-01T15:37:23.053Z</updated>
+    <updated>2016-09-01T15:37:24.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天按照<a href="https://leancloud.cn/docs/sdk_setup-js.html" target="_blank" rel="external">leancloud</a>的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。</p>
 <p>todo应用在<a href="http://wind.leanapp.cn/" target="_blank" rel="external">这个二级域名下</a>，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，<a href="http://love.leanapp.cn/" target="_blank" rel="external">love</a> 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。</p>
@@ -170,7 +204,7 @@
     <link href="http://zhangzirui.com/2016/08/31/2016/08/fexo-theme/"/>
     <id>http://zhangzirui.com/2016/08/31/2016/08/fexo-theme/</id>
     <published>2016-08-31T15:14:54.000Z</published>
-    <updated>2016-09-01T15:11:06.276Z</updated>
+    <updated>2016-09-01T15:11:08.000Z</updated>
     
     <content type="html"><![CDATA[<p>基于Hexo的博客已经发布到github上，并使用了自己的域名<a href="http://www.zhangzirui.com/" target="_blank" rel="external">zhangzirui.com</a>,于是我又陷入了当时用jekyll搭博客后的同一个烦恼–选<code>主题</code>。</p>
 <p>当时的jekyll用的是<a href="https://github.com/Gaohaoyang" target="_blank" rel="external">Gaohaoyang</a>创作的<a href="https://github.com/Gaohaoyang/gaohaoyang.github.io" target="_blank" rel="external">主题</a>当时找了好久才确定。现在用了Hexo却很快找到了想要的主题<a href="https://github.com/forsigner/fexo" target="_blank" rel="external">fexo</a>。</p>
@@ -206,7 +240,7 @@
     <link href="http://zhangzirui.com/2016/08/31/2016/08/hexo-blog/"/>
     <id>http://zhangzirui.com/2016/08/31/2016/08/hexo-blog/</id>
     <published>2016-08-31T13:14:54.000Z</published>
-    <updated>2016-08-31T13:19:17.434Z</updated>
+    <updated>2016-08-31T13:19:18.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="为何放弃jekyll选择Hexo"><a href="#为何放弃jekyll选择Hexo" class="headerlink" title="为何放弃jekyll选择Hexo"></a>为何放弃jekyll选择Hexo</h2><blockquote>
 <p>A fast, simple &amp; powerful blog framework    —— <a href="https://hexo.io/" target="_blank" rel="external">Hexo官网</a></p>
@@ -254,7 +288,7 @@
     <link href="http://zhangzirui.com/2016/03/15/2016/03/css-three-layout-task3/"/>
     <id>http://zhangzirui.com/2016/03/15/2016/03/css-three-layout-task3/</id>
     <published>2016-03-14T16:00:00.000Z</published>
-    <updated>2016-08-31T01:28:50.823Z</updated>
+    <updated>2016-08-31T01:28:52.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="三栏式布局"><a href="#三栏式布局" class="headerlink" title="三栏式布局"></a>三栏式布局</h2><p>task3是完成一个三栏式布局，我本来以为很简单的实现，但是真正做下来发现还是有些地方需要注。<br>布局是前端工程师的基本功，这次的任务让我意识到我的基本功还有待提高。</p>
 <p>这里是我做好的<a href="https://github.com/npm-team/step1/tree/gh-pages/task0003" target="_blank" rel="external">源码地址</a>和<a href="http://npm-team.github.io/step1/task0003/task0003.html" target="_blank" rel="external">demo地址</a></p>
@@ -298,7 +332,7 @@
     <link href="http://zhangzirui.com/2016/03/14/2016/03/css-flex-step1-task10/"/>
     <id>http://zhangzirui.com/2016/03/14/2016/03/css-flex-step1-task10/</id>
     <published>2016-03-13T16:00:00.000Z</published>
-    <updated>2016-08-31T13:28:43.109Z</updated>
+    <updated>2016-08-31T13:28:44.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="FlexBox布局"><a href="#FlexBox布局" class="headerlink" title="FlexBox布局"></a>FlexBox布局</h2><p>最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。</p>
 <p> flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模型，依赖display+position+float属性，这种布局使得一些特殊布局十分不便，如垂直居中。</p>
@@ -415,7 +449,7 @@
     <link href="http://zhangzirui.com/2016/03/03/2016/03/create-web-express+mongodb+jade/"/>
     <id>http://zhangzirui.com/2016/03/03/2016/03/create-web-express+mongodb+jade/</id>
     <published>2016-03-03T14:14:54.000Z</published>
-    <updated>2016-08-31T13:26:36.154Z</updated>
+    <updated>2016-08-31T13:26:38.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Nodejs建站总结（一）"><a href="#Nodejs建站总结（一）" class="headerlink" title="Nodejs建站总结（一）"></a>Nodejs建站总结（一）</h2><p>这个网站使用nodejs完成，前端用jade模板构建，用到了bootstrap框架，其中删除功能使用jQuery完成<br>后端用express+mongo完成。是很简洁小巧的模式。<a href="https://github.com/ZZR-china/Xiew" target="_blank" rel="external">源代码</a>在我的github上。</p>
 <h3 id="使用的工具"><a href="#使用的工具" class="headerlink" title="使用的工具"></a>使用的工具</h3><p>npm、bower、sublime、git和mongoVUE</p>
@@ -449,7 +483,7 @@
     <link href="http://zhangzirui.com/2016/03/01/2016/03/MEAN/"/>
     <id>http://zhangzirui.com/2016/03/01/2016/03/MEAN/</id>
     <published>2016-02-29T16:00:00.000Z</published>
-    <updated>2016-08-31T01:30:12.149Z</updated>
+    <updated>2016-08-31T01:30:14.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="MEAN堆栈介绍"><a href="#MEAN堆栈介绍" class="headerlink" title="MEAN堆栈介绍"></a>MEAN堆栈介绍</h2><p><a href="https://thecodebarbarian.wordpress.com/2013/07/22/introduction-to-the-mean-stack-part-one-setting-up-your-tools/" target="_blank" rel="external">原文链接</a></p>
 <p>原作者： vkarpov15</p>
@@ -570,7 +604,7 @@
     <link href="http://zhangzirui.com/2016/02/28/2016/02/The%20Dangers%20of%20Stopping%20Event%20Propagation/"/>
     <id>http://zhangzirui.com/2016/02/28/2016/02/The Dangers of Stopping Event Propagation/</id>
     <published>2016-02-27T16:00:00.000Z</published>
-    <updated>2016-08-31T13:31:49.920Z</updated>
+    <updated>2016-08-31T13:31:50.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="The-Dangers-of-Stopping-Event-Propagation"><a href="#The-Dangers-of-Stopping-Event-Propagation" class="headerlink" title="The Dangers of Stopping Event Propagation"></a>The Dangers of Stopping Event Propagation</h2><p>今天学习DOM时看到了一篇关于滥用event.stopPropagation();的坏处的文章，觉得很棒，便翻译下来。</p>
 <h3 id="实现功能模块的逻辑性很重要"><a href="#实现功能模块的逻辑性很重要" class="headerlink" title="实现功能模块的逻辑性很重要"></a>实现功能模块的逻辑性很重要</h3><p>接下来是一篇来宾博文，作者是<a href="http://philipwalton.com/" target="_blank" rel="external">Philip Walton</a><a href="http://twitter.com/philwalton" target="_blank" rel="external">@philwalton</a>。</p>
@@ -642,7 +676,7 @@
     <link href="http://zhangzirui.com/2016/02/20/2016/02/mysql-mongodb/"/>
     <id>http://zhangzirui.com/2016/02/20/2016/02/mysql-mongodb/</id>
     <published>2016-02-20T14:14:54.000Z</published>
-    <updated>2016-08-31T13:30:26.369Z</updated>
+    <updated>2016-08-31T13:30:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查</p>
 <p>下面是我将MySQL和Mongo的一些操作进行了类比<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">SELECT * FROM user&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find()</div><div class="line"></div><div class="line">&gt;MySQL:</div><div class="line">SELECT * FROM user WHERE name = ”starlee”&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;“name”: “starlee”&#125;)</div></pre></td></tr></table></figure></p>
@@ -678,7 +712,7 @@
     <link href="http://zhangzirui.com/2016/01/29/2016/01/sudoku-color-change/"/>
     <id>http://zhangzirui.com/2016/01/29/2016/01/sudoku-color-change/</id>
     <published>2016-01-28T16:00:00.000Z</published>
-    <updated>2016-08-31T13:30:43.163Z</updated>
+    <updated>2016-08-31T13:30:44.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="IT修真学院"><a href="#IT修真学院" class="headerlink" title="IT修真学院"></a>IT修真学院</h2><p>前几天在网上闲逛时看到有个IT修真学院的，一看口气这么大我当然要去看看，之后就决定先跟着他们的课程试试，他们的JS课程是顺着他们的CSS课程接着来的，于是只好在跟着css课程先做。</p>
 <hr>
@@ -707,7 +741,7 @@
     <link href="http://zhangzirui.com/2016/01/10/2016/01/create-windows-mongodb/"/>
     <id>http://zhangzirui.com/2016/01/10/2016/01/create-windows-mongodb/</id>
     <published>2016-01-10T14:14:54.000Z</published>
-    <updated>2016-08-31T13:27:03.781Z</updated>
+    <updated>2016-08-31T13:27:04.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="MongoDB安装成为Windows服务"><a href="#MongoDB安装成为Windows服务" class="headerlink" title="MongoDB安装成为Windows服务"></a>MongoDB安装成为Windows服务</h2><p>在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,<br>并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志</p>
 <h3 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h3><p>使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb<br>切换到D:\Program Files\mongodb\bin&gt;输入如下命令</p>
@@ -742,11 +776,38 @@
   </entry>
   
   <entry>
+    <title>我的常用Git命令</title>
+    <link href="http://zhangzirui.com/2015/12/16/2015/Git%20study/"/>
+    <id>http://zhangzirui.com/2015/12/16/2015/Git study/</id>
+    <published>2015-12-15T16:00:00.000Z</published>
+    <updated>2016-08-31T13:22:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<p>我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。<br><br>（另附git大全一份<a href="http://jingxuan.io/progit/" target="_blank" rel="external">Pro Git中文版</a>）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">git init                                                  <span class="comment"># 初始化本地git仓库（创建新仓库）</span></div><div class="line">git config --<span class="keyword">global</span> user.name <span class="string">"xxx"</span>                       <span class="comment"># 配置用户名</span></div><div class="line">git config --<span class="keyword">global</span> user.email <span class="string">"xxx@xxx.com"</span>              <span class="comment"># 配置邮件</span></div><div class="line">git clone git+ssh://git@<span class="number">192.168</span><span class="number">.53</span><span class="number">.168</span>/VT.git             <span class="comment"># clone远程仓库</span></div><div class="line">git status                                                <span class="comment"># 查看当前版本状态（是否修改）</span></div><div class="line">git add xyz                                               <span class="comment"># 添加xyz文件至index</span></div><div class="line">git add .                                                 <span class="comment"># 增加当前子目录下所有更改过的文件至index</span></div><div class="line">git commit -m <span class="string">'xxx'</span>                                       <span class="comment"># 提交</span></div><div class="line">git commit --amend -m <span class="string">'xxx'</span>                               <span class="comment"># 合并上一次提交（用于反复修改）</span></div><div class="line">git commit -am <span class="string">'xxx'</span>                                      <span class="comment"># 将add和commit合为一步</span></div><div class="line">git rm xxx                                                <span class="comment"># 删除index中的文件</span></div><div class="line">git rm -r *                                               <span class="comment"># 递归删除</span></div><div class="line">git log                                                   <span class="comment"># 显示提交日志</span></div><div class="line">git log <span class="number">-1</span>                                                <span class="comment"># 显示1行日志 -n为n行</span></div><div class="line">git log <span class="number">-5</span></div><div class="line">git log --stat                                            <span class="comment"># 显示提交日志及相关变动文件</span></div><div class="line">git log -p -m</div><div class="line">git tag                                                   <span class="comment"># 显示已存在的tag</span></div><div class="line">git tag -a v2<span class="number">.0</span> -m <span class="string">'xxx'</span>                                  <span class="comment"># 增加v2.0的tag</span></div><div class="line">git show v2<span class="number">.0</span>                                             <span class="comment"># 显示v2.0的日志及详细内容</span></div><div class="line">git log v2<span class="number">.0</span>                                              <span class="comment"># 显示v2.0的日志</span></div><div class="line">git diff                                                  <span class="comment"># 显示所有未添加至index的变更</span></div><div class="line">git diff --cached                                         <span class="comment"># 显示所有已添加index但还未commit的变更</span></div><div class="line">git diff HEAD^                                            <span class="comment"># 比较与上一个版本的差异</span></div><div class="line">git diff HEAD -- ./lib                                    <span class="comment"># 比较与HEAD版本lib目录的差异</span></div><div class="line">git diff origin/master..master                            <span class="comment"># 比较远程分支master上有本地分支master上没有的</span></div><div class="line">git diff origin/master..master --stat                     <span class="comment"># 只显示差异的文件，不显示具体内容</span></div><div class="line">git remote add origin git+ssh://git@<span class="number">192.168</span><span class="number">.53</span><span class="number">.168</span>/VT.git <span class="comment"># 增加远程定义（用于push/pull/fetch）</span></div><div class="line">git branch                                                <span class="comment"># 显示本地分支</span></div><div class="line">git branch --contains <span class="number">50089</span>                               <span class="comment"># 显示包含提交50089的分支</span></div><div class="line">git branch -a                                             <span class="comment"># 显示所有分支</span></div><div class="line">git branch -r                                             <span class="comment"># 显示所有原创分支</span></div><div class="line">git branch -m master master_copy                          <span class="comment"># 本地分支改名</span></div><div class="line">git checkout -b master_copy                               <span class="comment"># 从当前分支创建新分支master_copy并检出</span></div><div class="line">git checkout -b master master_copy                        <span class="comment"># 上面的完整版</span></div><div class="line">git checkout features/performance                         <span class="comment"># 检出已存在的features/performance分支</span></div><div class="line">git checkout --track hotfixes/BJVEP933                    <span class="comment"># 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span></div><div class="line">git checkout -b devel origin/develop                      <span class="comment"># 从远程分支develop创建新本地分支devel并检出</span></div><div class="line">git checkout -- README                                    <span class="comment"># 检出head版本的README文件（可用于修改错误回退）</span></div><div class="line">git merge origin/master                                   <span class="comment"># 合并远程master分支至当前分支</span></div><div class="line">git push origin master                                    <span class="comment"># 将当前分支push到远程master分支</span></div><div class="line">git push --tags                                           <span class="comment"># 把所有tag推送到远程仓库</span></div><div class="line">git fetch                                                 <span class="comment"># 获取所有远程分支（不更新本地分支，另需merge）</span></div><div class="line">git fetch --prune                                         <span class="comment"># 获取所有原创分支并清除服务器上已删掉的分支</span></div><div class="line">git pull origin master                                    <span class="comment"># 获取远程分支master并merge到当前分支                    </span></div><div class="line">git show-branch                                           <span class="comment"># 图示当前分支历史</span></div><div class="line">git show-branch --all                                     <span class="comment"># 图示所有分支历史</span></div><div class="line">git whatchanged                                           <span class="comment"># 显示提交历史对应的文件修改</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。&lt;br&gt;&lt;br&gt;（另附git大全一份&lt;a href=&quot;http:
+    
+    </summary>
+    
+      <category term="工具" scheme="http://zhangzirui.com/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="git" scheme="http://zhangzirui.com/tags/git/"/>
+    
+      <category term="教程" scheme="http://zhangzirui.com/tags/%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>亚伦·斯沃茨（ Aaron Swartz）</title>
     <link href="http://zhangzirui.com/2015/12/16/2015/Aaron%20Swartz/"/>
     <id>http://zhangzirui.com/2015/12/16/2015/Aaron Swartz/</id>
     <published>2015-12-15T16:00:00.000Z</published>
-    <updated>2016-08-31T10:16:30.544Z</updated>
+    <updated>2016-08-31T10:16:32.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="亚伦·斯沃茨"><a href="#亚伦·斯沃茨" class="headerlink" title="亚伦·斯沃茨"></a>亚伦·斯沃茨</h2><p>No predecessors, no latecomers</p>
 <p>“Aaron Swatz 就是一个盗火的普罗米修斯，这个世界亏欠了他。” </p>
@@ -770,38 +831,11 @@
   </entry>
   
   <entry>
-    <title>我的常用Git命令</title>
-    <link href="http://zhangzirui.com/2015/12/16/2015/Git%20study/"/>
-    <id>http://zhangzirui.com/2015/12/16/2015/Git study/</id>
-    <published>2015-12-15T16:00:00.000Z</published>
-    <updated>2016-08-31T13:22:05.001Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a>
-<p>我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。<br><br>（另附git大全一份<a href="http://jingxuan.io/progit/" target="_blank" rel="external">Pro Git中文版</a>）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">git init                                                  <span class="comment"># 初始化本地git仓库（创建新仓库）</span></div><div class="line">git config --<span class="keyword">global</span> user.name <span class="string">"xxx"</span>                       <span class="comment"># 配置用户名</span></div><div class="line">git config --<span class="keyword">global</span> user.email <span class="string">"xxx@xxx.com"</span>              <span class="comment"># 配置邮件</span></div><div class="line">git clone git+ssh://git@<span class="number">192.168</span><span class="number">.53</span><span class="number">.168</span>/VT.git             <span class="comment"># clone远程仓库</span></div><div class="line">git status                                                <span class="comment"># 查看当前版本状态（是否修改）</span></div><div class="line">git add xyz                                               <span class="comment"># 添加xyz文件至index</span></div><div class="line">git add .                                                 <span class="comment"># 增加当前子目录下所有更改过的文件至index</span></div><div class="line">git commit -m <span class="string">'xxx'</span>                                       <span class="comment"># 提交</span></div><div class="line">git commit --amend -m <span class="string">'xxx'</span>                               <span class="comment"># 合并上一次提交（用于反复修改）</span></div><div class="line">git commit -am <span class="string">'xxx'</span>                                      <span class="comment"># 将add和commit合为一步</span></div><div class="line">git rm xxx                                                <span class="comment"># 删除index中的文件</span></div><div class="line">git rm -r *                                               <span class="comment"># 递归删除</span></div><div class="line">git log                                                   <span class="comment"># 显示提交日志</span></div><div class="line">git log <span class="number">-1</span>                                                <span class="comment"># 显示1行日志 -n为n行</span></div><div class="line">git log <span class="number">-5</span></div><div class="line">git log --stat                                            <span class="comment"># 显示提交日志及相关变动文件</span></div><div class="line">git log -p -m</div><div class="line">git tag                                                   <span class="comment"># 显示已存在的tag</span></div><div class="line">git tag -a v2<span class="number">.0</span> -m <span class="string">'xxx'</span>                                  <span class="comment"># 增加v2.0的tag</span></div><div class="line">git show v2<span class="number">.0</span>                                             <span class="comment"># 显示v2.0的日志及详细内容</span></div><div class="line">git log v2<span class="number">.0</span>                                              <span class="comment"># 显示v2.0的日志</span></div><div class="line">git diff                                                  <span class="comment"># 显示所有未添加至index的变更</span></div><div class="line">git diff --cached                                         <span class="comment"># 显示所有已添加index但还未commit的变更</span></div><div class="line">git diff HEAD^                                            <span class="comment"># 比较与上一个版本的差异</span></div><div class="line">git diff HEAD -- ./lib                                    <span class="comment"># 比较与HEAD版本lib目录的差异</span></div><div class="line">git diff origin/master..master                            <span class="comment"># 比较远程分支master上有本地分支master上没有的</span></div><div class="line">git diff origin/master..master --stat                     <span class="comment"># 只显示差异的文件，不显示具体内容</span></div><div class="line">git remote add origin git+ssh://git@<span class="number">192.168</span><span class="number">.53</span><span class="number">.168</span>/VT.git <span class="comment"># 增加远程定义（用于push/pull/fetch）</span></div><div class="line">git branch                                                <span class="comment"># 显示本地分支</span></div><div class="line">git branch --contains <span class="number">50089</span>                               <span class="comment"># 显示包含提交50089的分支</span></div><div class="line">git branch -a                                             <span class="comment"># 显示所有分支</span></div><div class="line">git branch -r                                             <span class="comment"># 显示所有原创分支</span></div><div class="line">git branch -m master master_copy                          <span class="comment"># 本地分支改名</span></div><div class="line">git checkout -b master_copy                               <span class="comment"># 从当前分支创建新分支master_copy并检出</span></div><div class="line">git checkout -b master master_copy                        <span class="comment"># 上面的完整版</span></div><div class="line">git checkout features/performance                         <span class="comment"># 检出已存在的features/performance分支</span></div><div class="line">git checkout --track hotfixes/BJVEP933                    <span class="comment"># 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span></div><div class="line">git checkout -b devel origin/develop                      <span class="comment"># 从远程分支develop创建新本地分支devel并检出</span></div><div class="line">git checkout -- README                                    <span class="comment"># 检出head版本的README文件（可用于修改错误回退）</span></div><div class="line">git merge origin/master                                   <span class="comment"># 合并远程master分支至当前分支</span></div><div class="line">git push origin master                                    <span class="comment"># 将当前分支push到远程master分支</span></div><div class="line">git push --tags                                           <span class="comment"># 把所有tag推送到远程仓库</span></div><div class="line">git fetch                                                 <span class="comment"># 获取所有远程分支（不更新本地分支，另需merge）</span></div><div class="line">git fetch --prune                                         <span class="comment"># 获取所有原创分支并清除服务器上已删掉的分支</span></div><div class="line">git pull origin master                                    <span class="comment"># 获取远程分支master并merge到当前分支                    </span></div><div class="line">git show-branch                                           <span class="comment"># 图示当前分支历史</span></div><div class="line">git show-branch --all                                     <span class="comment"># 图示所有分支历史</span></div><div class="line">git whatchanged                                           <span class="comment"># 显示提交历史对应的文件修改</span></div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;p&gt;我是接触到github后，才知道git，在廖大大的学习网站上学了3天，掌握了些基本命令就开始利用gitpage的功能建造自己的网站了。熟悉后才发现常用的git命令不过那几个。&lt;br&gt;&lt;br&gt;（另附git大全一份&lt;a href=&quot;http:
-    
-    </summary>
-    
-      <category term="工具" scheme="http://zhangzirui.com/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="git" scheme="http://zhangzirui.com/tags/git/"/>
-    
-      <category term="教程" scheme="http://zhangzirui.com/tags/%E6%95%99%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Jekyll 搭建静态博客</title>
     <link href="http://zhangzirui.com/2015/09/12/2015/create-my-blog-with-jekyll1/"/>
     <id>http://zhangzirui.com/2015/09/12/2015/create-my-blog-with-jekyll1/</id>
     <published>2015-09-12T14:14:54.000Z</published>
-    <updated>2016-08-31T13:26:11.227Z</updated>
+    <updated>2016-08-31T13:26:12.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><blockquote>
 <p>文章大部分来自网络，我添加修改了一些</p>
