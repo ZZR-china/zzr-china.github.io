@@ -7,24 +7,33 @@
 <head>
   <meta charset="utf-8">
   
-  <title>苹果首页轮播案例实现 | Wind</title>
+  <title>学习Vue(一) | Wind</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="css,js," />
+    <meta name="keywords" content="js,vue," />
   
 
-  <meta name="description" content="好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上">
+  <meta name="description" content="在github上看到一个不错的demo，是基于express+mongo+vue的，基本实现了前后端分离，感觉就是自己需要的，于是“可耻的”拿过来学习，并移植到了自己的leancloud上。
+原本作者的案例代码在此：https://github.com/ycwalker/CMS-of-Blog
+我移植的leancloud地址如下：http://juejin.leanapp.cn/#!/
+整个项目使">
 <meta property="og:type" content="article">
-<meta property="og:title" content="苹果首页轮播案例实现">
-<meta property="og:url" content="http://zhangzirui.com/2016/09/19/2016/09/applebannerdemo/index.html">
+<meta property="og:title" content="学习Vue(一)">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/20/2016/09/studyvue2/index.html">
 <meta property="og:site_name" content="Wind">
-<meta property="og:description" content="好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上">
-<meta property="og:updated_time" content="2016-09-19T13:51:04.000Z">
+<meta property="og:description" content="在github上看到一个不错的demo，是基于express+mongo+vue的，基本实现了前后端分离，感觉就是自己需要的，于是“可耻的”拿过来学习，并移植到了自己的leancloud上。
+原本作者的案例代码在此：https://github.com/ycwalker/CMS-of-Blog
+我移植的leancloud地址如下：http://juejin.leanapp.cn/#!/
+整个项目使">
+<meta property="og:updated_time" content="2016-09-25T04:44:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="苹果首页轮播案例实现">
-<meta name="twitter:description" content="好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上">
+<meta name="twitter:title" content="学习Vue(一)">
+<meta name="twitter:description" content="在github上看到一个不错的demo，是基于express+mongo+vue的，基本实现了前后端分离，感觉就是自己需要的，于是“可耻的”拿过来学习，并移植到了自己的leancloud上。
+原本作者的案例代码在此：https://github.com/ycwalker/CMS-of-Blog
+我移植的leancloud地址如下：http://juejin.leanapp.cn/#!/
+整个项目使">
 
   
 
@@ -142,14 +151,14 @@
 
 
 <div class="content content-post CENTER">
-   <article id="post-2016/09/applebannerdemo" class="article article-type-post" itemprop="blogPost">
+   <article id="post-2016/09/studyvue2" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">苹果首页轮播案例实现</h1>
+    <h1 class="post-title">学习Vue(一)</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2016.09.19</span>
+        <span>2016.09.20</span>
       </span>
 
       
@@ -174,16 +183,13 @@
 
   <div class="article-content">
     
-      <p>好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上，地址</p>
-<p><a href="http://www.zhangzirui.com/appleBannerdemo/" target="_blank" rel="external">http://www.zhangzirui.com/appleBannerdemo/</a></p>
-<p>轮播的实现谷歌一下能搜出好多个来，有使用库的有原生的，看需求，之前在公司PC端轮播使用jq手写，移动web上就使用swiper，强大、好用。</p>
-<p>样式上，也就是css主要给几个元素设置了transition,使过度平滑，css3里强大的动画属性使得以前用js写的特效现在可以放心简洁的使用css来实现，当然，要考虑兼容。js更多的是做控制的作用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-moz-transition: transform 1.5s;</div><div class="line">/* Firefox 4 */</div><div class="line">-webkit-transition: transform 1.5s;</div><div class="line">/* Safari and Chrome */</div><div class="line">-o-transition: transform 1.5s;</div><div class="line">/* Opera */</div></pre></td></tr></table></figure></p>
-<p>js代码里写了3个计时器，用来实现图片的轮播，圆点的过度动画（dash），还有就是一个200ms运行一次的监测body.clientWidth的计时器。</p>
-<p>代码都很简单，这里就不贴了。有兴趣的同学可以去我的github上看：</p>
-<p><a href="https://github.com/ZZR-china/appleBannerdemo/blob/master/js/banner.js" target="_blank" rel="external">https://github.com/ZZR-china/appleBannerdemo/blob/master/js/banner.js</a></p>
-<p>有个收获就是谷歌到了一个很方便的替换class name的方法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dash[i].className = dash[i].className.replace( <span class="regexp">/(?:^|\s)current(?!\S)/g</span>,<span class="string">''</span>);</div><div class="line">dashprogress[i].style.transform = <span class="string">'scaleX(0)'</span>;</div></pre></td></tr></table></figure>
-<p>以上。</p>
+      <p>在github上看到一个不错的demo，是基于express+mongo+vue的，基本实现了前后端分离，感觉就是自己需要的，于是“可耻的”拿过来学习，并移植到了自己的leancloud上。</p>
+<p>原本作者的案例代码在此：<a href="https://github.com/ycwalker/CMS-of-Blog" target="_blank" rel="external">https://github.com/ycwalker/CMS-of-Blog</a></p>
+<p>我移植的leancloud地址如下：<a href="http://juejin.leanapp.cn/#!/" target="_blank" rel="external">http://juejin.leanapp.cn/#!/</a></p>
+<p>整个项目使用express提供api,mongoose存储数据，我使用了mongolab这个平台，有500MB的免费空间。</p>
+<p>项目的功能很简单，后台录入文章，前台展示。还加了用户登陆功能，不过很简陋。我准备添加一个注册功能。</p>
+<p>文章也只是简单的markdown转换，并没有评论和点赞功能。</p>
+<p>有待提升😁</p>
 
     
   </div>
@@ -220,10 +226,10 @@
 		<nav class="post__nav">
 			 <div class="post__prev tl">
 				 
-				 <a href="/2016/09/20/2016/09/studyvue2/" title="学习Vue(一)">
+				 <a href="/2016/09/24/2016/09/interviewquestion(1)/" title="面试(一)">
 				  <strong>上一篇:</strong>
 				  <span>
-				  学习Vue(一)</span>
+				  面试(一)</span>
 				</a>
 				
 			</div>
@@ -236,9 +242,9 @@
 
 			<div class="pot__next tl">
 				
-					<a href="/2016/09/09/2016/09/express(2)/"  title="express开发（二）引入handlebars">
+					<a href="/2016/09/19/2016/09/applebannerdemo/"  title="苹果首页轮播案例实现">
 					 <strong>下一篇:</strong>
-					 <span>express开发（二）引入handlebars
+					 <span>苹果首页轮播案例实现
 					</span>
 					</a>
 				
@@ -354,7 +360,7 @@
     
   <section class="duoshuo-comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="" data-title="苹果首页轮播案例实现" data-url="http://zhangzirui.com/2016/09/19/2016/09/applebannerdemo/index.html"></div>
+    <div class="ds-thread" data-thread-key="" data-title="学习Vue(一)" data-url="http://zhangzirui.com/2016/09/20/2016/09/studyvue2/index.html"></div>
     <!-- 多说评论框 end -->
   </section>
 
