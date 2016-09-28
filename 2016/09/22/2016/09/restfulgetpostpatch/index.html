@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>restful服务中post/put/patch的区别 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="restful," />
+  
+
+  <meta name="description" content="这几天用express+mongoose来实现restful api，get、post、put和delete都实现了，用postman调试也没问题，这时看到有patch这个方法。上网查了一下，了解了post、put与patch之间的区别，这里做下简单的总结。
+RESTFUL中四个基本的方法
+POST = 新增GET = 读取PUT = 更新DELETE = 刪除
+HTTP的POST/PUT方法，这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="restful服务中post/put/patch的区别">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/22/2016/09/restfulgetpostpatch/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="这几天用express+mongoose来实现restful api，get、post、put和delete都实现了，用postman调试也没问题，这时看到有patch这个方法。上网查了一下，了解了post、put与patch之间的区别，这里做下简单的总结。
+RESTFUL中四个基本的方法
+POST = 新增GET = 读取PUT = 更新DELETE = 刪除
+HTTP的POST/PUT方法，这">
+<meta property="og:updated_time" content="2016-09-28T05:54:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="restful服务中post/put/patch的区别">
+<meta name="twitter:description" content="这几天用express+mongoose来实现restful api，get、post、put和delete都实现了，用postman调试也没问题，这时看到有patch这个方法。上网查了一下，了解了post、put与patch之间的区别，这里做下简单的总结。
+RESTFUL中四个基本的方法
+POST = 新增GET = 读取PUT = 更新DELETE = 刪除
+HTTP的POST/PUT方法，这">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/09/restfulgetpostpatch" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">restful服务中post/put/patch的区别</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.22</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>这几天用express+mongoose来实现restful api，get、post、put和delete都实现了，用postman调试也没问题，这时看到有patch这个方法。上网查了一下，了解了post、put与patch之间的区别，这里做下简单的总结。</p>
+<p>RESTFUL中四个基本的方法</p>
+<p>POST = 新增<br>GET = 读取<br>PUT = 更新<br>DELETE = 刪除</p>
+<p>HTTP的POST/PUT方法，这两个方法似乎都可以用来创建或更新一个资源。</p>
+<p>区别是细微但清楚的：</p>
+<p>POST方法用来创建一个子资源，如 /api/users，会在users下面创建一个user，如users/1</p>
+<p>POST方法不是幂等的，多次执行，将导致多条相同的用户被创建（users/1，users/2 …而这些用户除了自增长id外有着相同的数据，除非你的系统实现了额外的数据唯一性检查）</p>
+<p>而PUT方法用来创建一个URI已知的资源，或对已知资源进行完全替换，比如users/1，</p>
+<p>因此PUT方法一般会用来更新一个已知资源，除非在创建前，你完全知道自己要创建的对象的URI。</p>
+<p>这里是PUT跟POST，那么PUT与PATCH呢，PUT可以理解为replace（create or update），例如put /user/1的意思是替换/user/1，如果user/1已经存在那么就替换，如果没有那么就创建。PUT必须包含/user/1的所有属性资料。</p>
+<p>但是如果只是为了更新/user/1下的一个属性值，那么使用PUT就显得太过笨重，因为需要传入/user/1的所有属性值。这里就可以使用PATCH，用来做局部更新</p>
+<p>下面是express实现的restful的代码，代码比较简单，只是表达下POST，PUT，PATCH这些api</p>
+<p>POST<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">router.post(<span class="string">'/users'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> name = req.body.userName;</div><div class="line">    <span class="keyword">var</span> password = req.body.password;</div><div class="line">    <span class="keyword">var</span> resbody = &#123; state: <span class="string">''</span> &#125;;</div><div class="line">    <span class="keyword">var</span> md5 = crypto.createHash(<span class="string">'md5'</span>);</div><div class="line">    <span class="keyword">var</span> password = md5.update(password).digest(<span class="string">'hex'</span>);</div><div class="line">    <span class="keyword">var</span> user = <span class="keyword">new</span> db.User(&#123;</div><div class="line">        name: name,</div><div class="line">        password: password</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">var</span> check = finduser(db.User, &#123; name: name &#125;);</div><div class="line">    <span class="keyword">if</span> (check) &#123;</div><div class="line">        resbody.state = <span class="string">'fail'</span>;</div><div class="line">        res.send(resbody)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="built_in">console</span>.log(err);</div><div class="line">            &#125;</div><div class="line">            resbody.state = <span class="string">'success'</span>;</div><div class="line">            res.send(resbody)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">    next();</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>PUT<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//change user's password</span></div><div class="line">router.put(<span class="string">'/users/:id'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (req.body.id) &#123;</div><div class="line">        <span class="keyword">var</span> obj = &#123;</div><div class="line">            name: req.body.name,</div><div class="line">            password: req.body.password</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        db.User.findByIdAndUpdate(req.body.id, obj).exec();</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">var</span> newUser = <span class="keyword">new</span> db.User(&#123;</div><div class="line">            name: req.body.name,</div><div class="line">            password: req.body.password</div><div class="line">        &#125;)</div><div class="line">        newUser.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (err) <span class="keyword">return</span> <span class="built_in">console</span>.log(err)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    res.send(<span class="string">'OK'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>PATCH<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//change user's password</span></div><div class="line">router.put(<span class="string">'/users/:id'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> id = req.params.id,</div><div class="line">        password = req.body.updatepassword;</div><div class="line"></div><div class="line">    db.User.findOneAndUpdate(&#123; id: name &#125;, &#123; $set: &#123; password: password &#125; &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="built_in">console</span>.log(err)</div><div class="line">        &#125;</div><div class="line">        res.send(<span class="string">'update success'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>最后，放上URI的区别URL<br>关于URI和URL：<br>URI—Universal Resource Identifier通用资源标志符<br>Web上可用的每种资源如HTML文档、图像、视频片段、程序等都是一个来URI来定位的<br>URI一般由三部组成<br>①访问资源的命名机制<br>②存放资源的主机名<br>③资源自身的名称，由路径表示，着重强调于资源。</p>
+<p>URL—Uniform Resource Location统一资源定位符<br>URL是Internet上用来描述信息资源的字符串，主要用在各种WWW客户程序和服务器程序上，特别是著名的Mosaic。<br>采用URL可以用一种统一的格式来描述各种信息资源，包括文件、服务器的地址和目录等。<br>URL一般由三部组成<br>①协议(或称为服务方式)<br>②存有该资源的主机IP地址(有时也包括端口号)<br>③主机资源的具体地址。如目录和文件名等</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/09/24/2016/09/interviewquestion(1)/" title="面试(一)">
+				  <strong>上一篇:</strong>
+				  <span>
+				  面试(一)</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/09/20/2016/09/studyvue2/"  title="学习Vue(一)">
+					 <strong>下一篇:</strong>
+					 <span>学习Vue(一)
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="restful服务中post/put/patch的区别" data-url="http://zhangzirui.com/2016/09/22/2016/09/restfulgetpostpatch/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
