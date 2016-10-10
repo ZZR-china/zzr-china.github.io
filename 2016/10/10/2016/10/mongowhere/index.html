@@ -7,30 +7,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mongo中实现事务 | Wind</title>
+  <title>Mongo中的where方法 | Wind</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="mongodb,js," />
+    <meta name="keywords" content="mongodb,search," />
   
 
-  <meta name="description" content="今天面试被问到如何在mongo中实现事务，磕磕绊绊说了半天，但是还是没说到点上，面试小哥让我回去好好看看mongo的事务介绍，，，（这是不是没希望的节奏(T_T)）
-首先看看数据库中的事务概念：
-事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。事务通常由高级数据库操纵语言或编程语言（如SQL，C++或Java）书写的用户程序的执行所引起，并用形如be">
+  <meta name="description" content="最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。
+使用$ajax()即可，请求的方式，传递的值都可以在里面操作。分页完成后，就是搜索，我实现了一个简单的汉字搜索功能，使用mongoose的where api。部分代码如下：
+12345678">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mongo中实现事务">
-<meta property="og:url" content="http://zhangzirui.com/2016/09/27/2016/09/transactions in MongoDB/index.html">
+<meta property="og:title" content="Mongo中的where方法">
+<meta property="og:url" content="http://zhangzirui.com/2016/10/10/2016/10/mongowhere/index.html">
 <meta property="og:site_name" content="Wind">
-<meta property="og:description" content="今天面试被问到如何在mongo中实现事务，磕磕绊绊说了半天，但是还是没说到点上，面试小哥让我回去好好看看mongo的事务介绍，，，（这是不是没希望的节奏(T_T)）
-首先看看数据库中的事务概念：
-事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。事务通常由高级数据库操纵语言或编程语言（如SQL，C++或Java）书写的用户程序的执行所引起，并用形如be">
-<meta property="og:updated_time" content="2016-09-28T05:07:44.000Z">
+<meta property="og:description" content="最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。
+使用$ajax()即可，请求的方式，传递的值都可以在里面操作。分页完成后，就是搜索，我实现了一个简单的汉字搜索功能，使用mongoose的where api。部分代码如下：
+12345678">
+<meta property="og:updated_time" content="2016-10-10T14:54:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongo中实现事务">
-<meta name="twitter:description" content="今天面试被问到如何在mongo中实现事务，磕磕绊绊说了半天，但是还是没说到点上，面试小哥让我回去好好看看mongo的事务介绍，，，（这是不是没希望的节奏(T_T)）
-首先看看数据库中的事务概念：
-事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。事务通常由高级数据库操纵语言或编程语言（如SQL，C++或Java）书写的用户程序的执行所引起，并用形如be">
+<meta name="twitter:title" content="Mongo中的where方法">
+<meta name="twitter:description" content="最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。
+使用$ajax()即可，请求的方式，传递的值都可以在里面操作。分页完成后，就是搜索，我实现了一个简单的汉字搜索功能，使用mongoose的where api。部分代码如下：
+12345678">
 
   
 
@@ -148,14 +148,14 @@
 
 
 <div class="content content-post CENTER">
-   <article id="post-2016/09/transactions in MongoDB" class="article article-type-post" itemprop="blogPost">
+   <article id="post-2016/10/mongowhere" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">mongo中实现事务</h1>
+    <h1 class="post-title">Mongo中的where方法</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2016.09.27</span>
+        <span>2016.10.10</span>
       </span>
 
       
@@ -168,7 +168,7 @@
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/数据库/">数据库</a>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
   </span>
 
 
@@ -180,21 +180,10 @@
 
   <div class="article-content">
     
-      <p>今天面试被问到如何在mongo中实现事务，磕磕绊绊说了半天，但是还是没说到点上，面试小哥让我回去好好看看mongo的事务介绍，，，（这是不是没希望的节奏(T_T)）</p>
-<p>首先看看数据库中的事务概念：</p>
-<p>事务(Transaction)是访问并可能更新数据库中各种数据项的一个程序执行单元(unit)。事务通常由高级数据库操纵语言或编程语言（如SQL，C++或Java）书写的用户程序的执行所引起，并用形如begin transaction和end transaction语句（或函数调用）来界定。事务由事务开始(begin transaction)和事务结束(end transaction)之间执行的全体操作组成。</p>
-<p>例如：在关系数据库中，一个事务可以是一条SQL语句，一组SQL语句或整个程序。</p>
-<p>事务是恢复和并发控制的基本单位。</p>
-<p>事务应该具有4个属性：原子性、一致性、隔离性、持续性。这四个属性通常称为ACID特性。</p>
-<p>原子性（atomicity）。一个事务是一个不可分割的工作单位，事务中包括的诸操作要么都做，要么都不做。</p>
-<p>一致性（consistency）。事务必须是使数据库从一个一致性状态变到另一个一致性状态。一致性与原子性是密切相关的。</p>
-<p>隔离性（isolation）。一个事务的执行不能被其他事务干扰。即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</p>
-<p>持久性（durability）。持续性也称永久性（permanence），指一个事务一旦提交，它对数据库中数据的改变就应该是永久性的。接下来的其他操作或故障不应该对其有任何影响。</p>
-<p>以上使百度来的事务的解释。</p>
-<p>但是mongo中如何实现事务？看看github上的一个例子<a href="https://github.com/rystsov/mongodb-transaction-example" target="_blank" rel="external">https://github.com/rystsov/mongodb-transaction-example</a></p>
-<p>使用了版本锁来实现事务。</p>
-<p>推酷上也有篇文章介绍了如何实现<a href="http://www.tuicool.com/articles/f6ZBjm" target="_blank" rel="external">http://www.tuicool.com/articles/f6ZBjm</a></p>
-<p>在要操作的两个文档外再创建一个事务表，用来控制两个表之间数据的传递。</p>
+      <p>最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。</p>
+<p>使用$ajax()即可，请求的方式，传递的值都可以在里面操作。分页完成后，就是搜索，我实现了一个简单的汉字搜索功能，使用mongoose的where api。<br>部分代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">getCategoryLimit: <span class="function"><span class="keyword">function</span>(<span class="params">keyword, page, rows, callback</span>) </span>&#123;</div><div class="line">    <span class="comment">// var query = category_mongo.find();</span></div><div class="line">    <span class="keyword">var</span> pattern = <span class="keyword">new</span> <span class="built_in">RegExp</span>(keyword,<span class="string">'i'</span>),</div><div class="line">        query = category_mongo.where(&#123;<span class="string">"name"</span>:pattern&#125;);</div><div class="line"></div><div class="line">    query.skip((page - <span class="number">1</span>) * rows);</div><div class="line">    query.limit(rows);</div><div class="line">    <span class="comment">//计算分页数据</span></div><div class="line">    query.exec(<span class="function"><span class="keyword">function</span>(<span class="params">err,rs</span>) </span>&#123;</div><div class="line">        <span class="comment">//计算数据总数</span></div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">          <span class="built_in">console</span>.log(err)</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">          category_mongo.find(&#123;<span class="string">"name"</span>:pattern&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">              jsonArray = &#123; rows: rs, total: result.length &#125;;</div><div class="line">              callback(rs, jsonArray)</div><div class="line">          &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到mongo中支持使用正则表达式来查询，非常强大。之后要完成的功能是模仿百度的搜索提示和拼音查询。</p>
 
     
   </div>
@@ -231,11 +220,9 @@
 		<nav class="post__nav">
 			 <div class="post__prev tl">
 				 
-				 <a href="/2016/10/10/2016/10/mongowhere/" title="Mongo中的where方法">
-				  <strong>上一篇:</strong>
-				  <span>
-				  Mongo中的where方法</span>
-				</a>
+						<a href="/2016/09/27/2016/09/transactions in MongoDB/"  title="mongo中实现事务">
+							 <strong>第一篇:</strong>点击到下一篇
+						</a>
 				
 			</div>
 
@@ -247,9 +234,9 @@
 
 			<div class="pot__next tl">
 				
-					<a href="/2016/09/26/2016/09/make es6 in es5/"  title="es6代码的es5实现（转载）">
+					<a href="/2016/09/27/2016/09/transactions in MongoDB/"  title="mongo中实现事务">
 					 <strong>下一篇:</strong>
-					 <span>es6代码的es5实现（转载）
+					 <span>mongo中实现事务
 					</span>
 					</a>
 				
@@ -365,7 +352,7 @@
     
   <section class="duoshuo-comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="" data-title="mongo中实现事务" data-url="http://zhangzirui.com/2016/09/27/2016/09/transactions in MongoDB/index.html"></div>
+    <div class="ds-thread" data-thread-key="" data-title="Mongo中的where方法" data-url="http://zhangzirui.com/2016/10/10/2016/10/mongowhere/index.html"></div>
     <!-- 多说评论框 end -->
   </section>
 

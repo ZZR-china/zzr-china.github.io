@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-09-27T09:44:58.000Z</updated>
+  <updated>2016-10-10T14:54:56.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -16,11 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mongo中的where方法</title>
+    <link href="http://zhangzirui.com/2016/10/10/2016/10/mongowhere/"/>
+    <id>http://zhangzirui.com/2016/10/10/2016/10/mongowhere/</id>
+    <published>2016-10-10T14:50:50.000Z</published>
+    <updated>2016-10-10T14:54:56.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。</p>
+<p>使用$ajax()即可，请求的方式，传递的值都可以在里面操作。分页完成后，就是搜索，我实现了一个简单的汉字搜索功能，使用mongoose的where api。<br>部分代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">getCategoryLimit: <span class="function"><span class="keyword">function</span>(<span class="params">keyword, page, rows, callback</span>) </span>&#123;</div><div class="line">    <span class="comment">// var query = category_mongo.find();</span></div><div class="line">    <span class="keyword">var</span> pattern = <span class="keyword">new</span> <span class="built_in">RegExp</span>(keyword,<span class="string">'i'</span>),</div><div class="line">        query = category_mongo.where(&#123;<span class="string">"name"</span>:pattern&#125;);</div><div class="line"></div><div class="line">    query.skip((page - <span class="number">1</span>) * rows);</div><div class="line">    query.limit(rows);</div><div class="line">    <span class="comment">//计算分页数据</span></div><div class="line">    query.exec(<span class="function"><span class="keyword">function</span>(<span class="params">err,rs</span>) </span>&#123;</div><div class="line">        <span class="comment">//计算数据总数</span></div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">          <span class="built_in">console</span>.log(err)</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">          category_mongo.find(&#123;<span class="string">"name"</span>:pattern&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">              jsonArray = &#123; rows: rs, total: result.length &#125;;</div><div class="line">              callback(rs, jsonArray)</div><div class="line">          &#125;);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看到mongo中支持使用正则表达式来查询，非常强大。之后要完成的功能是模仿百度的搜索提示和拼音查询。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。&lt;/p&gt;
+&lt;p&gt;使用$ajax()即可，请求的方式，传递的值都可以
+    
+    </summary>
+    
+      <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
+    
+      <category term="search" scheme="http://zhangzirui.com/tags/search/"/>
+    
+  </entry>
+  
+  <entry>
     <title>mongo中实现事务</title>
     <link href="http://zhangzirui.com/2016/09/27/2016/09/transactions%20in%20MongoDB/"/>
     <id>http://zhangzirui.com/2016/09/27/2016/09/transactions in MongoDB/</id>
     <published>2016-09-27T12:10:50.000Z</published>
-    <updated>2016-09-27T09:44:58.000Z</updated>
+    <updated>2016-09-28T05:07:44.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天面试被问到如何在mongo中实现事务，磕磕绊绊说了半天，但是还是没说到点上，面试小哥让我回去好好看看mongo的事务介绍，，，（这是不是没希望的节奏(T_T)）</p>
 <p>首先看看数据库中的事务概念：</p>
@@ -1008,9 +1037,9 @@
       <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
     
     
-      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
-    
       <category term="mysql" scheme="http://zhangzirui.com/tags/mysql/"/>
+    
+      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
     
   </entry>
   
@@ -1040,45 +1069,6 @@
     
     
       <category term="css" scheme="http://zhangzirui.com/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MongoDB安装成为windows服务</title>
-    <link href="http://zhangzirui.com/2016/01/10/2016/01/create-windows-mongodb/"/>
-    <id>http://zhangzirui.com/2016/01/10/2016/01/create-windows-mongodb/</id>
-    <published>2016-01-10T14:14:54.000Z</published>
-    <updated>2016-08-31T13:27:04.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="MongoDB安装成为Windows服务"><a href="#MongoDB安装成为Windows服务" class="headerlink" title="MongoDB安装成为Windows服务"></a>MongoDB安装成为Windows服务</h2><p>在官网上下载好mongodb安装包并解压后，在解压目录创建data文件夹，并在其中创建logs和db文件夹,<br>并在logs文件夹中创建mongo.log文件用来存放mongo数据库的日志</p>
-<h3 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h3><p>使用以下命令将MongoDB安装成为Windows服务。笔者的MongoDB目录为D:\Program Files\mongodb<br>切换到D:\Program Files\mongodb\bin&gt;输入如下命令</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --logpath <span class="string">"D:\Program Files\mongodb\data\logs\mongo.log"</span> --logappend --dbpath <span class="string">"D:\Program Files\mongodb\data\db"</span> --directoryperdb --serviceName <span class="string">"MongoDB"</span> --serviceDisplayName <span class="string">"MongoDB"</span> --install</div></pre></td></tr></table></figure>
-<p>其中<br>–logpath “D:\Program Files\mongodb\data\logs\mongo.log” 指定日志文件路径</p>
-<p>–logappend –dbpath “D:\Program Files\mongodb\data\db”指定数据库工作路径</p>
-<p>–serviceName “MongoDB” –serviceDisplayName “MongoDB”添加服务</p>
-<p>–install安装</p>
-<p>输入以上命令，命令行中会显示如下数据，及成功</p>
-<p>Creating service MongoDB.<br>Service creation successful.<br>Service can be started from the command line via ‘net start “MongoDB”‘.</p>
-<h3 id="启动服务。"><a href="#启动服务。" class="headerlink" title="启动服务。"></a>启动服务。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">net start mongoDB</div></pre></td></tr></table></figure>
-<p>该命令行指定了日志文件：D:\Program Files\mongodb\data\logs.tx，日志是以追加的方式输出的；</p>
-<p>数据文件目录：D:\Program Files\mongodb\data，并且参数–directoryperdb说明每个DB都会新建一个目录；</p>
-<p>Windows服务的名称：MongoDB；</p>
-<p>最后是安装参数：–install，与之相对的是–remove</p>
-<p>启动MongoDB：net start MongoDB</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;MongoDB安装成为Windows服务&quot;&gt;&lt;a href=&quot;#MongoDB安装成为Windows服务&quot; class=&quot;headerlink&quot; title=&quot;MongoDB安装成为Windows服务&quot;&gt;&lt;/a&gt;MongoDB安装成为Windows服务&lt;/h2&gt;&lt;
-    
-    </summary>
-    
-      <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
-    
-      <category term="windows" scheme="http://zhangzirui.com/tags/windows/"/>
     
   </entry>
   
