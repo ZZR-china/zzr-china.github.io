@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-10-10T14:54:56.000Z</updated>
+  <updated>2016-10-15T15:13:44.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>国庆后的一周</title>
+    <link href="http://zhangzirui.com/2016/10/15/2016/10/something%20of%20this%20week10-15/"/>
+    <id>http://zhangzirui.com/2016/10/15/2016/10/something of this week10-15/</id>
+    <published>2016-10-15T14:50:50.000Z</published>
+    <updated>2016-10-15T15:13:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这周是国庆后的一周，也是连上7天的苦逼的一周，也是我再新公司上班的第一周。</p>
+<p>公司的氛围很好，每个人都做着自己的事情。</p>
+<p>希望能做的更好，技术更加厉害！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这周是国庆后的一周，也是连上7天的苦逼的一周，也是我再新公司上班的第一周。&lt;/p&gt;
+&lt;p&gt;公司的氛围很好，每个人都做着自己的事情。&lt;/p&gt;
+&lt;p&gt;希望能做的更好，技术更加厉害！&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="生活" scheme="http://zhangzirui.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+      <category term="日记" scheme="http://zhangzirui.com/tags/%E6%97%A5%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>Mongo中的where方法</title>
@@ -1040,35 +1068,6 @@
       <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
     
       <category term="mysql" scheme="http://zhangzirui.com/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>颜色变化的九宫格</title>
-    <link href="http://zhangzirui.com/2016/01/29/2016/01/sudoku-color-change/"/>
-    <id>http://zhangzirui.com/2016/01/29/2016/01/sudoku-color-change/</id>
-    <published>2016-01-28T16:00:00.000Z</published>
-    <updated>2016-08-31T13:30:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="IT修真学院"><a href="#IT修真学院" class="headerlink" title="IT修真学院"></a>IT修真学院</h2><p>前几天在网上闲逛时看到有个IT修真学院的，一看口气这么大我当然要去看看，之后就决定先跟着他们的课程试试，他们的JS课程是顺着他们的CSS课程接着来的，于是只好在跟着css课程先做。</p>
-<hr>
-<h2 id="用CSS实现一个九宫格"><a href="#用CSS实现一个九宫格" class="headerlink" title="用CSS实现一个九宫格"></a>用CSS实现一个九宫格</h2><p>这个很简单，一些简单的css代码而已，但是一开始竟然忘了div是没有color属性的，(⊙﹏⊙)，设置背景色用background，一个div包含9个小div，css代码如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">div<span class="comment">#container&#123;</span></div><div class="line">width:<span class="number">400</span>px;</div><div class="line">height:<span class="number">400</span>px;</div><div class="line">padding:<span class="number">1</span>;</div><div class="line">margin: <span class="number">1</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line">div.sudoku&#123;</div><div class="line">         margin: <span class="number">10</span>;</div><div class="line">         padding: <span class="number">0</span>;</div><div class="line">         width:<span class="number">100</span>px;</div><div class="line">		 height:<span class="number">100</span>px;</div><div class="line">		 background-color:orange; </div><div class="line">         float: left;</div><div class="line">        </div><div class="line">		 &#125;</div></pre></td></tr></table></figure></p>
-<h2 id="编写js代码控制颜色变化"><a href="#编写js代码控制颜色变化" class="headerlink" title="编写js代码控制颜色变化"></a>编写js代码控制颜色变化</h2><p>这里用了一个 color数组包含一些color参数，然后编写一个function change()实现div的颜色style变化，最后使用了setinterval（change,1000）实现函数的自调用，代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"> var color=new Array(</div><div class="line">   <span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"#cc0000"</span>,<span class="string">"white"</span>,<span class="string">"black"</span>,<span class="string">"gray"</span>,</div><div class="line"><span class="string">"#FAEBD7"</span>,<span class="string">"F0F8FF"</span>,<span class="string">"#4B0082"</span>,<span class="string">"#BC8F8F"</span>,<span class="string">"#FFE4B5"</span>,<span class="string">"#3CB371"</span>,<span class="string">"#7B68EE"</span></div><div class="line"> );</div><div class="line"> var divChange=document.getElementById(<span class="string">"1"</span>);</div><div class="line"> var divChange2=document.getElementById(<span class="string">"2"</span>);</div><div class="line"> var divChange3=document.getElementById(<span class="string">"3"</span>);</div><div class="line"> var divChange4=document.getElementById(<span class="string">"4"</span>);</div><div class="line"> var divChange5=document.getElementById(<span class="string">"5"</span>);</div><div class="line"> var divChange6=document.getElementById(<span class="string">"6"</span>);</div><div class="line"> var divChange7=document.getElementById(<span class="string">"7"</span>);</div><div class="line"> var divChange8=document.getElementById(<span class="string">"8"</span>);</div><div class="line"> var divChange9=document.getElementById(<span class="string">"9"</span>);</div><div class="line"></div><div class="line">  var i=<span class="number">0</span>; </div><div class="line"> function change()&#123;</div><div class="line">   divChange.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange2.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i+<span class="number">1</span>]);</div><div class="line">   divChange3.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange4.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange5.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange6.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange7.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange8.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">   divChange9.setAttribute(<span class="string">"style"</span>,<span class="string">"background:"</span>+color[i]);</div><div class="line">i++;</div><div class="line"></div><div class="line"> &#125;</div><div class="line"> var set=setInterval(change,<span class="number">1000</span>);</div></pre></td></tr></table></figure>
-<p>##总结</p>
-<p>  修真学院的教程的确不错但是不适合我，我还是在网上找些js项目跟着做，然后学习jQuery框架之类的(<a href="https://github.com/baidu-ife/ife" target="_blank" rel="external">ife的教程真心好</a>)。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;IT修真学院&quot;&gt;&lt;a href=&quot;#IT修真学院&quot; class=&quot;headerlink&quot; title=&quot;IT修真学院&quot;&gt;&lt;/a&gt;IT修真学院&lt;/h2&gt;&lt;p&gt;前几天在网上闲逛时看到有个IT修真学院的，一看口气这么大我当然要去看看，之后就决定先跟着他们的课程试试，他们
-    
-    </summary>
-    
-      <category term="前端" scheme="http://zhangzirui.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="css" scheme="http://zhangzirui.com/tags/css/"/>
     
   </entry>
   
