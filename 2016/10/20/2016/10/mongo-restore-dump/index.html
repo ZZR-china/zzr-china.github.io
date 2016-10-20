@@ -7,36 +7,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>亚伦·斯沃茨（ Aaron Swartz） | Wind</title>
+  <title>mongo的备份、导入、导出 | Wind</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   
-    <meta name="keywords" content="famous," />
+    <meta name="keywords" content="mongodb," />
   
 
-  <meta name="description" content="亚伦·斯沃茨No predecessors, no latecomers
-“Aaron Swatz 就是一个盗火的普罗米修斯，这个世界亏欠了他。” 
-纪录片《互联网之子》，互联网上免费公开的，算是对艾伦致意的一种方式。
-地址更新：互联网之子 TheInternet’sOwnBoy:TheStoryOfAaronSwartz
-亚伦·斯沃茨说：“仅仅安生与当下这世界是不够的，那样子别人给你什么你就得接">
+  <meta name="description" content="今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。（PS：本地的mongorestore、mongoimport等操作直接讲cmd指向在mongo/bin中然后输入命令即可，不需要在mongo命令行下运行。）
+1234567891011BinaryImport d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="亚伦·斯沃茨（ Aaron Swartz）">
-<meta property="og:url" content="http://zhangzirui.com/2015/12/16/2015/Aaron Swartz/index.html">
+<meta property="og:title" content="mongo的备份、导入、导出">
+<meta property="og:url" content="http://zhangzirui.com/2016/10/20/2016/10/mongo-restore-dump/index.html">
 <meta property="og:site_name" content="Wind">
-<meta property="og:description" content="亚伦·斯沃茨No predecessors, no latecomers
-“Aaron Swatz 就是一个盗火的普罗米修斯，这个世界亏欠了他。” 
-纪录片《互联网之子》，互联网上免费公开的，算是对艾伦致意的一种方式。
-地址更新：互联网之子 TheInternet’sOwnBoy:TheStoryOfAaronSwartz
-亚伦·斯沃茨说：“仅仅安生与当下这世界是不够的，那样子别人给你什么你就得接">
-<meta property="og:updated_time" content="2016-08-31T10:16:32.000Z">
+<meta property="og:description" content="今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。（PS：本地的mongorestore、mongoimport等操作直接讲cmd指向在mongo/bin中然后输入命令即可，不需要在mongo命令行下运行。）
+1234567891011BinaryImport d">
+<meta property="og:updated_time" content="2016-10-20T13:11:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="亚伦·斯沃茨（ Aaron Swartz）">
-<meta name="twitter:description" content="亚伦·斯沃茨No predecessors, no latecomers
-“Aaron Swatz 就是一个盗火的普罗米修斯，这个世界亏欠了他。” 
-纪录片《互联网之子》，互联网上免费公开的，算是对艾伦致意的一种方式。
-地址更新：互联网之子 TheInternet’sOwnBoy:TheStoryOfAaronSwartz
-亚伦·斯沃茨说：“仅仅安生与当下这世界是不够的，那样子别人给你什么你就得接">
+<meta name="twitter:title" content="mongo的备份、导入、导出">
+<meta name="twitter:description" content="今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。（PS：本地的mongorestore、mongoimport等操作直接讲cmd指向在mongo/bin中然后输入命令即可，不需要在mongo命令行下运行。）
+1234567891011BinaryImport d">
 
   
 
@@ -151,22 +142,17 @@
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#亚伦·斯沃茨"><span class="toc-text">亚伦·斯沃茨</span></a></li></ol>
-  </div>
-
 
 
 <div class="content content-post CENTER">
-   <article id="post-2015/Aaron Swartz" class="article article-type-post" itemprop="blogPost">
+   <article id="post-2016/10/mongo-restore-dump" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">亚伦·斯沃茨（ Aaron Swartz）</h1>
+    <h1 class="post-title">mongo的备份、导入、导出</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2015.12.16</span>
+        <span>2016.10.20</span>
       </span>
 
       
@@ -179,7 +165,7 @@
       
   <span class="article-category">
     <i class="icon-list"></i>
-    <a class="article-category-link" href="/categories/读书/">读书</a>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
   </span>
 
 
@@ -191,11 +177,10 @@
 
   <div class="article-content">
     
-      <h2 id="亚伦·斯沃茨"><a href="#亚伦·斯沃茨" class="headerlink" title="亚伦·斯沃茨"></a>亚伦·斯沃茨</h2><p>No predecessors, no latecomers</p>
-<p>“Aaron Swatz 就是一个盗火的普罗米修斯，这个世界亏欠了他。” </p>
-<p>纪录片<a href="http://v.youku.com/v_show/id_XNzYyMDg3MzYw.html" target="_blank" rel="external">《互联网之子》</a>，互联网上免费公开的，算是对艾伦致意的一种方式。</p>
-<p>地址更新：互联网之子 <a href="https://app.yinxiang.com/Home.action#//link.zhihu.com/?target=http%3A//v.youku.com/v_show/id_XNzYyMDg3MzYw_type_99.html" target="_blank" rel="external">TheInternet’sOwnBoy:TheStoryOfAaronSwartz</a></p>
-<p>亚伦·斯沃茨说：“仅仅安生与当下这世界是不够的，那样子别人给你什么你就得接受什么。<br>我觉得得有质疑的精神，我觉得从科学的态度看，你所学的一切都是暂时的，任何所学都有改口、驳斥、质疑的余地。对于社会也是，我能尽力去解决真正的基础性的问题时 ，我没法去回避它。”<br><br>当我们思考问题还从人类利益处寻思时，亚伦已经走到了人类存在的角度。对于他来说，创造就是一切，这就是“one is all，all is one”。<br>他对事物有一种绝对的(超越时代相对主义)认知，我们都存在于社会中，教育、政治、文化、社会等都是人类在时间的转轮下不断前进的、创造美好时代的凭证，历史会为我们讲述，人类一直在走向神。亚伦看到了整个时代的基础存在，他要为时代发展创建一个平台，让知识都为人类所知的时代，让每个人都知道存在过的事情，让每个人都不至于蒙昧、愚蠢、斗争和恐惧。当我们掌握知识，让知识成为工具，我们每个人都会像鸟儿一样飞翔。当自由与平等成为我们的翅膀，当要用真实与智慧让人类进入一个新的平台，我们选择我们的进化。我想这便是亚伦所憧憬的吧。<br><br>中国一篇道藏里说过：知之者，天常也。修之者，思无邪。<br>jesus说过:你曾盲目，如今得见；你曾失落，如今找到；这正是惊人的恩宠。感谢上帝的恩宠，让亚伦活在我生活的世界。</p>
+      <p>今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。<br>（PS：本地的mongorestore、mongoimport等操作直接讲cmd指向在mongo/bin中然后输入命令即可，不需要在mongo命令行下运行。）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Binary</div><div class="line"></div><div class="line">Import database</div><div class="line">mongorestore -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; &lt;input db directory&gt;</div><div class="line">Export database</div><div class="line">mongodump -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; -o &lt;output directory&gt;</div><div class="line">Import collection</div><div class="line">mongorestore -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; &lt;input .bson file&gt;</div><div class="line">Export collection</div><div class="line">mongodump -h dbhost -d foowala -c &lt;collection&gt; -u &lt;user&gt; -p &lt;password&gt; -o &lt;output directory&gt;</div></pre></td></tr></table></figure>
+<p>mlab上导出数据或者单条collection的命令如上。</p>
+<p>得到数据库后我们直接使用mongorestore -h 127.0.0.1 -d test dapath导入即可。</p>
 
     
   </div>
@@ -232,11 +217,9 @@
 		<nav class="post__nav">
 			 <div class="post__prev tl">
 				 
-				 <a href="/2015/12/16/2015/Git study/" title="我的常用Git命令">
-				  <strong>上一篇:</strong>
-				  <span>
-				  我的常用Git命令</span>
-				</a>
+						<a href="/2016/10/15/2016/10/something of this week10-15/"  title="国庆后的一周">
+							 <strong>第一篇:</strong>点击到下一篇
+						</a>
 				
 			</div>
 
@@ -248,9 +231,9 @@
 
 			<div class="pot__next tl">
 				
-					<a href="/2015/09/12/2015/create-my-blog-with-jekyll1/"  title="Jekyll 搭建静态博客">
+					<a href="/2016/10/15/2016/10/something of this week10-15/"  title="国庆后的一周">
 					 <strong>下一篇:</strong>
-					 <span>Jekyll 搭建静态博客
+					 <span>国庆后的一周
 					</span>
 					</a>
 				
@@ -366,7 +349,7 @@
     
   <section class="duoshuo-comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="" data-title="亚伦·斯沃茨（ Aaron Swartz）" data-url="http://zhangzirui.com/2015/12/16/2015/Aaron Swartz/index.html"></div>
+    <div class="ds-thread" data-thread-key="" data-title="mongo的备份、导入、导出" data-url="http://zhangzirui.com/2016/10/20/2016/10/mongo-restore-dump/index.html"></div>
     <!-- 多说评论框 end -->
   </section>
 

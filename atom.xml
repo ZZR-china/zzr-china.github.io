@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-10-15T15:13:44.000Z</updated>
+  <updated>2016-10-20T13:11:42.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mongo的备份、导入、导出</title>
+    <link href="http://zhangzirui.com/2016/10/20/2016/10/mongo-restore-dump/"/>
+    <id>http://zhangzirui.com/2016/10/20/2016/10/mongo-restore-dump/</id>
+    <published>2016-10-20T14:50:50.000Z</published>
+    <updated>2016-10-20T13:11:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。<br>（PS：本地的mongorestore、mongoimport等操作直接讲cmd指向在mongo/bin中然后输入命令即可，不需要在mongo命令行下运行。）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Binary</div><div class="line"></div><div class="line">Import database</div><div class="line">mongorestore -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; &lt;input db directory&gt;</div><div class="line">Export database</div><div class="line">mongodump -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; -o &lt;output directory&gt;</div><div class="line">Import collection</div><div class="line">mongorestore -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; &lt;input .bson file&gt;</div><div class="line">Export collection</div><div class="line">mongodump -h dbhost -d foowala -c &lt;collection&gt; -u &lt;user&gt; -p &lt;password&gt; -o &lt;output directory&gt;</div></pre></td></tr></table></figure>
+<p>mlab上导出数据或者单条collection的命令如上。</p>
+<p>得到数据库后我们直接使用mongorestore -h 127.0.0.1 -d test dapath导入即可。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。&lt;br&gt;（PS：本地的mongorestore、mongoimport等操作直接讲cmd
+    
+    </summary>
+    
+      <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
+    
+  </entry>
   
   <entry>
     <title>国庆后的一周</title>
@@ -1032,42 +1058,6 @@
       <category term="jquery" scheme="http://zhangzirui.com/tags/jquery/"/>
     
       <category term="翻译" scheme="http://zhangzirui.com/tags/%E7%BF%BB%E8%AF%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MongoDB与MySQL的对比</title>
-    <link href="http://zhangzirui.com/2016/02/20/2016/02/mysql-mongodb/"/>
-    <id>http://zhangzirui.com/2016/02/20/2016/02/mysql-mongodb/</id>
-    <published>2016-02-20T14:14:54.000Z</published>
-    <updated>2016-08-31T13:30:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查</p>
-<p>下面是我将MySQL和Mongo的一些操作进行了类比<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">SELECT * FROM user&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find()</div><div class="line"></div><div class="line">&gt;MySQL:</div><div class="line">SELECT * FROM user WHERE name = ”starlee”&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;“name”: “starlee”&#125;)</div></pre></td></tr></table></figure></p>
-<p>插入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">INSERT INOT user (`name`, `age`) values (’starlee’,<span class="number">25</span>)&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.insert(&#123;‘name’ : ’starlee’, ‘age’ : <span class="number">25</span>&#125;)</div></pre></td></tr></table></figure></p>
-<p>如果你想在MySQL里添加一个字段，你必须：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE user….</div></pre></td></tr></table></figure></p>
-<p>但在MongoDB里你只需要：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.user.insert(&#123;‘name’ : ’starlee’, ‘age’ : <span class="number">25</span>, ‘email’ : ’starlee@starlee.com’&#125;)</div></pre></td></tr></table></figure></p>
-<p>删除：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">DELETE * FROM user&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.remove(&#123;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">DELETE FROM user WHERE age &lt; <span class="number">30</span>&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.remove(&#123;‘age’ : &#123;$lt : <span class="number">30</span>&#125;&#125;)</div><div class="line">$gt : &gt; ; $gte : &gt;= ; $lt : &lt; ; $lte : &lt;= ; $ne : !=</div></pre></td></tr></table></figure></p>
-<p>更新:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">UPDATE user SET `age` = <span class="number">36</span> WHERE `name` = ’starlee’&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.update(&#123;‘name’ : ’starlee’&#125;, &#123;$set : &#123;‘age’ : <span class="number">36</span>&#125;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">UPDATE user SET `age` = `age` + <span class="number">3</span> WHERE `name` = ’starlee’&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.update(&#123;‘name’ : ’starlee’&#125;, &#123;$inc : &#123;‘age’ : <span class="number">3</span>&#125;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT COUNT(*) FROM user WHERE ‘name’ = ’starlee’&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;‘name’ : ’starlee’&#125;).count()&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT * FROM user limit <span class="number">10</span>,<span class="number">20</span></div><div class="line">Mongo:</div><div class="line">db.user.find().skip(<span class="number">10</span>).limit(<span class="number">20</span>).sort(<span class="number">1</span>)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT * FROM user WHERE `age` IN (<span class="number">25</span>, <span class="number">35</span>,<span class="number">45</span>)</div><div class="line"></div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;‘age’ : &#123;$<span class="keyword">in</span> : [<span class="number">25</span>, <span class="number">35</span>, <span class="number">45</span>]&#125;&#125;)</div><div class="line"></div><div class="line">MySQL:</div><div class="line">SELECT * FROM user ORDER BY age DESC&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find().sort(&#123;‘age’ : <span class="number">-1</span>&#125;)</div><div class="line"></div><div class="line">MySQL:</div><div class="line">SELECT DISTINCT(name) FROM user WHERE age &gt; <span class="number">20</span>&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.distinct(‘name’, &#123;‘age’: &#123;$lt : <span class="number">20</span>&#125;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT name, sum(marks) FROM user GROUP BY name&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.group(&#123;</div><div class="line">key : &#123;‘name’ : true&#125;,</div><div class="line">cond: &#123;‘name’ : ‘foo’&#125;,</div><div class="line">reduce: function(obj,prev) &#123; prev.msum += obj.marks; &#125;,</div><div class="line">initial: &#123;msum : <span class="number">0</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>注意学习！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">SELECT name FROM user WHERE age &lt; <span class="number">20</span></div><div class="line">Mongo:</div><div class="line">db.user.find(‘this.age &lt; <span class="number">20</span>′, &#123;name : <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure></p>
-<p>发现很多人在搜MongoDB循环插入数据，下面把MongoDB循环插入数据的方法添加在下面：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)db.test.insert(&#123;uid:i,uname:’nosqlfan’+i&#125;);</div></pre></td></tr></table></figure></p>
-<p>上面一次性插入一百条数据，大概结构如下：</p>
-<p>{ “_id” : ObjectId(“4c876e519e86023a30dde6b8″), “uid” : 55, “uname” : “nosqlfan55″ }<br>{ “_id” : ObjectId(“4c876e519e86023a30dde6b9″), “uid” : 56, “uname” : “nosqlfan56″ }</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查&lt;/p&gt;
-&lt;p&gt;下面是我将MySQL和Mongo的一些操作进行了类比&lt;br&gt;&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pr
-    
-    </summary>
-    
-      <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
-    
-      <category term="mysql" scheme="http://zhangzirui.com/tags/mysql/"/>
     
   </entry>
   
