@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>HAPI--A rich framework for building applications and services | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="js,hapi," />
+  
+
+  <meta name="description" content="A rich framework for building applications and services
+hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.
+1$ npm install hapi
+以上是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HAPI--A rich framework for building applications and services">
+<meta property="og:url" content="http://zhangzirui.com/2016/10/27/2016/10/hapi-first/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="A rich framework for building applications and services
+hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.
+1$ npm install hapi
+以上是">
+<meta property="og:updated_time" content="2016-11-06T13:29:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HAPI--A rich framework for building applications and services">
+<meta name="twitter:description" content="A rich framework for building applications and services
+hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.
+1$ npm install hapi
+以上是">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/10/hapi-first" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">HAPI--A rich framework for building applications and services</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.10.27</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>A rich framework for building applications and services</p>
+<p>hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hapi</div></pre></td></tr></table></figure>
+<p>以上是HAPI官网对这一框架的介绍。简单来说就是帮助开发者建造可复用的后端逻辑，为应用提供强大的api。</p>
+<p>安装的方式很简单，同express相似，<strong>npm install hapi</strong> 。这一框架在github上有将近7000的star，同它的老大哥express的2万8千多还是相差甚远，但是框架的意义在于解决实际工作中的重复劳动，简化开发流程，优化开发速度。在构建api方面，hapi还是跟express有一拼的，生态方面也良好，<a href="https://github.com/hapijs" target="_blank" rel="external">https://github.com/hapijs</a> 组织里将近80个的插件。</p>
+<p>文档方面也很友好，<a href="http://hapijs.com/tutorials" target="_blank" rel="external">http://hapijs.com/tutorials</a> 里叙述详细，对nodejs熟悉的后端能很快的上手，有express经验的同学或许会有些疑惑，因为hapi里很多功能的实现与express不同了，但是细读文档，你会发现还是有很多相似的地方。</p>
+<p>举个简单的例子，express里我想给response加一个方法，我只要使用express的实例app的use方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  res.apiSuccess = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    res.json(&#123;</div><div class="line">      status: <span class="string">"OK"</span>,</div><div class="line">      result: data</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  next()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这样一个反应api请求成功的res拓展方法就完成了。而hapi中，你需要在hapi项目里创建的server下（server = new Hapi.Server()），使用它的handler方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> Hapi = <span class="built_in">require</span>(<span class="string">'hapi'</span>);</div><div class="line"><span class="keyword">const</span> server = <span class="keyword">new</span> Hapi.Server();</div><div class="line">server.connection(&#123; host: <span class="string">'localhost'</span>, port: <span class="number">8000</span> &#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> handler = <span class="function"><span class="keyword">function</span> (<span class="params">route, options</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">request, reply</span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> reply(<span class="string">'new handler: '</span> + options.msg);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">server.handler(<span class="string">'test'</span>, handler);</div><div class="line"></div><div class="line">server.route(&#123;</div><div class="line">    method: <span class="string">'GET'</span>,</div><div class="line">    path: <span class="string">'/'</span>,</div><div class="line">    handler: &#123; test: &#123; msg: <span class="string">'test'</span> &#125; &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.start(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在这里我们使用了server.handler注册了一个test放法，在之后的server.route中我们直接使用了test并为其添加了一个键值。之后访问 yourpath/ 你就会看到浏览器上显示<strong>new handler test</strong>。</p>
+<p>之后还会继续研究hapi这个框架，毕竟之后的项目要在这一框架上运行，我也要利用这一框架开发出健壮的后端api，努力！</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+						<a href="/2016/10/25/2016/10/promise-bluebird/"  title="promise--save you from callback">
+							 <strong>第一篇:</strong>点击到下一篇
+						</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/10/25/2016/10/promise-bluebird/"  title="promise--save you from callback">
+					 <strong>下一篇:</strong>
+					 <span>promise--save you from callback
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="HAPI--A rich framework for building applications and services" data-url="http://zhangzirui.com/2016/10/27/2016/10/hapi-first/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

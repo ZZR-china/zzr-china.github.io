@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-11-05T06:40:44.000Z</updated>
+  <updated>2016-11-06T13:29:00.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HAPI--A rich framework for building applications and services</title>
+    <link href="http://zhangzirui.com/2016/10/27/2016/10/hapi-first/"/>
+    <id>http://zhangzirui.com/2016/10/27/2016/10/hapi-first/</id>
+    <published>2016-10-27T07:50:50.000Z</published>
+    <updated>2016-11-06T13:29:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>A rich framework for building applications and services</p>
+<p>hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hapi</div></pre></td></tr></table></figure>
+<p>以上是HAPI官网对这一框架的介绍。简单来说就是帮助开发者建造可复用的后端逻辑，为应用提供强大的api。</p>
+<p>安装的方式很简单，同express相似，<strong>npm install hapi</strong> 。这一框架在github上有将近7000的star，同它的老大哥express的2万8千多还是相差甚远，但是框架的意义在于解决实际工作中的重复劳动，简化开发流程，优化开发速度。在构建api方面，hapi还是跟express有一拼的，生态方面也良好，<a href="https://github.com/hapijs" target="_blank" rel="external">https://github.com/hapijs</a> 组织里将近80个的插件。</p>
+<p>文档方面也很友好，<a href="http://hapijs.com/tutorials" target="_blank" rel="external">http://hapijs.com/tutorials</a> 里叙述详细，对nodejs熟悉的后端能很快的上手，有express经验的同学或许会有些疑惑，因为hapi里很多功能的实现与express不同了，但是细读文档，你会发现还是有很多相似的地方。</p>
+<p>举个简单的例子，express里我想给response加一个方法，我只要使用express的实例app的use方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">  res.apiSuccess = <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    res.json(&#123;</div><div class="line">      status: <span class="string">"OK"</span>,</div><div class="line">      result: data</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">  next()</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>这样一个反应api请求成功的res拓展方法就完成了。而hapi中，你需要在hapi项目里创建的server下（server = new Hapi.Server()），使用它的handler方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> Hapi = <span class="built_in">require</span>(<span class="string">'hapi'</span>);</div><div class="line"><span class="keyword">const</span> server = <span class="keyword">new</span> Hapi.Server();</div><div class="line">server.connection(&#123; host: <span class="string">'localhost'</span>, port: <span class="number">8000</span> &#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> handler = <span class="function"><span class="keyword">function</span> (<span class="params">route, options</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">request, reply</span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> reply(<span class="string">'new handler: '</span> + options.msg);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">server.handler(<span class="string">'test'</span>, handler);</div><div class="line"></div><div class="line">server.route(&#123;</div><div class="line">    method: <span class="string">'GET'</span>,</div><div class="line">    path: <span class="string">'/'</span>,</div><div class="line">    handler: &#123; test: &#123; msg: <span class="string">'test'</span> &#125; &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">server.start(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>在这里我们使用了server.handler注册了一个test放法，在之后的server.route中我们直接使用了test并为其添加了一个键值。之后访问 yourpath/ 你就会看到浏览器上显示<strong>new handler test</strong>。</p>
+<p>之后还会继续研究hapi这个框架，毕竟之后的项目要在这一框架上运行，我也要利用这一框架开发出健壮的后端api，努力！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;A rich framework for building applications and services&lt;/p&gt;
+&lt;p&gt;hapi enables developers to focus on writing reusable application logic ins
+    
+    </summary>
+    
+      <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="js" scheme="http://zhangzirui.com/tags/js/"/>
+    
+      <category term="hapi" scheme="http://zhangzirui.com/tags/hapi/"/>
+    
+  </entry>
   
   <entry>
     <title>promise--save you from callback</title>
@@ -901,40 +938,6 @@
       <category term="css" scheme="http://zhangzirui.com/tags/css/"/>
     
       <category term="flex" scheme="http://zhangzirui.com/tags/flex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用express + jade + mongodb创建网站</title>
-    <link href="http://zhangzirui.com/2016/03/03/2016/03/create-web-express+mongodb+jade/"/>
-    <id>http://zhangzirui.com/2016/03/03/2016/03/create-web-express+mongodb+jade/</id>
-    <published>2016-03-03T14:14:54.000Z</published>
-    <updated>2016-08-31T13:26:38.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Nodejs建站总结（一）"><a href="#Nodejs建站总结（一）" class="headerlink" title="Nodejs建站总结（一）"></a>Nodejs建站总结（一）</h2><p>这个网站使用nodejs完成，前端用jade模板构建，用到了bootstrap框架，其中删除功能使用jQuery完成<br>后端用express+mongo完成。是很简洁小巧的模式。<a href="https://github.com/ZZR-china/Xiew" target="_blank" rel="external">源代码</a>在我的github上。</p>
-<h3 id="使用的工具"><a href="#使用的工具" class="headerlink" title="使用的工具"></a>使用的工具</h3><p>npm、bower、sublime、git和mongoVUE</p>
-<h3 id="涉及到的npm模块"><a href="#涉及到的npm模块" class="headerlink" title="涉及到的npm模块"></a>涉及到的npm模块</h3><p>express:基于Node.js 平台，快速、开放、极简的 web 开发框架<br>jade:<a href="https://segmentfault.com/a/1190000000357534" target="_blank" rel="external">jade</a>是一个高性能的模板引擎，它深受 Haml 影响，它是用 JavaScript 实现的，并且可以供 Node 使用</p>
-<p>path:标准化路径</p>
-<p>body-parser: express的中间件,现在已从express中分离出来，调用时可以使用</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(bodyParser.urlencoded(&#123; extended: true &#125;))</div></pre></td></tr></table></figure>
-<p>mongoose:封装了一些mongoDB底层，便于使用数据库功能</p>
-<p>underscore:underscore下的extend方法可以用另一个对象的新的字段替换老的对象对应的字段</p>
-<p>moment:一款用于js中的时间插件</p>
-<h3 id="学习到的知识点"><a href="#学习到的知识点" class="headerlink" title="学习到的知识点"></a>学习到的知识点</h3><p>知道了怎么配置路由，了解了jade这个逼死强迫症的模板（最讨厌强制缩进语法，所以一直不学Python╮(╯▽╰)╭）。学会了如何在nodejs中使用mongoose调用mongo数据库。一些基本的配置问题也都了解了。学习后才发现以前自己懂得只是前端的皮毛，还要多加努力O(∩_∩)O</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Nodejs建站总结（一）&quot;&gt;&lt;a href=&quot;#Nodejs建站总结（一）&quot; class=&quot;headerlink&quot; title=&quot;Nodejs建站总结（一）&quot;&gt;&lt;/a&gt;Nodejs建站总结（一）&lt;/h2&gt;&lt;p&gt;这个网站使用nodejs完成，前端用jade模板构建
-    
-    </summary>
-    
-      <category term="后端" scheme="http://zhangzirui.com/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-      <category term="mongodb" scheme="http://zhangzirui.com/tags/mongodb/"/>
-    
-      <category term="node" scheme="http://zhangzirui.com/tags/node/"/>
     
   </entry>
   
