@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-11-06T13:29:00.000Z</updated>
+  <updated>2016-11-06T14:09:52.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>HAPI--A rich framework for building applications and services</title>
+    <title>HAPI--build reusable api</title>
     <link href="http://zhangzirui.com/2016/10/27/2016/10/hapi-first/"/>
     <id>http://zhangzirui.com/2016/10/27/2016/10/hapi-first/</id>
-    <published>2016-10-27T07:50:50.000Z</published>
-    <updated>2016-11-06T13:29:00.000Z</updated>
+    <published>2016-10-26T16:00:00.000Z</published>
+    <updated>2016-11-06T14:09:52.000Z</updated>
     
     <content type="html"><![CDATA[<p>A rich framework for building applications and services</p>
 <p>hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.</p>
@@ -56,8 +56,8 @@
     <title>promise--save you from callback</title>
     <link href="http://zhangzirui.com/2016/10/25/2016/10/promise-bluebird/"/>
     <id>http://zhangzirui.com/2016/10/25/2016/10/promise-bluebird/</id>
-    <published>2016-10-25T07:50:50.000Z</published>
-    <updated>2016-11-05T06:40:44.000Z</updated>
+    <published>2016-10-24T16:00:00.000Z</published>
+    <updated>2016-11-06T13:39:26.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近开了新项目，后端使用HAPI，前端是react-native做app，我的任务就是构建后端系统提供api给前端调用。hapi的功能很强大，毕竟是专门提供api的框架，与express各有千秋。</p>
 <p>之前的一个项目以为比较古老，用的都是callback函数，之前我添加新功能的时候，回调写的欲仙欲死。这次决定能用promise的地方统统使用promise。</p>
@@ -95,8 +95,8 @@
     <title>request--Simplified HTTP request client</title>
     <link href="http://zhangzirui.com/2016/10/23/2016/10/request-package/"/>
     <id>http://zhangzirui.com/2016/10/23/2016/10/request-package/</id>
-    <published>2016-10-23T07:50:50.000Z</published>
-    <updated>2016-10-23T13:08:00.000Z</updated>
+    <published>2016-10-22T16:00:00.000Z</published>
+    <updated>2016-11-06T13:39:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>这一星期，因为做的功能需要从前端得到微信的语音mediaid，然后后端下载语音并保存到我们自己的服务器中。步骤略微繁琐，但是微信开发本就是这样，再微信内调用资源一切都好说，一旦超出限制就多了。</p>
 <p>一开始我使用node自带的HTTP模块get微信的资源，但是http不支持https请求，于是选择了request这个很火的npm上的模块。支持https，支持stream。使用起来也很灵活。</p>
@@ -126,8 +126,8 @@
     <title>mongo的备份、导入、导出</title>
     <link href="http://zhangzirui.com/2016/10/20/2016/10/mongo-restore-dump/"/>
     <id>http://zhangzirui.com/2016/10/20/2016/10/mongo-restore-dump/</id>
-    <published>2016-10-20T14:50:50.000Z</published>
-    <updated>2016-10-20T13:11:42.000Z</updated>
+    <published>2016-10-19T16:00:00.000Z</published>
+    <updated>2016-11-06T13:39:36.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天mlab突然抽风，本地的测试项目也没法运行了。没办法，只好用本地的mongo了。mlab上的数据库也可以只有的导入导出，之前导入了项目的数据，现在可以导出，然后导入进本地的数据库中。<br>（PS：本地的mongorestore、mongoimport等操作直接讲cmd指向在mongo/bin中然后输入命令即可，不需要在mongo命令行下运行。）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Binary</div><div class="line"></div><div class="line">Import database</div><div class="line">mongorestore -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; &lt;input db directory&gt;</div><div class="line">Export database</div><div class="line">mongodump -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; -o &lt;output directory&gt;</div><div class="line">Import collection</div><div class="line">mongorestore -h dbhost -d foowala -u &lt;user&gt; -p &lt;password&gt; &lt;input .bson file&gt;</div><div class="line">Export collection</div><div class="line">mongodump -h dbhost -d foowala -c &lt;collection&gt; -u &lt;user&gt; -p &lt;password&gt; -o &lt;output directory&gt;</div></pre></td></tr></table></figure>
@@ -152,8 +152,8 @@
     <title>国庆后的一周</title>
     <link href="http://zhangzirui.com/2016/10/15/2016/10/something%20of%20this%20week10-15/"/>
     <id>http://zhangzirui.com/2016/10/15/2016/10/something of this week10-15/</id>
-    <published>2016-10-15T14:50:50.000Z</published>
-    <updated>2016-10-15T15:13:44.000Z</updated>
+    <published>2016-10-14T16:00:00.000Z</published>
+    <updated>2016-11-06T13:39:18.000Z</updated>
     
     <content type="html"><![CDATA[<p>这周是国庆后的一周，也是连上7天的苦逼的一周，也是我再新公司上班的第一周。</p>
 <p>公司的氛围很好，每个人都做着自己的事情。</p>
@@ -180,8 +180,8 @@
     <title>Mongo中的where方法</title>
     <link href="http://zhangzirui.com/2016/10/10/2016/10/mongowhere/"/>
     <id>http://zhangzirui.com/2016/10/10/2016/10/mongowhere/</id>
-    <published>2016-10-10T14:50:50.000Z</published>
-    <updated>2016-10-10T14:54:56.000Z</updated>
+    <published>2016-10-09T16:00:00.000Z</published>
+    <updated>2016-11-06T13:39:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近在给公司的后台管理系统添加分页和搜索表单的功能，kain要求局部ajax刷新，因为以前用的是meteor这个框架，对ajax只是在自己的项目中简单使用了点，还好jquery中提供了强大的ajax api。</p>
 <p>使用$ajax()即可，请求的方式，传递的值都可以在里面操作。分页完成后，就是搜索，我实现了一个简单的汉字搜索功能，使用mongoose的where api。<br>部分代码如下：</p>
@@ -670,8 +670,8 @@
     <title>使用leancloud搭建自己的webapp(一)</title>
     <link href="http://zhangzirui.com/2016/09/01/2016/09/leancloud(1)/"/>
     <id>http://zhangzirui.com/2016/09/01/2016/09/leancloud(1)/</id>
-    <published>2016-09-01T15:10:50.000Z</published>
-    <updated>2016-09-01T15:37:24.000Z</updated>
+    <published>2016-08-31T16:00:00.000Z</published>
+    <updated>2016-11-06T13:37:20.000Z</updated>
     
     <content type="html"><![CDATA[<p>今天按照<a href="https://leancloud.cn/docs/sdk_setup-js.html" target="_blank" rel="external">leancloud</a>的文档搭建了一个简单的todo应用，主要是体验一下他们的后端API，使用一下基于restful的后端服务。</p>
 <p>todo应用在<a href="http://wind.leanapp.cn/" target="_blank" rel="external">这个二级域名下</a>，leancloud上还有很多有趣的应用，也有些纯粹的展示行网页，<a href="http://love.leanapp.cn/" target="_blank" rel="external">love</a> 就是我无意间找到的一个，我这个单身狗受到了成吨的伤害。</p>
