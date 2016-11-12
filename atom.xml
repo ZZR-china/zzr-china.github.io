@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zhangzirui.com/"/>
-  <updated>2016-11-06T14:09:52.000Z</updated>
+  <updated>2016-11-12T13:58:34.000Z</updated>
   <id>http://zhangzirui.com/</id>
   
   <author>
@@ -16,11 +16,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>error collection</title>
+    <link href="http://zhangzirui.com/2016/10/31/2016/10/error-collection/"/>
+    <id>http://zhangzirui.com/2016/10/31/2016/10/error-collection/</id>
+    <published>2016-10-30T16:00:00.000Z</published>
+    <updated>2016-11-12T13:58:34.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这些天，编码时犯的一些错误合集。</p>
+<p>1.promise.resolve()中是能传入一个参数，如果有多个参数可以合并为数组或者对象；</p>
+<p>2.多个方法调用时要注意变量的名，不要写错了，，，是的，像ticket和tikect之类~_~；</p>
+<p>3.编程时要注重思路方法，而不是追求代码写的漂亮，使用了什么高级的函数、方法，正确合适的思路很重要，有时候很简单的代码能实现很复杂的功能，思路很重要；</p>
+<p>4.要注重创新，写业务代码时要反思有没有更好的的方法实现，这段代码能不能再优化下？不要做没有灵魂的coder，or，don’t be a 码农。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这些天，编码时犯的一些错误合集。&lt;/p&gt;
+&lt;p&gt;1.promise.resolve()中是能传入一个参数，如果有多个参数可以合并为数组或者对象；&lt;/p&gt;
+&lt;p&gt;2.多个方法调用时要注意变量的名，不要写错了，，，是的，像ticket和tikect之类~_~；&lt;/p&gt;
+&lt;p&gt;3
+    
+    </summary>
+    
+      <category term="错误集锦" scheme="http://zhangzirui.com/categories/%E9%94%99%E8%AF%AF%E9%9B%86%E9%94%A6/"/>
+    
+    
+      <category term="js" scheme="http://zhangzirui.com/tags/js/"/>
+    
+      <category term="promise" scheme="http://zhangzirui.com/tags/promise/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HAPI--build reusable api</title>
     <link href="http://zhangzirui.com/2016/10/27/2016/10/hapi-first/"/>
     <id>http://zhangzirui.com/2016/10/27/2016/10/hapi-first/</id>
     <published>2016-10-26T16:00:00.000Z</published>
-    <updated>2016-11-06T14:09:52.000Z</updated>
+    <updated>2016-11-06T14:56:44.000Z</updated>
     
     <content type="html"><![CDATA[<p>A rich framework for building applications and services</p>
 <p>hapi enables developers to focus on writing reusable application logic instead of spending time building infrastructure.</p>
@@ -85,9 +117,9 @@
     
       <category term="js" scheme="http://zhangzirui.com/tags/js/"/>
     
-      <category term="es6" scheme="http://zhangzirui.com/tags/es6/"/>
-    
       <category term="promise" scheme="http://zhangzirui.com/tags/promise/"/>
+    
+      <category term="es6" scheme="http://zhangzirui.com/tags/es6/"/>
     
   </entry>
   
@@ -708,7 +740,7 @@
 <p>直接下载到theme目录下，然后在配置文件中写下<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: fexo</div></pre></td></tr></table></figure></p>
 <p>再次运行Hexo博客<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure></p>
 <p>发现博客已经改天换地一般。<br>然而看了一会却发现，文章内部没有加上分页，于是决定自己写一个。<br>在theme的layout文件夹的_partial/component内创建pagination.ejs,</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (page.prev || page.next)&#123; %&gt;</div><div class="line"></div><div class="line">	<span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post__pagination"</span>&gt;</span></span></div><div class="line">		<span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"post__nav"</span>&gt;</span></div><div class="line">			 <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post__prev tl"</span>&gt;</span></div><div class="line">				 <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">page.prev</span>)&#123; %&gt;</span></div><div class="line">				 <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%- config.root %&gt;&lt;%- page.prev.path %&gt;"</span> <span class="attr">title</span>=<span class="string">"&lt;%= page.prev.title %&gt;"</span>&gt;</span></div><div class="line">				  <span class="tag">&lt;<span class="name">strong</span>&gt;</span>上一篇:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></div><div class="line">				  <span class="tag">&lt;<span class="name">span</span>&gt;</span></div><div class="line">				  <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">page.prev.title</span>)&#123; %&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">page.prev.title</span> %&gt;</span><span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span>(no title)<span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123;%&gt;</span></div><div class="line">						<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%- config.root %&gt;&lt;%- page.next.path %&gt;"</span>  <span class="attr">title</span>=<span class="string">"&lt;%= page.next.title %&gt;"</span>&gt;</span></div><div class="line">							 <span class="tag">&lt;<span class="name">strong</span>&gt;</span>第一篇:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>点击到下一篇</div><div class="line">						<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">%&#125;%</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post__home tc"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/archives"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">strong</span>&gt;</span>目录<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></div><div class="line">				<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"pot__next tl"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">page.next</span>)&#123; %&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%- config.root %&gt;&lt;%- page.next.path %&gt;"</span>  <span class="attr">title</span>=<span class="string">"&lt;%= page.next.title %&gt;"</span>&gt;</span></div><div class="line">					 <span class="tag">&lt;<span class="name">strong</span>&gt;</span>下一篇:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></div><div class="line">					 <span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span> (<span class="attr">page.next.title</span>)&#123; %&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">page.next.title</span> %&gt;</span><span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span>(no title)<span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">					<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">%&#125;</span> <span class="attr">else</span> &#123;%&gt;</span></div><div class="line">					<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/archives"</span>&gt;</span></div><div class="line">						 <span class="tag">&lt;<span class="name">strong</span>&gt;</span>最后一篇:<span class="tag">&lt;/<span class="name">strong</span>&gt;</span>点击返回目录</div><div class="line">						</div><div class="line">					<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">%</span> &#125;%&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;% <span class="keyword">if</span> (page.prev || page.next)&#123; %&gt;</div><div class="line"></div><div class="line">	&lt;div class="post__pagination"&gt;</div><div class="line">		&lt;nav class="post__nav"&gt;</div><div class="line">			 &lt;div class="post__prev tl"&gt;</div><div class="line">				 &lt;% if (page.prev)&#123; %&gt;</div><div class="line">				 &lt;a href="&lt;%- config.root %&gt;&lt;%- page.prev.path %&gt;" title="&lt;%= page.prev.title %&gt;"&gt;</div><div class="line">				  &lt;strong&gt;上一篇:&lt;/strong&gt;</div><div class="line">				  &lt;span&gt;</div><div class="line">				  &lt;% if (page.prev.title)&#123; %&gt;&lt;%= page.prev.title %&gt;&lt;% &#125; else &#123; %&gt;(no title)&lt;% &#125; %&gt;&lt;/span&gt;</div><div class="line">				&lt;/a&gt;</div><div class="line">				&lt;% &#125; else &#123;%&gt;</div><div class="line">						&lt;a href="&lt;%- config.root %&gt;&lt;%- page.next.path %&gt;"  title="&lt;%= page.next.title %&gt;"&gt;</div><div class="line">							 &lt;strong&gt;第一篇:&lt;/strong&gt;点击到下一篇</div><div class="line">						&lt;/a&gt;</div><div class="line">				&lt;%&#125;%&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line"></div><div class="line">			&lt;div class="post__home tc"&gt;</div><div class="line">				&lt;a href="/archives"&gt;</div><div class="line">				&lt;strong&gt;目录&lt;/strong&gt;</div><div class="line">				&lt;/a&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line"></div><div class="line">			&lt;div class="pot__next tl"&gt;</div><div class="line">				&lt;% if (page.next)&#123; %&gt;</div><div class="line">					&lt;a href="&lt;%- config.root %&gt;&lt;%- page.next.path %&gt;"  title="&lt;%= page.next.title %&gt;"&gt;</div><div class="line">					 &lt;strong&gt;下一篇:&lt;/strong&gt;</div><div class="line">					 &lt;span&gt;&lt;% if (page.next.title)&#123; %&gt;&lt;%= page.next.title %&gt;&lt;% &#125; else &#123; %&gt;(no title)&lt;% &#125; %&gt;</div><div class="line">					&lt;/span&gt;</div><div class="line">					&lt;/a&gt;</div><div class="line">				&lt;%&#125; else &#123;%&gt;</div><div class="line">					&lt;a href="/archives"&gt;</div><div class="line">						 &lt;strong&gt;最后一篇:&lt;/strong&gt;点击返回目录</div><div class="line">						</div><div class="line">					&lt;/a&gt;</div><div class="line">				&lt;% &#125;%&gt;</div><div class="line">			&lt;/div&gt;</div><div class="line">		&lt;/nav&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
 <p>之后在post.ejs中加上</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- partial(<span class="string">'_partial/component/paginationPost'</span>) %&gt;</div></pre></td></tr></table></figure>
 <p>即可。</p>
@@ -821,123 +853,6 @@
       <category term="css" scheme="http://zhangzirui.com/tags/css/"/>
     
       <category term="三栏布局" scheme="http://zhangzirui.com/tags/%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FlexBox布局学习总结</title>
-    <link href="http://zhangzirui.com/2016/03/14/2016/03/css-flex-step1-task10/"/>
-    <id>http://zhangzirui.com/2016/03/14/2016/03/css-flex-step1-task10/</id>
-    <published>2016-03-13T16:00:00.000Z</published>
-    <updated>2016-08-31T13:28:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="FlexBox布局"><a href="#FlexBox布局" class="headerlink" title="FlexBox布局"></a>FlexBox布局</h2><p>最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。</p>
-<p> flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模型，依赖display+position+float属性，这种布局使得一些特殊布局十分不便，如垂直居中。</p>
-<h3 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h3><p>  它是W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。<br>  任何容器都可以设置为flex布局。在属性中设置</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line"> display: flex</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
-<p>即可。</p>
-<p>这样我们就将box设置为一个Flex容器(flex container)，它其中所有子元素都自动成为了容器成员，称为(flex item)。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex.png" alt=""></p>
-<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
-<h3 id="二、容器属性"><a href="#二、容器属性" class="headerlink" title="二、容器属性"></a>二、容器属性</h3><p>   容器的六种属性：</p>
-<ul>
-<li>flex-direction</li>
-<li>flex-wrap</li>
-<li>justify-content</li>
-<li>align-items</li>
-<li>align-content</li>
-<li>flex-flow</li>
-</ul>
-<p><strong>2.1 flex-direction</strong><br>这一属性定义主轴的方向，我们有四个值可以定义</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">   flex-direction:row | row-reverse | column | column-reverse |</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>它可能有4个值。</p>
-<ul>
-<li>row（默认值）：主轴为水平方向，起点在左端。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row.jpg" alt=""></li>
-<li>row-reverse：主轴为水平方向，起点在右端。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row-reverse.jpg" alt=""></li>
-<li>column：主轴为垂直方向，起点在上沿。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column.jpg" alt=""></li>
-<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
-</ul>
-<p><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column-reverse.jpg" alt=""></p>
-<p><strong>2.2 flex-wrap </strong></p>
-<p>这个主要用来定义伸缩容器里是单行还是多行显示，侧轴的方向决定了新行堆放的方向。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>有三个值</p>
-<ul>
-<li>nowrap：默认，不换行<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-nowrap.jpg" alt="nowrap"></li>
-<li>wrap：换行，第一行在上方<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-wrap.jpg" alt="wrap"></li>
-<li>wrap-reverse：换行，第一行在下方<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-wrap-reverse.jpg" alt="wrap-reverse"></li>
-</ul>
-<p><strong>2.3 justify-content</strong></p>
-<ul>
-<li>flex-start(默认值)：伸缩项目向一行的起始位置靠齐。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-flex-start.jpg" alt="flex-start"></li>
-<li>flex-end：伸缩项目向一行的结束位置靠齐。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-flex-end.jpg" alt="enter image description here"></li>
-<li>center：伸缩项目向一行的中间位置靠齐。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-center.jpg" alt="enter image description here"></li>
-<li>space-between：伸缩项目会平均地分布在行里。第一个伸缩项目一行中的最开始位置，最后一个伸缩项目在一行中最终点位置。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-bwtween.jpg" alt="enter image description here"></li>
-<li>space-around：伸缩项目会平均地分布在行里，两端保留一半的空间。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-around.jpg" alt="enter image description here"></li>
-</ul>
-<p><strong>2.4  align-items </strong><br>定义项目在交叉轴上如何对齐</p>
-<p>它可能取5个值</p>
-<ul>
-<li>flex-start：交叉轴的起点对齐。</li>
-<li>flex-end：交叉轴的终点对齐。</li>
-<li>center：交叉轴的中点对齐。</li>
-<li>baseline: 项目的第一行文字的基线对齐。</li>
-<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
-</ul>
-<p><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-items.jpg" alt="enter image description here"></p>
-<p><strong>2.5 align-content </strong></p>
-<p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
-<p>该属性可能取6个值。</p>
-<ul>
-<li>flex-start：与交叉轴的起点对齐。</li>
-<li>flex-end：与交叉轴的终点对齐。</li>
-<li>center：与交叉轴的中点对齐。</li>
-<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
-<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的   间隔大一倍。</li>
-<li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-content.jpg" alt="enter image description here"></li>
-</ul>
-<p><strong>2.6 flex-flow </strong></p>
-<p>是flex-deriection和flex-wrap的合并用法，默认值为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex-flow: row nowrap;</div></pre></td></tr></table></figure></p>
-<h3 id="三、-项目属性"><a href="#三、-项目属性" class="headerlink" title="三、 项目属性"></a>三、 项目属性</h3><p>一下属性用在项目上</p>
-<ul>
-<li>order:</li>
-</ul>
-<p>默认情况下，伸缩项目是按照文档流出现先后顺序排列。然而，“order”属性可以控制伸缩项目在他们的伸缩容器出现的顺序。<br>  order: -1;<br>  数值越小顺序越靠前</p>
-<ul>
-<li>flex-grow：</li>
-</ul>
-<p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
-<ul>
-<li>flex-shrink:</li>
-</ul>
-<p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  flex-shrink: &lt;number&gt;; /* default <span class="number">1</span> */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>flex-basis:</li>
-</ul>
-<p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
-<ul>
-<li>flex:</li>
-</ul>
-<p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br>..item {<br>  flex: none | [ &lt;’flex-grow’&gt; &lt;’flex-shrink’&gt;? || &lt;’flex-basis’&gt; ]<br>}</p>
-<ul>
-<li>align-self:</li>
-</ul>
-<p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://npm-team.github.io/step1/task0010/task0010.html" target="_blank" rel="external">Demo地址</a>  <a href="https://github.com/npm-team/step1/tree/gh-pages/task0010" target="_blank" rel="external">源代码地址</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;FlexBox布局&quot;&gt;&lt;a href=&quot;#FlexBox布局&quot; class=&quot;headerlink&quot; title=&quot;FlexBox布局&quot;&gt;&lt;/a&gt;FlexBox布局&lt;/h2&gt;&lt;p&gt;最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不
-    
-    </summary>
-    
-      <category term="前端" scheme="http://zhangzirui.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="css" scheme="http://zhangzirui.com/tags/css/"/>
-    
-      <category term="flex" scheme="http://zhangzirui.com/tags/flex/"/>
     
   </entry>
   
