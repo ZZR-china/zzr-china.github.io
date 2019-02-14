@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>express开发（一）简介与搭建 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="node,express," />
+  
+
+  <meta name="description" content="上周末去了趟上海书城，不愧是上海数得上号的书城，流行的科技书应有尽有，话不多说直接上图。
+最经典的C语言O(∩_∩)O最流行的java(づ￣ 3￣)づ超酷的R语言/(ㄒoㄒ)/~~然而，身为一个坚定的前端JSer，我还是选择了Node与javascript上图！Node赛高！Express赛高！下面让题主来以一个长者的身份讲讲对express的简单理解，看完后你们还会知道怎样搭建一个属于自己的简单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express开发（一）简介与搭建">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/08/2016/09/express(1)/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="上周末去了趟上海书城，不愧是上海数得上号的书城，流行的科技书应有尽有，话不多说直接上图。
+最经典的C语言O(∩_∩)O最流行的java(づ￣ 3￣)づ超酷的R语言/(ㄒoㄒ)/~~然而，身为一个坚定的前端JSer，我还是选择了Node与javascript上图！Node赛高！Express赛高！下面让题主来以一个长者的身份讲讲对express的简单理解，看完后你们还会知道怎样搭建一个属于自己的简单">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%281%29.jpg">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%282%29.jpg">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%283%29.jpg">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%284%29.jpg">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%285%29.jpg">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%286%29.jpg">
+<meta property="og:updated_time" content="2016-09-08T13:17:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="express开发（一）简介与搭建">
+<meta name="twitter:description" content="上周末去了趟上海书城，不愧是上海数得上号的书城，流行的科技书应有尽有，话不多说直接上图。
+最经典的C语言O(∩_∩)O最流行的java(づ￣ 3￣)づ超酷的R语言/(ㄒoㄒ)/~~然而，身为一个坚定的前端JSer，我还是选择了Node与javascript上图！Node赛高！Express赛高！下面让题主来以一个长者的身份讲讲对express的简单理解，看完后你们还会知道怎样搭建一个属于自己的简单">
+<meta name="twitter:image" content="http://ocr3oyxoh.bkt.clouddn.com/98%20%281%29.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Express简介"><span class="toc-text">Express简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建一个简单的项目"><span class="toc-text">搭建一个简单的项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分离路由"><span class="toc-text">分离路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/09/express(1)" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">express开发（一）简介与搭建</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>上周末去了趟上海书城，不愧是上海数得上号的书城，流行的科技书应有尽有，话不多说直接上图。</p>
+<p>最经典的C语言O(∩_∩)O<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%281%29.jpg" alt="enter image description here"><br>最流行的java(づ￣ 3￣)づ<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%282%29.jpg" alt="enter image description here"><br>超酷的R语言/(ㄒoㄒ)/~~<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%283%29.jpg" alt="enter image description here"><br>然而，身为一个坚定的前端JSer，我还是选择了Node与javascript<br>上图！<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%284%29.jpg" alt="enter image description here"><br>Node赛高！Express赛高！<br>下面让题主来以一个长者的身份讲讲对express的简单理解，看完后你们还会知道怎样搭建一个属于自己的简单的express服务端。（此中有膜意，欲辩已忘言。）</p>
+<h2 id="Express简介"><a href="#Express简介" class="headerlink" title="Express简介"></a>Express简介</h2><p>Express网站(<a href="http://expressjs.com/)上是这样介绍Express的:&quot;Fast" target="_blank" rel="external">http://expressjs.com/)上是这样介绍Express的:&quot;Fast</a>, unopinionated, minimalist web framework for Node.js”。翻译过来就是：“精简的、灵活的Node.js Web程序框架，为构建单页、多页及混合的Web程序提供了一系列健壮的功能特性。”（没错，翻译过来就是这么长）<br>Express的缔造者TJ·Holowaychuk说Express是在Sinatra的启发下创建的，后者是一个基于Ruby的框架。Express借鉴一个Ruby上的框架并不奇怪：Ruby致力于让Web开发变得更快、更高效、更可维护，并衍生了大量的Web开发方式。<br>Express还与Node的一个插件–connect有紧密的联系，然而在Express4.0中，connect插件被去掉了，只剩下了static中间件。</p>
+<h3 id="搭建一个简单的项目"><a href="#搭建一个简单的项目" class="headerlink" title="搭建一个简单的项目"></a>搭建一个简单的项目</h3><p>下面我们要建一个简单的基于express4.0的小项目，会实现一些基础的功能：<br>定制404、500页面<br>使用express中的res.send、res.set、res.status替换Node中自带的res.end、res.writeHead<br>了解express中的路由<br>首先用npm安装express，在你的文件夹下，如test中运行<br>npm init<br>初始化之后，运行<br>npm install -S express<br>这样npm会将express下载道node_modules中，并更新你的package.json文件，将express写入你的依赖中。<br>接下来创建一个mydemo.js文件，作为我们项目的入口。<br>(Node与Express开发的作者Ethan Brown任务，项目的入口文件命名不应该是千篇一律的index.js或者app.js，应该基于你的项目名来命名。npm init默认的使用index.js，如果你使用了别的文件来做主文件，记得修改package.json中的main属性。)<br>在其中输入如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line">app.set(<span class="string">'port'</span>, process.env.PORT || <span class="number">3000</span>);</div><div class="line"><span class="comment">//定制404页面</span></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'404'</span>);</div><div class="line">res.send(<span class="string">'404 - Not Found'</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.err(err.stack);</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'500'</span>);</div><div class="line">res.send(<span class="string">'500 - Server Error'</span>);</div><div class="line">&#125;);</div><div class="line">app.listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Express is started on http://localhost:'</span> + app.get(<span class="string">'port'</span>) + <span class="string">';press Ctrl + C to terminate.'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>然后在命令行输入<br>node mydemo.js<br>访问<a href="http://localhost:3000/你会看到它返回了一个404页面，因为你还没设置“/”路径。" target="_blank" rel="external">http://localhost:3000/你会看到它返回了一个404页面，因为你还没设置“/”路径。</a><br>现在我们的项目结构如下。<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%285%29.jpg" alt="enter image description here"></p>
+<p>现在，我们给首页和关于页面加上路由。在404处理器之前加上两个新路由。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.send(<span class="string">'mydemo home page'</span>);</div><div class="line">&#125;);</div><div class="line">app.get(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.send(<span class="string">'about page'</span>);</div><div class="line">&#125;)</div><div class="line"><span class="comment">//定制404页面</span></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'404'</span>);</div><div class="line">res.send(<span class="string">'404 - Not Found'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Express官方文档中有这样一个命令——app.VERB。这里的app.VERB并不是一个具体的方法，而是自带HTTP的动词（最常见的是get和post）。这种方法有两个参数：一个路径和一个函数。<br>之后再次运行程序，就可以看到我们的首页和about页面了。</p>
+<h3 id="分离路由"><a href="#分离路由" class="headerlink" title="分离路由"></a>分离路由</h3><p>现在我们对程序做一些小小的改动，是的路由跟项目入口文件分离开来，这在大型项目中是必要的过程，因为路由一旦过多再跟启动文件混合在一起就不易维护，所以要将他们分离开来。<br>创建一个新的文件夹routes，在其中创建文件main.js<br>输入如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> router = <span class="built_in">require</span>(<span class="string">'express'</span>).Router();</div><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.send(<span class="string">'mydemo home page'</span>);</div><div class="line">&#125;);</div><div class="line">router.get(<span class="string">'/about'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.send(<span class="string">'about page'</span>);</div><div class="line">&#125;)</div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure></p>
+<p>这里使用了express的router方法，是express推荐的router中间件，使用也很简单，跟之前用app实例直接操作路由没太大的区别。之后我们将mydemo.js修改如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="keyword">var</span> main = <span class="built_in">require</span>(<span class="string">'./routes/main'</span>);</div><div class="line">app.set(<span class="string">'port'</span>, process.env.PORT || <span class="number">3000</span>);</div><div class="line">app.use(<span class="string">'/'</span>, main);</div><div class="line"><span class="comment">//定制404页面</span></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'404'</span>);</div><div class="line">res.send(<span class="string">'404 - Not Found'</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.err(err.stack);</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'500'</span>);</div><div class="line">res.send(<span class="string">'500 - Server Error'</span>);</div><div class="line">&#125;);</div><div class="line">app.listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Express is started on http://localhost:'</span> + app.get(<span class="string">'port'</span>) + <span class="string">';press Ctrl + C to terminate.'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>我们用var main = require(‘./routes/main’);引入创建的route文件，再用app.use(‘/‘,main)使用。运行后会发现，效果跟之前是一样的。当然你也可以设置app.use(‘/tset’, main)。这样你要访问localhost:3000/test和localhost:3000/test/about才能看到你设置的两个路由。<br>现在我们的项目结构如下：<br><img src="http://ocr3oyxoh.bkt.clouddn.com/98%20%286%29.jpg" alt="enter image description here"></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>我们用express搭建了一个简单的项目，使用了router中间件，app.get，app.set方法。<br>之后我们会讲exprss中的视图和布局，并使用handlebars来作为我们的前端模板。<br>大家可以访问我的github。<br><a href="https://github.com/ZZR-china/node_express" target="_blank" rel="external">https://github.com/ZZR-china/node_express</a><br>做了些微小的工作，谢谢大家。</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/09/09/2016/09/express(2)/" title="express开发（二）引入handlebars">
+				  <strong>上一篇:</strong>
+				  <span>
+				  express开发（二）引入handlebars</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/09/02/2016/09/studyvue1/"  title="学习Vue(一)">
+					 <strong>下一篇:</strong>
+					 <span>学习Vue(一)
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="express开发（一）简介与搭建" data-url="http://zhangzirui.com/2016/09/08/2016/09/express(1)/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

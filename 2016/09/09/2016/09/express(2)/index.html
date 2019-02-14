@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>express开发（二）引入handlebars | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="node,express," />
+  
+
+  <meta name="description" content="下面我们将在项目中引入handlebars，一种抽象程度较低的模板框架。Handlebars不会视图对HTML进行抽象：你编写的是带特殊标签的HTML，Handlebars可以借此插入内容。相比于jade（现在已经改名为pug），虽然jade足够简洁，语法精简，但是对HTML进行了相当程度的抽象，必须对HTML有很深的理解才能良好的驾驭，而且我也不喜欢HTML被抽象化处理。所以，让我们愉快的用ha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="express开发（二）引入handlebars">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/09/2016/09/express(2)/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="下面我们将在项目中引入handlebars，一种抽象程度较低的模板框架。Handlebars不会视图对HTML进行抽象：你编写的是带特殊标签的HTML，Handlebars可以借此插入内容。相比于jade（现在已经改名为pug），虽然jade足够简洁，语法精简，但是对HTML进行了相当程度的抽象，必须对HTML有很深的理解才能良好的驾驭，而且我也不喜欢HTML被抽象化处理。所以，让我们愉快的用ha">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/dd60006ff928cea7f49.jpg">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/dd6000709daa4d60e52.jpg">
+<meta property="og:updated_time" content="2016-09-09T15:49:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="express开发（二）引入handlebars">
+<meta name="twitter:description" content="下面我们将在项目中引入handlebars，一种抽象程度较低的模板框架。Handlebars不会视图对HTML进行抽象：你编写的是带特殊标签的HTML，Handlebars可以借此插入内容。相比于jade（现在已经改名为pug），虽然jade足够简洁，语法精简，但是对HTML进行了相当程度的抽象，必须对HTML有很深的理解才能良好的驾驭，而且我也不喜欢HTML被抽象化处理。所以，让我们愉快的用ha">
+<meta name="twitter:image" content="http://ocr3oyxoh.bkt.clouddn.com/dd60006ff928cea7f49.jpg">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/09/express(2)" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">express开发（二）引入handlebars</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.09</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>下面我们将在项目中引入handlebars，一种抽象程度较低的模板框架。Handlebars不会视图对HTML进行抽象：你编写的是带特殊标签的HTML，Handlebars可以借此插入内容。相比于jade（现在已经改名为pug），虽然jade足够简洁，语法精简，但是对HTML进行了相当程度的抽象，必须对HTML有很深的理解才能良好的驾驭，而且我也不喜欢HTML被抽象化处理。所以，让我们愉快的用handlebars吧。</p>
+<p>在express使用handlebars推荐使用express-handlebars，直接运行命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -S express-handlebars</div></pre></td></tr></table></figure></p>
+<p>之后在我们的demo.js（也就是上一章中的mydemo.js，我将他改名为demo.js方便些，通常意义下的app.js）中,引入如下代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> exphbs = <span class="built_in">require</span>(<span class="string">'express-handlebars'</span>);</div><div class="line"><span class="keyword">var</span> hbs = exphbs.create(&#123;</div><div class="line">layoutsDir: path.join(__dirname, <span class="string">'views/layouts/'</span>),</div><div class="line">defaultLayout: <span class="string">'layout'</span>,</div><div class="line">extname: <span class="string">'.hbs'</span>,</div><div class="line">partialsDir: path.join(__dirname, <span class="string">"views/partials/"</span>),</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Register `hbs.engine` with the Express app.</span></div><div class="line">app.engine(<span class="string">'hbs'</span>, hbs.engine);</div><div class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'hbs'</span>);</div></pre></td></tr></table></figure></p>
+<p>写好后我们在views中创建几个文档，如下<br><img src="http://ocr3oyxoh.bkt.clouddn.com/dd60006ff928cea7f49.jpg" alt=""><br>这里我们使用实例方法引入handlebars，与直接使用exhbs引入是一样的效果。layoutDir是存放模板的目录；extname是我们设置的文件后缀，注意如果要设置后缀为html,那么app.engine(‘hbs’,hbs.engine)要改为app.engine(‘html’,hbs.engine),同理app.set中也要做相应修改。defaultLayout是默认的模板名，这里我设置的是layout；partials是局部模块，可以使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&gt;header&#125;&#125;</div></pre></td></tr></table></figure>
+<p>语法引入到模板layout中和页面里。</p>
+<p>关于express-handlebars的更多介绍可以到项目主页中看</p>
+<p><a href="https://github.com/ericf/express-handlebars" target="_blank" rel="external">https://github.com/ericf/express-handlebars</a><br>完整的demo.js代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">var</span> app = express();</div><div class="line"><span class="keyword">var</span> mainRoute = <span class="built_in">require</span>(<span class="string">'./routes/main'</span>);</div><div class="line"><span class="keyword">var</span> exphbs = <span class="built_in">require</span>(<span class="string">'express-handlebars'</span>);</div><div class="line"><span class="keyword">var</span> hbs = exphbs.create(&#123;</div><div class="line">layoutsDir: path.join(__dirname, <span class="string">'views/layouts/'</span>),</div><div class="line">defaultLayout: <span class="string">'layout'</span>,</div><div class="line">extname: <span class="string">'.hbs'</span>,</div><div class="line">partialsDir: path.join(__dirname, <span class="string">"views/partials/"</span>),</div><div class="line">&#125;);</div><div class="line"><span class="comment">// Register `hbs.engine` with the Express app.</span></div><div class="line">app.engine(<span class="string">'hbs'</span>, hbs.engine);</div><div class="line">app.set(<span class="string">'view engine'</span>, <span class="string">'hbs'</span>);</div><div class="line">app.use(<span class="string">'/'</span>, mainRoute);</div><div class="line"><span class="comment">//定制404页面</span></div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'404'</span>);</div><div class="line">res.send(<span class="string">'404 - Not Found'</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.err(err.stack);</div><div class="line">res.type(<span class="string">'text/plain'</span>);</div><div class="line">res.status(<span class="string">'500'</span>);</div><div class="line">res.send(<span class="string">'500 - Server Error'</span>);</div><div class="line">&#125;);</div><div class="line">app.set(<span class="string">'port'</span>, process.env.PORT || <span class="number">3000</span>);</div><div class="line">app.listen(app.get(<span class="string">'port'</span>), <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Express is started on http://localhost:'</span> + app.get(<span class="string">'port'</span>) + <span class="string">';press Ctrl + C to terminate.'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>（PS:我们引入了node中path模块来管理我们的路径，关于path大家可以看这篇文章：<a href="http://www.jianshu.com/p/fe41ee02efc8）" target="_blank" rel="external">http://www.jianshu.com/p/fe41ee02efc8）</a></p>
+<p>这样就将handlebars引入了我们的项目。</p>
+<p>简单的创几个hbs文件来运行验证我们做的对不对。在lauout.hbs中输入</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/stylesheets/main.min.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"/stylesheets/font-awesome.min.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/javascripts/require.js"</span> <span class="attr">defer</span> <span class="attr">async</span>=<span class="string">"true"</span> <span class="attr">data-main</span>=<span class="string">"/javascripts/main"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">&#123;&#123;&gt; header&#125;&#125;</div><div class="line"><span class="tag">&lt;<span class="name">main</span>&gt;</span></div><div class="line">&#123;&#123;&gt; pages/title&#125;&#125;</div><div class="line">&#123;&#123;&#123;body&#125;&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">&#123;&#123;&gt; footer&#125;&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;&#123;body&#125;&#125;&#125;</div></pre></td></tr></table></figure>
+<p>就是路由中渲染的hbs，其他部分都是固定的模板，这里是可变的，可以是home.hbs，error.hbs。在路由中设置即可，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">res.render(<span class="string">'home'</span>, &#123;&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>我们就这设置了，’/‘这个路由渲染的是home.hbs但是用的模板是layout.hbs这个模板。</p>
+<p>partials中的几个文件分别输入</p>
+<p>footer.hbs中输入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span></div><div class="line">this is footer</div><div class="line"><span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>header.hbs中<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span>this is header<span class="tag">&lt;/<span class="name">header</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>pages中title输入<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>thi is title<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>之后在home.hbs中输入：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>thi is home<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>之后设置路由：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">router.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res, next</span>)</span>&#123;</div><div class="line">res.render(<span class="string">'home'</span>, &#123;&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>运行node demo.js或者npm start</p>
+<p>(PS:我在package.json中设置了”start”:”supervisor demo.js”,supervisor是一个node的进程守护模块，我们可以用npm install -g supervisor来全局安装他，当然也可以只在本项目中引入，也可以使用别的进程守护模块想forever等，这里我们使用supervisor。)</p>
+<p>就可以看到localhost:3000中显示了<br><img src="http://ocr3oyxoh.bkt.clouddn.com/dd6000709daa4d60e52.jpg" alt=""><br>到这里我们已经在项目里引入了handlebars，但是还有好多handlebars的特性没介绍（helper等），如果大家想深入了解handlebars，推荐去官网上访问。</p>
+<p>（我的项目上传到github上，并且打了标签，课程一就是class01，二几十class02，欢迎访问<br><a href="https://github.com/ZZR-china/node_express" target="_blank" rel="external">https://github.com/ZZR-china/node_express</a><br>）</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/09/19/2016/09/applebannerdemo/" title="苹果首页轮播案例实现">
+				  <strong>上一篇:</strong>
+				  <span>
+				  苹果首页轮播案例实现</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/09/08/2016/09/express(1)/"  title="express开发（一）简介与搭建">
+					 <strong>下一篇:</strong>
+					 <span>express开发（一）简介与搭建
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="express开发（二）引入handlebars" data-url="http://zhangzirui.com/2016/09/09/2016/09/express(2)/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

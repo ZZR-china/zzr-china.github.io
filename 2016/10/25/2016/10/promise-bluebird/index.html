@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>promise--save you from callback | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="js,promise,es6," />
+  
+
+  <meta name="description" content="最近开了新项目，后端使用HAPI，前端是react-native做app，我的任务就是构建后端系统提供api给前端调用。hapi的功能很强大，毕竟是专门提供api的框架，与express各有千秋。
+之前的一个项目以为比较古老，用的都是callback函数，之前我添加新功能的时候，回调写的欲仙欲死。这次决定能用promise的地方统统使用promise。
+首先我考虑了bluebird这个包，在git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="promise--save you from callback">
+<meta property="og:url" content="http://zhangzirui.com/2016/10/25/2016/10/promise-bluebird/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="最近开了新项目，后端使用HAPI，前端是react-native做app，我的任务就是构建后端系统提供api给前端调用。hapi的功能很强大，毕竟是专门提供api的框架，与express各有千秋。
+之前的一个项目以为比较古老，用的都是callback函数，之前我添加新功能的时候，回调写的欲仙欲死。这次决定能用promise的地方统统使用promise。
+首先我考虑了bluebird这个包，在git">
+<meta property="og:updated_time" content="2016-11-06T13:39:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="promise--save you from callback">
+<meta name="twitter:description" content="最近开了新项目，后端使用HAPI，前端是react-native做app，我的任务就是构建后端系统提供api给前端调用。hapi的功能很强大，毕竟是专门提供api的框架，与express各有千秋。
+之前的一个项目以为比较古老，用的都是callback函数，之前我添加新功能的时候，回调写的欲仙欲死。这次决定能用promise的地方统统使用promise。
+首先我考虑了bluebird这个包，在git">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/10/promise-bluebird" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">promise--save you from callback</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.10.25</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>最近开了新项目，后端使用HAPI，前端是react-native做app，我的任务就是构建后端系统提供api给前端调用。hapi的功能很强大，毕竟是专门提供api的框架，与express各有千秋。</p>
+<p>之前的一个项目以为比较古老，用的都是callback函数，之前我添加新功能的时候，回调写的欲仙欲死。这次决定能用promise的地方统统使用promise。</p>
+<p>首先我考虑了bluebird这个包，在github上人气也很高，封装了各种promise的功能。去官网看了一下简单的介绍，使用很简单。bluebird还提供了promisifyAll这个方法将非promise的方法转换成支持promise的方法。我在一个路由函数中使用了下，部分代码简单写一下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>),</div><div class="line">      _label  = <span class="built_in">Promise</span>.promisifyAll(<span class="built_in">require</span>(<span class="string">'../service/label.service'</span>))</div><div class="line"></div><div class="line"><span class="keyword">const</span> insertlabel = (req, reply) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> msg = <span class="keyword">new</span> message(),</div><div class="line">          label = req.payload.label,</div><div class="line">          store_id = req.payload.store_id;</div><div class="line">    _label.insert(label, store_id)</div><div class="line">          .then(()=&gt;&#123;</div><div class="line">            reply(msg.success(<span class="string">'success'</span>));</div><div class="line">          &#125;)</div><div class="line">          .catch((err)=&gt;&#123;</div><div class="line">            <span class="built_in">console</span>.error(err);</div><div class="line">          &#125;)</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>insert是label.service.js中的方法，但是并不是promise方法，函数返回的其实是一个callback。promisifyAll将promise化了。</p>
+<p>之后我有尝试了原生的promise，即直接将insert这个方法使用promise改写。改写前的insert方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">insert (label, store_id, callback) &#123;</div><div class="line">      <span class="keyword">const</span> model = <span class="keyword">new</span> label_mongo(&#123;</div><div class="line">           store_id: objectid(store_id),</div><div class="line">            label: label</div><div class="line">       &#125;);</div><div class="line">       model.save((err) =&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">              <span class="built_in">console</span>.log(<span class="string">'ERROR: insert new data fail'</span>)</div><div class="line">              <span class="keyword">return</span> callback(<span class="literal">false</span>)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">return</span> callback(<span class="literal">true</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">    &#125;,</div></pre></td></tr></table></figure>
+<p>改写后</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">insert (label, store_id) &#123;</div><div class="line">    <span class="keyword">const</span> model = <span class="keyword">new</span> label_mongo(&#123;</div><div class="line">        store_id: objectid(store_id),</div><div class="line">        label: label</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>((resolve, reject)=&gt;&#123;</div><div class="line">      model.save((err) =&gt; &#123;</div><div class="line">          <span class="keyword">if</span> (err) &#123;</div><div class="line">              reject(<span class="string">'ERROR: insert new data fail'</span>)</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">              resolve();</div><div class="line">          &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样同样可以在路由函数中使用promise方法调用then()等api。再也不用担心陷入回调地狱中。</p>
+<p>实际使用中建议还是使用bluebird、q这样的promise包，毕竟人家已经帮你把一些坑都填好了，直接用就是，当然，如果你开发周期不紧，有时间开发这样的功能插件的化，开发一个属于自己的promise包还是很有好处的。^o^</p>
+<p>谢谢观看。</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/10/27/2016/10/hapi-first/" title="HAPI--build reusable api">
+				  <strong>上一篇:</strong>
+				  <span>
+				  HAPI--build reusable api</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/10/23/2016/10/request-package/"  title="request--Simplified HTTP request client">
+					 <strong>下一篇:</strong>
+					 <span>request--Simplified HTTP request client
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="promise--save you from callback" data-url="http://zhangzirui.com/2016/10/25/2016/10/promise-bluebird/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

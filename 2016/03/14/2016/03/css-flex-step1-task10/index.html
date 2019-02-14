@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>FlexBox布局学习总结 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="css,flex," />
+  
+
+  <meta name="description" content="FlexBox布局最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。
+ flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FlexBox布局学习总结">
+<meta property="og:url" content="http://zhangzirui.com/2016/03/14/2016/03/css-flex-step1-task10/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="FlexBox布局最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。
+ flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex.png">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row-reverse.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column-reverse.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-nowrap.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-wrap.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-wrap-reverse.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-flex-start.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-flex-end.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-center.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-bwtween.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-around.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-items.jpg">
+<meta property="og:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-content.jpg">
+<meta property="og:updated_time" content="2016-08-31T13:28:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FlexBox布局学习总结">
+<meta name="twitter:description" content="FlexBox布局最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。
+ flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模">
+<meta name="twitter:image" content="http://7xrwoa.com1.z0.glb.clouddn.com/flex.png">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FlexBox布局"><span class="toc-text">FlexBox布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Flex布局是什么？"><span class="toc-text">一、Flex布局是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、容器属性"><span class="toc-text">二、容器属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、-项目属性"><span class="toc-text">三、 项目属性</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/03/css-flex-step1-task10" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">FlexBox布局学习总结</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.03.14</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="FlexBox布局"><a href="#FlexBox布局" class="headerlink" title="FlexBox布局"></a>FlexBox布局</h2><p>最近在重新稳固些基础知识以备面试，正好ife的第一波任务来袭，step1的基础任务不少而且都是关于HTML&amp;CSS，选了其中几个做一做正好当复习了。做的第一个任务是task10,练习flex box布局，这里简单讲下我对flex的理解。</p>
+<p> flex,英文中弯曲的意思，在css中的表示一种布局方式即Flexible Box，在flex出现之前，布局的传统方案大多是基于盒装模型，依赖display+position+float属性，这种布局使得一些特殊布局十分不便，如垂直居中。</p>
+<h3 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h3><p>  它是W3C提出了一种新的布局方案，可以简便、完整、响应式地实现各种页面布局。<br>  任何容器都可以设置为flex布局。在属性中设置</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line"> display: flex</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>即可。</p>
+<p>这样我们就将box设置为一个Flex容器(flex container)，它其中所有子元素都自动成为了容器成员，称为(flex item)。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex.png" alt=""></p>
+<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。<br>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</p>
+<h3 id="二、容器属性"><a href="#二、容器属性" class="headerlink" title="二、容器属性"></a>二、容器属性</h3><p>   容器的六种属性：</p>
+<ul>
+<li>flex-direction</li>
+<li>flex-wrap</li>
+<li>justify-content</li>
+<li>align-items</li>
+<li>align-content</li>
+<li>flex-flow</li>
+</ul>
+<p><strong>2.1 flex-direction</strong><br>这一属性定义主轴的方向，我们有四个值可以定义</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">   flex-direction:row | row-reverse | column | column-reverse |</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>它可能有4个值。</p>
+<ul>
+<li>row（默认值）：主轴为水平方向，起点在左端。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row.jpg" alt=""></li>
+<li>row-reverse：主轴为水平方向，起点在右端。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-row-reverse.jpg" alt=""></li>
+<li>column：主轴为垂直方向，起点在上沿。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column.jpg" alt=""></li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+</ul>
+<p><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-deriection-column-reverse.jpg" alt=""></p>
+<p><strong>2.2 flex-wrap </strong></p>
+<p>这个主要用来定义伸缩容器里是单行还是多行显示，侧轴的方向决定了新行堆放的方向。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">  flex-wrap: nowrap | wrap | wrap-reverse;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>有三个值</p>
+<ul>
+<li>nowrap：默认，不换行<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-nowrap.jpg" alt="nowrap"></li>
+<li>wrap：换行，第一行在上方<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-wrap.jpg" alt="wrap"></li>
+<li>wrap-reverse：换行，第一行在下方<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-wrap-wrap-reverse.jpg" alt="wrap-reverse"></li>
+</ul>
+<p><strong>2.3 justify-content</strong></p>
+<ul>
+<li>flex-start(默认值)：伸缩项目向一行的起始位置靠齐。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-flex-start.jpg" alt="flex-start"></li>
+<li>flex-end：伸缩项目向一行的结束位置靠齐。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-flex-end.jpg" alt="enter image description here"></li>
+<li>center：伸缩项目向一行的中间位置靠齐。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-center.jpg" alt="enter image description here"></li>
+<li>space-between：伸缩项目会平均地分布在行里。第一个伸缩项目一行中的最开始位置，最后一个伸缩项目在一行中最终点位置。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-bwtween.jpg" alt="enter image description here"></li>
+<li>space-around：伸缩项目会平均地分布在行里，两端保留一半的空间。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-justify-content-space-around.jpg" alt="enter image description here"></li>
+</ul>
+<p><strong>2.4  align-items </strong><br>定义项目在交叉轴上如何对齐</p>
+<p>它可能取5个值</p>
+<ul>
+<li>flex-start：交叉轴的起点对齐。</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+</ul>
+<p><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-items.jpg" alt="enter image description here"></p>
+<p><strong>2.5 align-content </strong></p>
+<p>align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
+<p>该属性可能取6个值。</p>
+<ul>
+<li>flex-start：与交叉轴的起点对齐。</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的   间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="http://7xrwoa.com1.z0.glb.clouddn.com/flex-align-content.jpg" alt="enter image description here"></li>
+</ul>
+<p><strong>2.6 flex-flow </strong></p>
+<p>是flex-deriection和flex-wrap的合并用法，默认值为<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flex-flow: row nowrap;</div></pre></td></tr></table></figure></p>
+<h3 id="三、-项目属性"><a href="#三、-项目属性" class="headerlink" title="三、 项目属性"></a>三、 项目属性</h3><p>一下属性用在项目上</p>
+<ul>
+<li>order:</li>
+</ul>
+<p>默认情况下，伸缩项目是按照文档流出现先后顺序排列。然而，“order”属性可以控制伸缩项目在他们的伸缩容器出现的顺序。<br>  order: -1;<br>  数值越小顺序越靠前</p>
+<ul>
+<li>flex-grow：</li>
+</ul>
+<p>flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</p>
+<ul>
+<li>flex-shrink:</li>
+</ul>
+<p>flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  flex-shrink: &lt;number&gt;; /* default <span class="number">1</span> */</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>flex-basis:</li>
+</ul>
+<p>flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</p>
+<ul>
+<li>flex:</li>
+</ul>
+<p>flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。<br>..item {<br>  flex: none | [ &lt;’flex-grow’&gt; &lt;’flex-shrink’&gt;? || &lt;’flex-basis’&gt; ]<br>}</p>
+<ul>
+<li>align-self:</li>
+</ul>
+<p>align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.item &#123;</div><div class="line">  align-self: auto | flex-start | flex-end | center | baseline | stretch;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://npm-team.github.io/step1/task0010/task0010.html" target="_blank" rel="external">Demo地址</a>  <a href="https://github.com/npm-team/step1/tree/gh-pages/task0010" target="_blank" rel="external">源代码地址</a></p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/03/15/2016/03/css-three-layout-task3/" title="三栏式布局学习总结">
+				  <strong>上一篇:</strong>
+				  <span>
+				  三栏式布局学习总结</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/03/03/2016/03/create-web-express+mongodb+jade/"  title="使用express + jade + mongodb创建网站">
+					 <strong>下一篇:</strong>
+					 <span>使用express + jade + mongodb创建网站
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="FlexBox布局学习总结" data-url="http://zhangzirui.com/2016/03/14/2016/03/css-flex-step1-task10/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

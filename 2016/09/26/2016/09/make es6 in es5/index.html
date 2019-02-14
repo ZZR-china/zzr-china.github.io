@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>es6代码的es5实现（转载） | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="js," />
+  
+
+  <meta name="description" content="原文链接：https://github.com/addyosmani/es6-equivalents-in-es5
+箭头函数，块作用域函数，模板字面常数等等的 ES6 代码如果用 ES5 来写会是什么样的呢，chrome 团队的前端工程师 Addy Osmani 总结了一些 ES6 语法的 ES5 实现。 —— 由 江江也叫Glowin 分享
+ES6:
+12[1, 2, 3].map(n =&amp;gt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6代码的es5实现（转载）">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/26/2016/09/make es6 in es5/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="原文链接：https://github.com/addyosmani/es6-equivalents-in-es5
+箭头函数，块作用域函数，模板字面常数等等的 ES6 代码如果用 ES5 来写会是什么样的呢，chrome 团队的前端工程师 Addy Osmani 总结了一些 ES6 语法的 ES5 实现。 —— 由 江江也叫Glowin 分享
+ES6:
+12[1, 2, 3].map(n =&amp;gt">
+<meta property="og:updated_time" content="2016-09-27T10:26:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="es6代码的es5实现（转载）">
+<meta name="twitter:description" content="原文链接：https://github.com/addyosmani/es6-equivalents-in-es5
+箭头函数，块作用域函数，模板字面常数等等的 ES6 代码如果用 ES5 来写会是什么样的呢，chrome 团队的前端工程师 Addy Osmani 总结了一些 ES6 语法的 ES5 实现。 —— 由 江江也叫Glowin 分享
+ES6:
+12[1, 2, 3].map(n =&amp;gt">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/09/make es6 in es5" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">es6代码的es5实现（转载）</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.26</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><strong>原文链接：<a href="https://github.com/addyosmani/es6-equivalents-in-es5" target="_blank" rel="external">https://github.com/addyosmani/es6-equivalents-in-es5</a></strong></p>
+<p><strong>箭头函数，块作用域函数，模板字面常数等等的 ES6 代码如果用 ES5 来写会是什么样的呢，chrome 团队的前端工程师 Addy Osmani 总结了一些 ES6 语法的 ES5 实现。 —— 由 江江也叫Glowin 分享</strong></p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(n =&gt; n * <span class="number">2</span>);</div><div class="line"><span class="comment">// -&gt; [ 2, 4, 6 ]</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123; <span class="keyword">return</span> n * <span class="number">2</span>; &#125;, <span class="keyword">this</span>);</div><div class="line"><span class="comment">// -&gt; [ 2, 4, 6 ]</span></div></pre></td></tr></table></figure>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> evens = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>];</div><div class="line"></div><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(v =&gt; v + <span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map((v, i) =&gt; v + i);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(odds);</div><div class="line"><span class="comment">// -&gt; [3, 5, 7, 9, 11]</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(nums);</div><div class="line"><span class="comment">// -&gt; [2, 5, 8, 11, 14]</span></div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line"><span class="keyword">var</span> fives = [];</div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">15</span>, <span class="number">25</span>, <span class="number">32</span>];</div><div class="line">nums.forEach(v =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fives);</div><div class="line"><span class="comment">// -&gt; [5, 15, 25]</span></div><div class="line"></div><div class="line"><span class="comment">// Lexical this</span></div><div class="line"><span class="keyword">var</span> bob = &#123;</div><div class="line">  _name: <span class="string">'Bob'</span>,</div><div class="line">  _friends: [],</div><div class="line">  printFriends() &#123;</div><div class="line">    <span class="keyword">this</span>._friends.forEach(f =&gt;</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>._name + <span class="string">' knows '</span> + f));</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> evens = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">10</span>];</div><div class="line"></div><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(<span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> v + <span class="number">1</span>;</div><div class="line">&#125;, <span class="keyword">this</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map(<span class="function"><span class="keyword">function</span> (<span class="params">v, i</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> v + i;</div><div class="line">&#125;, <span class="keyword">this</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(odds);</div><div class="line"><span class="comment">// -&gt; [3, 5, 7, 9, 11]</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(nums);</div><div class="line"><span class="comment">// -&gt; [2, 5, 8, 11, 14]</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> fives = [];</div><div class="line">nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">15</span>, <span class="number">25</span>, <span class="number">32</span>];</div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line">nums.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>) &#123;</div><div class="line">    fives.push(v);</div><div class="line">  &#125;</div><div class="line">&#125;, <span class="keyword">this</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fives);</div><div class="line"><span class="comment">// -&gt; [5, 15, 25]</span></div><div class="line"></div><div class="line"><span class="comment">// Lexical this</span></div><div class="line"><span class="keyword">var</span> bob = &#123;</div><div class="line">  _name: <span class="string">'Bob'</span>,</div><div class="line">  _friends: [],</div><div class="line">  printFriends: <span class="function"><span class="keyword">function</span> <span class="title">printFriends</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._friends.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">f</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="keyword">this</span>._name + <span class="string">' knows '</span> + f);</div><div class="line">    &#125;, <span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>Block Scoping Functions</p>
+<p>Block scoped bindings provide scopes other than the function and top level scope. This ensures your variables don’t leak out of the scope they’re defined:</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// let declares a block scope local variable,</span></div><div class="line"><span class="comment">// optionally initializing it to a value in ES6</span></div><div class="line"><span class="meta"></span></div><div class="line">'use strict';</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (a === <span class="number">5</span>) &#123;</div><div class="line">  <span class="keyword">let</span> a = <span class="number">4</span>; <span class="comment">// The scope is inside the if-block</span></div><div class="line">  <span class="keyword">var</span> b = <span class="number">1</span>; <span class="comment">// The scope is inside the function</span></div><div class="line"></div><div class="line">  <span class="built_in">console</span>.log(a);  <span class="comment">// 4</span></div><div class="line">  <span class="built_in">console</span>.log(b);  <span class="comment">// 1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 5</span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>//let再es5中使用闭包实现</p>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span> (a === <span class="number">5</span>) &#123;</div><div class="line">  <span class="comment">// technically is more like the following</span></div><div class="line">  (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">4</span>;</div><div class="line">    b = <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(a); <span class="comment">// 4</span></div><div class="line">    <span class="built_in">console</span>.log(b); <span class="comment">// 1</span></div><div class="line">  &#125;)();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 5</span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// const creates a read-only named constant in ES6.</span></div><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="comment">// define favorite as a constant and give it the value 7</span></div><div class="line"><span class="keyword">const</span> favorite = <span class="number">7</span>;</div><div class="line"><span class="comment">// Attempt to overwrite the constant</span></div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">  favorite = <span class="number">15</span>;</div><div class="line">&#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'my favorite number is still: '</span> + favorite);</div><div class="line">  <span class="comment">// will still print 7</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="comment">// define favorite as a non-writable `constant` and give it the value 7</span></div><div class="line"><span class="built_in">Object</span>.defineProperties(<span class="built_in">window</span>, &#123;</div><div class="line">  favorite: &#123;</div><div class="line">    value: <span class="number">7</span>,</div><div class="line">    enumerable: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// ^ descriptors are by default false and const are enumerable</span></div><div class="line"><span class="keyword">var</span> favorite = <span class="number">7</span>;</div><div class="line"><span class="comment">// Attempt to overwrite the constant</span></div><div class="line">favorite = <span class="number">15</span>;</div><div class="line"><span class="comment">// will still print 7</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'my favorite number is still: '</span> + favorite);</div></pre></td></tr></table></figure>
+<p>Template Literals</p>
+<p>ES6 Template Literals are strings that can include embedded expressions. This is sometimes referred to as string interpolation.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Basic usage with an expression placeholder</span></div><div class="line"><span class="keyword">var</span> person = <span class="string">'Addy Osmani'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Yo! My name is <span class="subst">$&#123;person&#125;</span>!`</span>);</div><div class="line"></div><div class="line"><span class="comment">// Expressions work just as well with object literals</span></div><div class="line"><span class="keyword">var</span> user = &#123;name: <span class="string">'Caitlin Potter'</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`Thanks for getting this into V8, <span class="subst">$&#123;user.name&#125;</span>.`</span>);</div><div class="line"></div><div class="line"><span class="comment">// Expression interpolation. One use is readable inline math.</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">50</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">100</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`The number of JS frameworks is <span class="subst">$&#123;a + b&#125;</span> and not <span class="subst">$&#123;2 * a + b&#125;</span>.`</span>);</div><div class="line"></div><div class="line"><span class="comment">// Multi-line strings without needing \n\</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">`string text line 1</span></div><div class="line">string text line 2`);</div><div class="line"></div><div class="line"><span class="comment">// Functions inside expressions</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="string">'result'</span>; &#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">`foo <span class="subst">$&#123;fn()&#125;</span> bar`</span>);</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="comment">// Basic usage with an expression placeholder</span></div><div class="line"><span class="keyword">var</span> person = <span class="string">'Addy Osmani'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Yo! My name is '</span> + person + <span class="string">'!'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Expressions work just as well with object literals</span></div><div class="line"><span class="keyword">var</span> user = &#123; name: <span class="string">'Caitlin Potter'</span> &#125;;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Thanks for getting this into V8, '</span> + user.name + <span class="string">'.'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Expression interpolation. One use is readable inline math.</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">50</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">100</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'The number of JS frameworks is '</span> + (a + b) + <span class="string">' and not '</span> + (<span class="number">2</span> * a + b) + <span class="string">'.'</span>);</div><div class="line"></div><div class="line"><span class="comment">// Multi-line strings:</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'string text line 1\nstring text line 2'</span>);</div><div class="line"><span class="comment">// Or, alternatively:</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'string text line 1\n\</span></div><div class="line">string text line 2');</div><div class="line"></div><div class="line"><span class="comment">// Functions inside expressions</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'result'</span>;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'foo '</span> + fn() + <span class="string">' bar'</span>);</div></pre></td></tr></table></figure>
+<p>Computed Property Names</p>
+<p>Computed property names allow you to specify properties in object literals based on expressions:</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> prefix = <span class="string">'foo'</span>;</div><div class="line"><span class="keyword">var</span> myObject = &#123;</div><div class="line">  [prefix + <span class="string">'bar'</span>]: <span class="string">'hello'</span>,</div><div class="line">  [prefix + <span class="string">'baz'</span>]: <span class="string">'world'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(myObject[<span class="string">'foobar'</span>]);</div><div class="line"><span class="comment">// -&gt; hello</span></div><div class="line"><span class="built_in">console</span>.log(myObject[<span class="string">'foobaz'</span>]);</div><div class="line"><span class="comment">// -&gt; world</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> prefix = <span class="string">'foo'</span>;</div><div class="line"><span class="keyword">var</span> myObject = &#123;&#125;;</div><div class="line"></div><div class="line">myObject[prefix + <span class="string">'bar'</span>] = <span class="string">'hello'</span>;</div><div class="line">myObject[prefix + <span class="string">'baz'</span>] = <span class="string">'world'</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(myObject[<span class="string">'foobar'</span>]);</div><div class="line"><span class="comment">// -&gt; hello</span></div><div class="line"><span class="built_in">console</span>.log(myObject[<span class="string">'foobaz'</span>]);</div><div class="line"><span class="comment">// -&gt; world</span></div></pre></td></tr></table></figure>
+<p>Destructuring Assignment</p>
+<p>The destructuring assignment syntax is a JavaScript expression that makes it possible to extract data from arrays or objects using a syntax that mirrors the construction of array and object literals.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> &#123;foo, bar&#125; = &#123;foo: <span class="string">'lorem'</span>, bar: <span class="string">'ipsum'</span>&#125;;</div><div class="line"><span class="comment">// foo =&gt; lorem and bar =&gt; ipsum</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _ref = &#123; foo: <span class="string">'lorem'</span>, bar: <span class="string">'ipsum'</span> &#125;;</div><div class="line"></div><div class="line"><span class="comment">// foo =&gt; lorem and bar =&gt; ipsum</span></div><div class="line"><span class="keyword">var</span> foo = _ref.foo;</div><div class="line"><span class="keyword">var</span> bar = _ref.bar;</div></pre></td></tr></table></figure>
+<p>ES3:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(&#123;foo: <span class="string">'lorem'</span>, bar: <span class="string">'ipsum'</span>&#125;) &#123;</div><div class="line">  <span class="comment">// foo =&gt; lorem and bar =&gt; ipsum</span></div><div class="line">&#125;</div><div class="line">···</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">ES6:</div><div class="line"></div><div class="line"><span class="string">``</span><span class="string">`javascript</span></div><div class="line">var [a, , b] = [1,2,3];</div></pre></td></tr></table></figure>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _slicedToArray = <span class="function"><span class="keyword">function</span> (<span class="params">arr, i</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(arr)) &#123;</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">var</span> _arr = [];</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> _iterator = arr[<span class="built_in">Symbol</span>.iterator](), _step; !(_step = _iterator.next()).done;) &#123;</div><div class="line">      _arr.push(_step.value);</div><div class="line"></div><div class="line">      <span class="keyword">if</span> (i &amp;&amp; _arr.length === i) &#123;</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> _arr;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _ref = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> _ref2 = _slicedToArray(_ref, <span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = _ref2[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> b = _ref2[<span class="number">2</span>];</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.asNamedList = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.split(<span class="regexp">/\s*,\s*/</span>).map(<span class="function"><span class="keyword">function</span> (<span class="params">name, i</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> name ? (<span class="string">'var '</span> + name + <span class="string">'=slice('</span> + i + <span class="string">', '</span> + (i + <span class="number">1</span>) + <span class="string">')[0]'</span>) : <span class="string">''</span>;</div><div class="line">  &#125;).join(<span class="string">';'</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">with</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) &#123;</div><div class="line">  <span class="built_in">eval</span>(<span class="string">'a, , b'</span>.asNamedList());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Default Parameters</p>
+<p>Default parameters allow your functions to have optional arguments without needing to check arguments.length or check for undefined.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">msg='hello', name='world'</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(msg,name);</div><div class="line">&#125;</div><div class="line"></div><div class="line">greet();</div><div class="line"><span class="comment">// -&gt; hello world</span></div><div class="line">greet(<span class="string">'hey'</span>);</div><div class="line"><span class="comment">// -&gt; hey world</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">// unfair ... if you access arguments[0] like this you can simply</span></div><div class="line">  <span class="comment">// access the msg variable name instead</span></div><div class="line">  <span class="keyword">var</span> msg = <span class="built_in">arguments</span>[<span class="number">0</span>] === <span class="literal">undefined</span> ? <span class="string">'hello'</span> : <span class="built_in">arguments</span>[<span class="number">0</span>];</div><div class="line">  <span class="keyword">var</span> name = <span class="built_in">arguments</span>[<span class="number">1</span>] === <span class="literal">undefined</span> ? <span class="string">'world'</span> : <span class="built_in">arguments</span>[<span class="number">1</span>];</div><div class="line">  <span class="built_in">console</span>.log(msg, name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">msg, name</span>) </span>&#123;</div><div class="line">  (msg === <span class="literal">undefined</span>) &amp;&amp; (msg = <span class="string">'hello'</span>);</div><div class="line">  (name === <span class="literal">undefined</span>) &amp;&amp; (name = <span class="string">'world'</span>);</div><div class="line">  <span class="built_in">console</span>.log(msg,name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// using basic utility that check against undefined</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params">msg, name</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(</div><div class="line">    defaults(msg, <span class="string">'hello'</span>),</div><div class="line">    defaults(name, <span class="string">'world'</span>)</div><div class="line">  );</div><div class="line">&#125;</div><div class="line"></div><div class="line">greet();</div><div class="line"><span class="comment">// -&gt; hello world</span></div><div class="line">greet(<span class="string">'hey'</span>);</div><div class="line"><span class="comment">// -&gt; hey world</span></div></pre></td></tr></table></figure>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y=12</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is 12 if not passed (or passed as undefined)</span></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">f(<span class="number">3</span>) === <span class="number">15</span>;</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (y === <span class="literal">undefined</span>) &#123;</div><div class="line">    y = <span class="number">12</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line"></div><div class="line">f(<span class="number">3</span>) === <span class="number">15</span>;</div></pre></td></tr></table></figure>
+<p>Iterators And For-Of</p>
+<p>Iterators are objects that can traverse a container. It’s a useful way to make a class work inside a for of loop.<br>The interface is similar to the iterators-interface. Iterating with a for..of loop looks like:</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Behind the scenes, this will get an iterator from the array and loop through it, getting values from it.</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> element <span class="keyword">of</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) &#123;</div><div class="line">  <span class="built_in">console</span>.log(element);</div><div class="line">&#125;</div><div class="line"><span class="comment">// =&gt; 1 2 3</span></div></pre></td></tr></table></figure>
+<p>ES6(without using for-of, if Symbol is supported):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> _iterator = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>][<span class="built_in">Symbol</span>.iterator](), _step; !(_step = _iterator.next()).done;) &#123;</div><div class="line">  <span class="keyword">var</span> element = _step.value;</div><div class="line">  <span class="built_in">console</span>.log(element);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// =&gt; 1 2 3</span></div></pre></td></tr></table></figure>
+<p>ES5 (approximates):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Using forEach()</span></div><div class="line"><span class="comment">// Doesn't require declaring indexing and element variables in your containing</span></div><div class="line"><span class="comment">// scope. They get supplied as arguments to the iterator and are scoped to just</span></div><div class="line"><span class="comment">// that iteration.</span></div><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(element);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// =&gt; 1 2 3</span></div><div class="line"></div><div class="line"><span class="comment">// Using a for loop</span></div><div class="line"><span class="keyword">var</span> a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; a.length; ++i) &#123;</div><div class="line">    <span class="built_in">console</span>.log(a[i]);</div><div class="line">&#125;</div><div class="line"><span class="comment">// =&gt; 1 2 3</span></div></pre></td></tr></table></figure>
+<p>Note the use of Symbol. The ES5 equivalent would require a Symbol polyfill in order to correctly function.</p>
+<p>Classes</p>
+<p>This implements class syntax and semantics as described in the ES6 draft spec. Classes are a great way to reuse code.<br>Several JS libraries provide classes and inheritance, but they aren’t mutually compatible.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  hello() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'Hello '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> sayHelloAll() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'Hello everyone!'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> <span class="keyword">extends</span> <span class="title">Hello</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>(<span class="string">'World'</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  echo() &#123;</div><div class="line">    alert(<span class="keyword">super</span>.hello());</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> hw = <span class="keyword">new</span> HelloWorld();</div><div class="line">hw.echo();</div><div class="line"></div><div class="line">alert(Hello.sayHelloAll());</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Hello.prototype.hello = <span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'Hello '</span> + <span class="keyword">this</span>.name + <span class="string">'!'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Hello.sayHelloAll = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'Hello everyone!'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloWorld</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  Hello.call(<span class="keyword">this</span>, <span class="string">'World'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">HelloWorld.prototype = <span class="built_in">Object</span>.create(Hello.prototype);</div><div class="line"></div><div class="line">HelloWorld.prototype.echo = <span class="function"><span class="keyword">function</span> <span class="title">echo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  alert(Hello.prototype.hello.call(<span class="keyword">this</span>));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> hw = <span class="keyword">new</span> HelloWorld();</div><div class="line">hw.echo();</div><div class="line"></div><div class="line">alert(Hello.sayHelloAll());</div></pre></td></tr></table></figure>
+<p>A more faithful (albeit, slightly verbose) interpretation can be found in this Babel output.</p>
+<p>Modules</p>
+<p>Modules are mostly implemented, with some parts of the Loader API still to be corrected. Modules try to solve many issues in dependencies and deployment, allowing users to create modules with explicit exports, import specific exported names from those modules, and keep these names separate.</p>
+<p>Assumes an environment using CommonJS</p>
+<p>app.js - ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math <span class="keyword">from</span> <span class="string">'lib/math'</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'2π = '</span> + math.sum(math.pi, math.pi));</div></pre></td></tr></table></figure>
+<p>app.js - ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">'lib/math'</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'2π = '</span> + math.sum(math.pi, math.pi));</div></pre></td></tr></table></figure>
+<p>lib/math.js - ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">var</span> pi = <span class="number">3.141593</span>;</div></pre></td></tr></table></figure>
+<p>lib/math/js - ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">exports.sum = sum;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> pi = exports.pi = <span class="number">3.141593</span>;</div></pre></td></tr></table></figure>
+<p>lib/mathplusplus.js - ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'lib/math'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">var</span> e = <span class="number">2.71828182846</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.exp(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>lib/mathplusplus.js - ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">Math</span> = <span class="built_in">require</span>(<span class="string">'lib/math'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> _extends = <span class="function"><span class="keyword">function</span> (<span class="params">target</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">    <span class="keyword">var</span> source = <span class="built_in">arguments</span>[i];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> source) &#123;</div><div class="line">      target[key] = source[key];</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> target;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> e = exports.e = <span class="number">2.71828182846</span>;</div><div class="line">exports[<span class="string">'default'</span>] = <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.exp(x);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = _extends(exports[<span class="string">'default'</span>], exports);</div></pre></td></tr></table></figure>
+<p>Numeric Literals</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> binary = [</div><div class="line">  <span class="number">0b0</span>,</div><div class="line">  <span class="number">0b1</span>,</div><div class="line">  <span class="number">0b11</span></div><div class="line">];</div><div class="line"><span class="built_in">console</span>.assert(binary === [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>]);</div><div class="line"></div><div class="line"><span class="keyword">var</span> octal = [</div><div class="line">  <span class="number">0o0</span>,</div><div class="line">  <span class="number">0o1</span>,</div><div class="line">  <span class="number">0o10</span>,</div><div class="line">  <span class="number">0o77</span></div><div class="line">];</div><div class="line"><span class="built_in">console</span>.assert(octal === [<span class="number">0</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">63</span>]);</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> binary = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">console</span>.assert(binary === [<span class="number">0</span>, <span class="number">1</span>, <span class="number">3</span>]);</div><div class="line"></div><div class="line"><span class="keyword">var</span> octal = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">63</span>];</div><div class="line"><span class="built_in">console</span>.assert(octal === [<span class="number">0</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">63</span>]);</div></pre></td></tr></table></figure>
+<p>Property Method Assignment</p>
+<p>Method syntax is supported in object initializers, for example see toString():</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">  value: <span class="number">42</span>,</div><div class="line">  toString() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.value;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(object.toString() === <span class="number">42</span>);</div><div class="line"><span class="comment">// -&gt; true</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> object = &#123;</div><div class="line">  value: <span class="number">42</span>,</div><div class="line">  toString: <span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.value;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(object.toString() === <span class="number">42</span>);</div><div class="line"><span class="comment">// -&gt; true</span></div></pre></td></tr></table></figure>
+<p>Object Initializer Shorthand</p>
+<p>This allows you to skip repeating yourself when the property name and property value are the same in an object literal.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPoint</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> y = <span class="number">10</span>;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;x, y&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(getPoint() === &#123;</div><div class="line">  x: <span class="number">1</span>,</div><div class="line">  y: <span class="number">10</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPoint</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> x = <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> y = <span class="number">10</span>;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123; x: x, y: y &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(getPoint() === &#123;</div><div class="line">  x: <span class="number">1</span>,</div><div class="line">  y: <span class="number">10</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>Rest Parameters</p>
+<p>Rest parameters allows your functions to have variable number of arguments without using the arguments object.</p>
+<p>The rest parameter is an instance of Array so all the array methods just work.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, ...y</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(f(<span class="number">3</span>, <span class="string">'hello'</span>, <span class="literal">true</span>) === <span class="number">6</span>);</div><div class="line"><span class="comment">// -&gt; true</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> y = [];</div><div class="line">  y.push.apply(y, <span class="built_in">arguments</span>) &amp;&amp; y.shift();</div><div class="line"></div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(f(<span class="number">3</span>, <span class="string">'hello'</span>, <span class="literal">true</span>) === <span class="number">6</span>);</div><div class="line"><span class="comment">// -&gt; true</span></div></pre></td></tr></table></figure>
+<p>Spread Operator</p>
+<p>The spread operator is like the reverse of rest parameters. It allows you to expand an array into multiple formal parameters.</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> nums = [<span class="number">5</span>, <span class="number">4</span>];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(add(...nums));</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> _toArray = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.isArray(arr) ? arr : [].slice.call(arr);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a + b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> nums = [<span class="number">5</span>, <span class="number">4</span>];</div><div class="line"><span class="built_in">console</span>.log(add.apply(<span class="literal">null</span>, _toArray(nums)));</div></pre></td></tr></table></figure>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Pass each elem of array as argument</span></div><div class="line">f(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) === <span class="number">6</span>;</div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Pass each elem of array as argument</span></div><div class="line">f.apply(<span class="literal">null</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]) === <span class="number">6</span>;</div></pre></td></tr></table></figure>
+<p>Proxying a function object</p>
+<p>ES6:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> target = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'I am the target'</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> handler = &#123;</div><div class="line">  apply: <span class="function"><span class="keyword">function</span> (<span class="params">receiver, ...args</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'I am the proxy'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="built_in">Proxy</span>(target, handler);</div><div class="line"><span class="built_in">console</span>.log(p() === <span class="string">'I am the proxy'</span>);</div><div class="line"><span class="comment">// -&gt; true</span></div></pre></td></tr></table></figure>
+<p>ES5:</p>
+<p>No proxy in ES5, hard to intercept noSuchMethod and others.</p>
+<p>About</p>
+<p>Inspired by:</p>
+<p><a href="http://tc39wiki.calculist.org/es6/" target="_blank" rel="external">ES6 Feature Proposals</a><br><a href="https://github.com/lukehoban/es6features" target="_blank" rel="external">ES6 Features</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_6_support_in_Mozilla" target="_blank" rel="external">ECMAScript 6 support in Mozilla</a><br><a href="https://babeljs.io/" target="_blank" rel="external">Babel</a><br><a href="http://jsrocks.org/" target="_blank" rel="external">JS Rocks</a></p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/09/27/2016/09/transactions in MongoDB/" title="mongo中实现事务">
+				  <strong>上一篇:</strong>
+				  <span>
+				  mongo中实现事务</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/09/24/2016/09/interviewquestion(1)/"  title="面试(一)">
+					 <strong>下一篇:</strong>
+					 <span>面试(一)
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="es6代码的es5实现（转载）" data-url="http://zhangzirui.com/2016/09/26/2016/09/make es6 in es5/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

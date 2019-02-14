@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jekyll 搭建静态博客 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="教程,jekyll," />
+  
+
+  <meta name="description" content="序
+文章大部分来自网络，我添加修改了一些
+
+一直以来都想搭建一个自己的博客，但是近半年做项目太忙，再加上教室的网络很坑爹，所以也一直没顾得上。在知乎上看到一些相关的内容，于是选择了在github上用jekyll搭建博客。
+
+搭建过程在jekyll的官网上 http://jekyllrb.com/ 其实已经说得比较明白了，我在这里还是简单的说一下吧。
+我用的是Windows系统。    
+主要环节有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jekyll 搭建静态博客">
+<meta property="og:url" content="http://zhangzirui.com/2015/09/12/2015/create-my-blog-with-jekyll1/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="序
+文章大部分来自网络，我添加修改了一些
+
+一直以来都想搭建一个自己的博客，但是近半年做项目太忙，再加上教室的网络很坑爹，所以也一直没顾得上。在知乎上看到一些相关的内容，于是选择了在github上用jekyll搭建博客。
+
+搭建过程在jekyll的官网上 http://jekyllrb.com/ 其实已经说得比较明白了，我在这里还是简单的说一下吧。
+我用的是Windows系统。    
+主要环节有">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/ruby-v.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/ruby-gems.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/ruby-gems-setup.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/jekyll-setup.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/jekyll-setup-finish.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/jekyllWorkSpace.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/jekyllFiles.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/serve.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/yajl.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/serve-sucess.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/browser.png">
+<meta property="og:image" content="http://ocr3oyxoh.bkt.clouddn.com/browser2.png">
+<meta property="og:updated_time" content="2016-08-31T13:26:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jekyll 搭建静态博客">
+<meta name="twitter:description" content="序
+文章大部分来自网络，我添加修改了一些
+
+一直以来都想搭建一个自己的博客，但是近半年做项目太忙，再加上教室的网络很坑爹，所以也一直没顾得上。在知乎上看到一些相关的内容，于是选择了在github上用jekyll搭建博客。
+
+搭建过程在jekyll的官网上 http://jekyllrb.com/ 其实已经说得比较明白了，我在这里还是简单的说一下吧。
+我用的是Windows系统。    
+主要环节有">
+<meta name="twitter:image" content="http://ocr3oyxoh.bkt.clouddn.com/ruby-v.png">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#序"><span class="toc-text">序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#搭建过程"><span class="toc-text">搭建过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Ruby"><span class="toc-text">安装Ruby</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装RubyGems"><span class="toc-text">安装RubyGems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装DevKit"><span class="toc-text">安装DevKit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用RubyGems安装Jekyll"><span class="toc-text">用RubyGems安装Jekyll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建博客"><span class="toc-text">创建博客</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续"><span class="toc-text">后续</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可能出现的问题"><span class="toc-text">可能出现的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#hitimes-hitimes-LoadError"><span class="toc-text">hitimes/hitimes (LoadError)</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2015/create-my-blog-with-jekyll1" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Jekyll 搭建静态博客</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2015.09.12</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><blockquote>
+<p>文章大部分来自网络，我添加修改了一些</p>
+</blockquote>
+<p>一直以来都想搭建一个自己的博客，但是近半年做项目太忙，再加上教室的网络很坑爹，所以也一直没顾得上。在知乎上看到一些相关的内容，于是选择了在github上用jekyll搭建博客。</p>
+<hr>
+<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><p>在jekyll的官网上 <a href="http://jekyllrb.com/" target="_blank" rel="external">http://jekyllrb.com/</a> 其实已经说得比较明白了，我在这里还是简单的说一下吧。</p>
+<p>我用的是Windows系统。    </p>
+<p>主要环节有：安装Ruby，安装RubyGems，安装jekyll，安装代码高亮插件，安装node.js</p>
+<hr>
+<h3 id="安装Ruby"><a href="#安装Ruby" class="headerlink" title="安装Ruby"></a>安装Ruby</h3><p>ruby官网下载安装：<a href="https://www.ruby-lang.org/en/downloads/" target="_blank" rel="external">https://www.ruby-lang.org/en/downloads/</a></p>
+<p>安装完成后配置环境变量</p>
+<p>在命令提示符中，得到ruby版本号，如下图，即安装成功<br><img src="http://ocr3oyxoh.bkt.clouddn.com/ruby-v.png" alt="ruby-v"></p>
+<hr>
+<h3 id="安装RubyGems"><a href="#安装RubyGems" class="headerlink" title="安装RubyGems"></a>安装RubyGems</h3><p>官网下载 <a href="http://rubygems.org/pages/download" target="_blank" rel="external">http://rubygems.org/pages/download</a> rubygems-2.4.5.zip   </p>
+<p>cd到RubyGems目录   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/ruby-gems.png" alt="ruby-gems">    </p>
+<p>执行安装   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/ruby-gems-setup.png" alt="ruby-gems-setup">   </p>
+<hr>
+<h3 id="安装DevKit"><a href="#安装DevKit" class="headerlink" title="安装DevKit"></a>安装DevKit</h3><p>DevKit 是windows平台下编译和使用本地C/C++扩展包的工具。它就是用来模拟Linux平台下的make, gcc, sh来进行编译。注：这个方法目前仅支持通过RubyInstaller安装的Ruby，如果不是建议你重新安装。安装方法：双击下载的7z文件，指定解压路径，路径中不能有空格。如C:\DevKit，这个路径就是<devkit_install_dir>。<br>根据自己的ruby版本下载响应的devkit版本</devkit_install_dir></p>
+<hr>
+<h3 id="用RubyGems安装Jekyll"><a href="#用RubyGems安装Jekyll" class="headerlink" title="用RubyGems安装Jekyll"></a>用RubyGems安装Jekyll</h3><p>执行下面的语句安装   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/jekyll-setup.png" alt="jekyll-setup">   </p>
+<p>安装结束画面   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/jekyll-setup-finish.png" alt="jekyll-setup-finish">   </p>
+<p>至此jekyll就已经安装完毕了，后续就是个性化的自己设定了。   </p>
+<hr>
+<h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p>在d盘新建一个工作区jekyllWorkspace</p>
+<p>cd到jekyllWorkspace   </p>
+<p>执行jekyll new name创建新的工作区   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/jekyllWorkSpace.png" alt="jekyllWorkSpace">   </p>
+<p>文件结构如下：   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/jekyllFiles.png" alt="jekyllFiles"></p>
+<p>cd到博客文件夹，开启服务器   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/serve.png" alt="serve">   </p>
+<p>watch为了检测文件夹内的变化，即修改后不需要重新启动jekyll</p>
+<p>我的环境下启动报错(你的可能没有)，再安装yajl-ruby和rouge  </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/yajl.png" alt="yajl"></p>
+<p>再次启动服务器成功</p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/serve-sucess.png" alt="serve-sucess"></p>
+<p>访问 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a>   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/browser.png" alt="browser">   </p>
+<p>详细文章页面   </p>
+<p><img src="http://ocr3oyxoh.bkt.clouddn.com/browser2.png" alt="browser2">  </p>
+<hr>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><ul>
+<li><p>整个安装过程参考了jekyll官网，注意jekyll还有一个简体中文官网，不过比较坑（我就被坑了），有些内容没有翻译过来，有可能会走弯路，建议如果想看中文的相关资料，也要中英对照着阅读。<a href="http://jekyllcn.com" target="_blank" rel="external">jekyll中文网 http://jekyllcn.com</a>, <a href="http://jekyllrb.com" target="_blank" rel="external">jekyll英文网 http://jekyllrb.com</a></p>
+</li>
+<li><p>jekyll中的css是用sass写的，当然直接在<code>_sass/_layout.scss</code>中添加css也是可以的。</p>
+</li>
+<li><p>本文是用Markdown格式来写的，相关语法可参考： <a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">Markdown 语法说明 (简体中文版) http://wowubuntu.com/markdown/</a>  </p>
+</li>
+<li><p>按照本文的说明搭建完博客后，用<code>github Pages</code>托管就可以看到了。注意，在github上面好像不支持rouge，所以要push到github上时，我将配置文件_config.yml中的代码高亮改变为<code>highlighter: pygments</code>就可以了</p>
+</li>
+<li><p>博客默认是没有评论系统的，本文的评论系统使用了多说，详细安装办法可访问<a href="http://duoshuo.com/" target="_blank" rel="external">多说官网 http://duoshuo.com/</a>，当然也可以使用<a href="http://changyan.sohu.com/" target="_blank" rel="external">搜狐畅言 http://changyan.sohu.com/</a>作为评论系统。</p>
+</li>
+<li><p>也可以绑定自己的域名，如果没有域名，可以在<a href="http://www.godaddy.com/" target="_blank" rel="external">godaddy http://www.godaddy.com/</a>上将域名放入购物车等待降价，买之。</p>
+</li>
+<li><p>祝各位新年快乐！</p>
+</li>
+</ul>
+<hr>
+<h2 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h2><h3 id="hitimes-hitimes-LoadError"><a href="#hitimes-hitimes-LoadError" class="headerlink" title="hitimes/hitimes (LoadError)"></a><code>hitimes/hitimes (LoadError)</code></h3><p><strong>错误代码：</strong></p>
+<pre><code class="markdown">C:/Ruby22/lib/ruby/2.2.0/rubygems/core_ext/kernel_require.rb:54:in `require': cannot load such file -- hitimes/hitimes (LoadError)</code></pre>
+
+<p><strong>解决方法：</strong></p>
+<p>在stackoverflow上又一个很好的解决方法。<a href="http://stackoverflow.com/questions/28985481/hitimes-require-error-when-running-jekyll-serve-on-windows-8-1" target="_blank" rel="external">hitimes require error when running jekyll serve on windows 8.1</a> 虽然上面的题主问的是 win 8.1 系统下的情况，但是同样适用于 win7。下面我简单翻译一下错误原因和解决方法。</p>
+<p>可能是 Ruby 2.2 和 hitimes-1.2.2-x86-mingw32 中有一些 ABI 变化，少了一些相关的类库。</p>
+<p>所以卸载 hitimes 并通过 <code>--platform ruby</code> 重装即可。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gem uni hitimes</div><div class="line">**Remove ALL versions**</div><div class="line">gem ins hitimes -v <span class="number">1.2</span><span class="number">.1</span> --platform ruby</div></pre></td></tr></table></figure>
+<p>然后将自动重新编译 hitimes 并适用于 Ruby 2.2</p>
+<p>下面是我自己的卸载和安装过程：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">E:\GitWorkSpace\gaohaoyang.github.io&gt;gem uni hitimes</div><div class="line"></div><div class="line">You have requested to uninstall the gem:</div><div class="line">        hitimes-1.2.2-x86-mingw32</div><div class="line"></div><div class="line">timers-4.0.1 depends on hitimes (&gt;= 0)</div><div class="line">If you remove this gem, these dependencies will not be met.</div><div class="line">Continue with Uninstall? [yN]  y</div><div class="line">Successfully uninstalled hitimes-1.2.2-x86-mingw32</div><div class="line"></div><div class="line">E:\GitWorkSpace\gaohaoyang.github.io&gt;gem ins hitimes -v 1.2.1 --platform ruby</div><div class="line">Fetching: hitimes-1.2.1.gem (100%)</div><div class="line">Temporarily enhancing PATH to include DevKit...</div><div class="line">Building native extensions.  This could take a while...</div><div class="line">Successfully installed hitimes-1.2.1</div><div class="line">Parsing documentation for hitimes-1.2.1</div><div class="line">Installing ri documentation for hitimes-1.2.1</div><div class="line">Done installing documentation for hitimes after 1 seconds</div><div class="line">1 gem installed</div></pre></td></tr></table></figure>
+<p>关于，<a href="https://rubygems.org/gems/hitimes/versions/1.2.2" target="_blank" rel="external">hitimes</a> 是一个快速的高效的定时器解决方案库，详情可以去官网查看。</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2015/12/16/2015/Aaron Swartz/" title="亚伦·斯沃茨（ Aaron Swartz）">
+				  <strong>上一篇:</strong>
+				  <span>
+				  亚伦·斯沃茨（ Aaron Swartz）</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/archives">
+						 <strong>最后一篇:</strong>点击返回目录
+						
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="Jekyll 搭建静态博客" data-url="http://zhangzirui.com/2015/09/12/2015/create-my-blog-with-jekyll1/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

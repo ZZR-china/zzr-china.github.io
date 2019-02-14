@@ -1,0 +1,47 @@
+.donation__p {
+    margin: 0 0;
+}
+
+.post__pagination {
+    padding-top: 20px;
+    min-height: 90px;
+}
+
+.post__pagination .post__nav {
+    line-height: 1;
+}
+
+.post__pagination .post__nav >div {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    width: 32%;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.post__pagination .post__nav >div:hover {
+    white-space: normal;
+    overflow: visible;
+}
+
+.post__pagination .post__nav >div:hover a {
+    color: #e24949;
+}
+
+.post__pagination .post__nav >div a {
+    color: #aaa;
+}
+
+.tl {
+    text-align: left;
+}
+
+.tc {
+    text-align: center;
+}
+
+.tr {
+    text-align: right;
+}

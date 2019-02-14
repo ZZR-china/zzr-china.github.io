@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>苹果首页轮播案例实现 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="css,js," />
+  
+
+  <meta name="description" content="好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="苹果首页轮播案例实现">
+<meta property="og:url" content="http://zhangzirui.com/2016/09/19/2016/09/applebannerdemo/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上">
+<meta property="og:updated_time" content="2016-09-19T13:51:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="苹果首页轮播案例实现">
+<meta name="twitter:description" content="好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/09/applebannerdemo" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">苹果首页轮播案例实现</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/前端/">前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>好久没更新了，昨天朱同学说苹果官网的新轮播不错，还说他们公司的前端觉得要花3天才能做出来。我说我一天就行，他不服，没办法，今天花了一下午做了一下（没使用任何js库）。完成了一个小demo，轮播还有些bug要修改，因为是通过修改transform的translate3d属性来实现轮播的，跟之前修改left属性不太一样，无限轮播的实现方法也需要改变，目前还在思考，但是案例已经做出来，放到github上，地址</p>
+<p><a href="http://www.zhangzirui.com/appleBannerdemo/" target="_blank" rel="external">http://www.zhangzirui.com/appleBannerdemo/</a></p>
+<p>轮播的实现谷歌一下能搜出好多个来，有使用库的有原生的，看需求，之前在公司PC端轮播使用jq手写，移动web上就使用swiper，强大、好用。</p>
+<p>样式上，也就是css主要给几个元素设置了transition,使过度平滑，css3里强大的动画属性使得以前用js写的特效现在可以放心简洁的使用css来实现，当然，要考虑兼容。js更多的是做控制的作用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">-moz-transition: transform 1.5s;</div><div class="line">/* Firefox 4 */</div><div class="line">-webkit-transition: transform 1.5s;</div><div class="line">/* Safari and Chrome */</div><div class="line">-o-transition: transform 1.5s;</div><div class="line">/* Opera */</div></pre></td></tr></table></figure></p>
+<p>js代码里写了3个计时器，用来实现图片的轮播，圆点的过度动画（dash），还有就是一个200ms运行一次的监测body.clientWidth的计时器。</p>
+<p>代码都很简单，这里就不贴了。有兴趣的同学可以去我的github上看：</p>
+<p><a href="https://github.com/ZZR-china/appleBannerdemo/blob/master/js/banner.js" target="_blank" rel="external">https://github.com/ZZR-china/appleBannerdemo/blob/master/js/banner.js</a></p>
+<p>有个收获就是谷歌到了一个很方便的替换class name的方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dash[i].className = dash[i].className.replace( <span class="regexp">/(?:^|\s)current(?!\S)/g</span>,<span class="string">''</span>);</div><div class="line">dashprogress[i].style.transform = <span class="string">'scaleX(0)'</span>;</div></pre></td></tr></table></figure>
+<p>以上。</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/09/20/2016/09/studyvue2/" title="学习Vue(一)">
+				  <strong>上一篇:</strong>
+				  <span>
+				  学习Vue(一)</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/09/09/2016/09/express(2)/"  title="express开发（二）引入handlebars">
+					 <strong>下一篇:</strong>
+					 <span>express开发（二）引入handlebars
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="苹果首页轮播案例实现" data-url="http://zhangzirui.com/2016/09/19/2016/09/applebannerdemo/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

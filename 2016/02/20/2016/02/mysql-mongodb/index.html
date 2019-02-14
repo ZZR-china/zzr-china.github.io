@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>MongoDB与MySQL的对比 | Wind</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="mongodb,mysql," />
+  
+
+  <meta name="description" content="关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查
+下面是我将MySQL和Mongo的一些操作进行了类比123456789MySQL:SELECT * FROM user&amp;lt;br&amp;gt;Mongo:db.user.find()&amp;gt;MySQL:SELECT * FROM user WHERE name = ”starlee”&amp;lt;br&amp;gt;Mongo:db.user.fi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB与MySQL的对比">
+<meta property="og:url" content="http://zhangzirui.com/2016/02/20/2016/02/mysql-mongodb/index.html">
+<meta property="og:site_name" content="Wind">
+<meta property="og:description" content="关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查
+下面是我将MySQL和Mongo的一些操作进行了类比123456789MySQL:SELECT * FROM user&amp;lt;br&amp;gt;Mongo:db.user.find()&amp;gt;MySQL:SELECT * FROM user WHERE name = ”starlee”&amp;lt;br&amp;gt;Mongo:db.user.fi">
+<meta property="og:updated_time" content="2016-08-31T13:30:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB与MySQL的对比">
+<meta name="twitter:description" content="关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查
+下面是我将MySQL和Mongo的一些操作进行了类比123456789MySQL:SELECT * FROM user&amp;lt;br&amp;gt;Mongo:db.user.find()&amp;gt;MySQL:SELECT * FROM user WHERE name = ”starlee”&amp;lt;br&amp;gt;Mongo:db.user.fi">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/my.css">
+  
+
+  
+
+  
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/atom.xml"
+            target="_blank"
+            >
+            RSS
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-2016/02/mysql-mongodb" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">MongoDB与MySQL的对比</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.02.20</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Wind</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>关系型数据库与非关系型数据库,对比学习操作基础的  增、删、改、查</p>
+<p>下面是我将MySQL和Mongo的一些操作进行了类比<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">SELECT * FROM user&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find()</div><div class="line"></div><div class="line">&gt;MySQL:</div><div class="line">SELECT * FROM user WHERE name = ”starlee”&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;“name”: “starlee”&#125;)</div></pre></td></tr></table></figure></p>
+<p>插入：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">INSERT INOT user (`name`, `age`) values (’starlee’,<span class="number">25</span>)&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.insert(&#123;‘name’ : ’starlee’, ‘age’ : <span class="number">25</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>如果你想在MySQL里添加一个字段，你必须：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ALTER TABLE user….</div></pre></td></tr></table></figure></p>
+<p>但在MongoDB里你只需要：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.user.insert(&#123;‘name’ : ’starlee’, ‘age’ : <span class="number">25</span>, ‘email’ : ’starlee@starlee.com’&#125;)</div></pre></td></tr></table></figure></p>
+<p>删除：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">DELETE * FROM user&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.remove(&#123;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">DELETE FROM user WHERE age &lt; <span class="number">30</span>&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.remove(&#123;‘age’ : &#123;$lt : <span class="number">30</span>&#125;&#125;)</div><div class="line">$gt : &gt; ; $gte : &gt;= ; $lt : &lt; ; $lte : &lt;= ; $ne : !=</div></pre></td></tr></table></figure></p>
+<p>更新:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">UPDATE user SET `age` = <span class="number">36</span> WHERE `name` = ’starlee’&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.update(&#123;‘name’ : ’starlee’&#125;, &#123;$set : &#123;‘age’ : <span class="number">36</span>&#125;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">UPDATE user SET `age` = `age` + <span class="number">3</span> WHERE `name` = ’starlee’&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.update(&#123;‘name’ : ’starlee’&#125;, &#123;$inc : &#123;‘age’ : <span class="number">3</span>&#125;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT COUNT(*) FROM user WHERE ‘name’ = ’starlee’&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;‘name’ : ’starlee’&#125;).count()&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT * FROM user limit <span class="number">10</span>,<span class="number">20</span></div><div class="line">Mongo:</div><div class="line">db.user.find().skip(<span class="number">10</span>).limit(<span class="number">20</span>).sort(<span class="number">1</span>)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT * FROM user WHERE `age` IN (<span class="number">25</span>, <span class="number">35</span>,<span class="number">45</span>)</div><div class="line"></div><div class="line">Mongo:</div><div class="line">db.user.find(&#123;‘age’ : &#123;$<span class="keyword">in</span> : [<span class="number">25</span>, <span class="number">35</span>, <span class="number">45</span>]&#125;&#125;)</div><div class="line"></div><div class="line">MySQL:</div><div class="line">SELECT * FROM user ORDER BY age DESC&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.find().sort(&#123;‘age’ : <span class="number">-1</span>&#125;)</div><div class="line"></div><div class="line">MySQL:</div><div class="line">SELECT DISTINCT(name) FROM user WHERE age &gt; <span class="number">20</span>&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.distinct(‘name’, &#123;‘age’: &#123;$lt : <span class="number">20</span>&#125;&#125;)&lt;br&gt;</div><div class="line">MySQL:</div><div class="line">SELECT name, sum(marks) FROM user GROUP BY name&lt;br&gt;</div><div class="line">Mongo:</div><div class="line">db.user.group(&#123;</div><div class="line">key : &#123;‘name’ : true&#125;,</div><div class="line">cond: &#123;‘name’ : ‘foo’&#125;,</div><div class="line">reduce: function(obj,prev) &#123; prev.msum += obj.marks; &#125;,</div><div class="line">initial: &#123;msum : <span class="number">0</span>&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>注意学习！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MySQL:</div><div class="line">SELECT name FROM user WHERE age &lt; <span class="number">20</span></div><div class="line">Mongo:</div><div class="line">db.user.find(‘this.age &lt; <span class="number">20</span>′, &#123;name : <span class="number">1</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>发现很多人在搜MongoDB循环插入数据，下面把MongoDB循环插入数据的方法添加在下面：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(var i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)db.test.insert(&#123;uid:i,uname:’nosqlfan’+i&#125;);</div></pre></td></tr></table></figure></p>
+<p>上面一次性插入一百条数据，大概结构如下：</p>
+<p>{ “_id” : ObjectId(“4c876e519e86023a30dde6b8″), “uid” : 55, “uname” : “nosqlfan55″ }<br>{ “_id” : ObjectId(“4c876e519e86023a30dde6b9″), “uid” : 56, “uname” : “nosqlfan56″ }</p>
+
+    
+  </div>
+</article>
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持wind</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <p class="donation__p">微信</p>
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <p class="donation__p">支付宝</p>
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+   
+
+	<div class="post__pagination">
+		<nav class="post__nav">
+			 <div class="post__prev tl">
+				 
+				 <a href="/2016/02/28/2016/02/The Dangers of Stopping Event Propagation/" title="The Dangers of Stopping Event Propagation">
+				  <strong>上一篇:</strong>
+				  <span>
+				  The Dangers of Stopping Event Propagation</span>
+				</a>
+				
+			</div>
+
+			<div class="post__home tc">
+				<a href="/archives">
+				<strong>目录</strong>
+				</a>
+			</div>
+
+			<div class="pot__next tl">
+				
+					<a href="/2016/01/29/2016/01/sudoku-color-change/"  title="颜色变化的九宫格">
+					 <strong>下一篇:</strong>
+					 <span>颜色变化的九宫格
+					</span>
+					</a>
+				
+			</div>
+		</nav>
+	</div>
+
+
+
+</div>
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/atom.xml"
+              target="_blank"
+              >
+              RSS
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="" data-title="MongoDB与MySQL的对比" data-url="http://zhangzirui.com/2016/02/20/2016/02/mysql-mongodb/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"zzr"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
